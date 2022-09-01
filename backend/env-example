@@ -1,0 +1,2 @@
+PORT=3000
+DATABASE=mongodb+srv://kyawlinthu:<password>@learnwithus.6h525ee.mongodb.net/?retryWrites=true&w=majority
