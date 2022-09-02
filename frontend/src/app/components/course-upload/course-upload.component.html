@@ -1,0 +1,47 @@
+<div [formGroup]="courseSvc.courseUploadForm" class="container">
+    <h2>Course Upload</h2>
+  
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" formArrayName="courseUpload">
+      <div class="example-box" *ngFor="let upload of courseUpload.controls; let i=index" cdkDrag>
+        <mat-card>
+          <div [formGroupName]="i">
+            <mat-form-field class="upload-field" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title">
+              <mat-error *ngIf="uploadIndex(i).controls['title'].hasError('required')">Title is
+                required</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+
+            <div class="image clearfix" >
+              <input type="file" class="course-img" formControlName="uploadImg"  (change)="imageUpload($event,i)" accept="image/*">
+              <div class="" *ngIf="uploadImage[i] !== null ">
+                <img [src]="uploadImage[i]" class="profileimg" >
+              </div>
+            </div>
+  
+            <span *ngIf="i !== 0" class="clearfix">
+              <button type="button" mat-raised-button color="warn" (click)="remove(i)" style="float: right;">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </span>
+          </div>
+        </mat-card>
+  
+      </div>
+      <div class="add-btn">
+        <button mat-raised-button type="button" (click)="add()"><i class="material-icons">add</i> Add Course Upload</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="clearfix">
+    <button mat-raised-button color="primary" type="button" style="float: left;" matStepperPrevious>Previous</button>
+    <button mat-raised-button color="primary" type="button" class="stepper-next" matStepperNext>Next</button>
+  </div>
+  
