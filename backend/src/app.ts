@@ -5,7 +5,7 @@ import category_route from './routes/category_route';
 import subcategory_route from './routes/subcategory_route';
 import error from './middlewares/error';
 import cors from 'cors';
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 dotenv.config();
 
@@ -14,9 +14,9 @@ const PORT = process.env.PORT;
 const app = express();
 
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.json());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors());
 
 mongoose
