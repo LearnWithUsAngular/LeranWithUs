@@ -1,0 +1,57 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 1px black;
+    // padding: 20px;
+    margin-bottom: 50px;
+
+    h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    mat-form-field {
+        display: block;
+    }
+
+    .info {
+        .upper {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        // .under {
+        //     display: flex;
+        //     justify-content: end;
+        // }
+    }
+
+    mat-label{
+        font-size: 16px;
+    }
+
+    .clearfix::after,
+    .clearfix::before {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    // .img1{
+    //     float:left;
+    //     width: 70%;
+    // }
+
+    // .img2{
+    //     float: right;
+    //     width: 30%;
+    // }
+
+    .courseImg{
+        display: flex;
+        margin-top: 15px;
+    }
+
+}

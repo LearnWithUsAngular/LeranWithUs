@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'reset-password',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
+  },
+  {
+    path: 'instructor',
+    loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
   }
 ];
 

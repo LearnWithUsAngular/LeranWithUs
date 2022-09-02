@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatPaginatorModule,
     MatTabsModule,
+    MatStepperModule
   ],
 })
 export class AngularMaterialsModule { }
