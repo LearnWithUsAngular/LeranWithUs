@@ -13,16 +13,11 @@ const userSchema = new Schema({
     password: {
         type: String,
     },
-    type: {
-        type: String,
-        enum: ['Admin', 'User'],
-        default: 'User'
-    },
     phone: {
         type: String,
         default: ""
     },
-    profile: {
+    userProfile: {
         type: String,
         default: ""
     },

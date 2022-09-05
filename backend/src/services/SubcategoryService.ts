@@ -1,8 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
-// import { validationResult } from 'express-validator';
 import Subcategory from '../models/Subcategory';
-// import Category from '../models/Category';
 
 export const getSubcategoryService = async (
     req: Request,
