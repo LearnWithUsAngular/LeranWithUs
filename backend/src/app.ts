@@ -30,12 +30,7 @@ const fileStorage = multer.diskStorage({
 
     },
     filename: (_req, file, cb) => {
-        if (file.fieldname === "instructorProfile") {
-            cb(null, `${v4()}_${file.originalname}`);
-        }
-        else if (file.fieldname === "userProfile") {
-            cb(null, `${v4()}_${file.originalname}`);
-        }
+        cb(null, `${v4()}_${file.originalname}`);
     },
 });
 

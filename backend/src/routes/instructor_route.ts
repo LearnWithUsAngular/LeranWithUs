@@ -1,5 +1,5 @@
 import express from 'express';
-import { getInstructor, createInstructor } from '../controllers/InstructorController';
+import { getInstructor, createInstructor, findInstructor, updateInstructor, deleteInstructor } from '../controllers/InstructorController';
 const router = express.Router();
 
 router
@@ -7,4 +7,10 @@ router
     .get(getInstructor)
     .post(createInstructor)
 
+router
+    .route("/:id")
+    .get(findInstructor)
+    .put(updateInstructor)
+    .delete(deleteInstructor)
+    
 export default router;

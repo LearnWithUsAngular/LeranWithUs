@@ -114,7 +114,7 @@ export const updateInstructorService = async (
     }
 };
 
-export const deleteIntructorService = async (
+export const deleteInstructorService = async (
     req: any,
     res: Response,
     next: NextFunction

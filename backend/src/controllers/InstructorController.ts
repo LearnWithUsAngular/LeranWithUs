@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { createInstructorService, getInstructorService } from '../services/InstructorService';
+import { createInstructorService, deleteInstructorService, findInstructorService, getInstructorService, updateInstructorService } from '../services/InstructorService';
 
 export const getInstructor = async (
     req: Request,
@@ -15,4 +15,28 @@ export const createInstructor = async (
     next: NextFunction
 ) => {
     createInstructorService(req, res, next);
+};
+
+export const findInstructor = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    findInstructorService(req, res, next);
+}
+
+export const updateInstructor = async (
+    req: any,
+    res: Response,
+    next: NextFunction
+) => {
+    updateInstructorService(req, res, next);
+};
+
+export const deleteInstructor = async (
+    req: any,
+    res: Response,
+    next: NextFunction
+) => {
+    deleteInstructorService(req, res, next);
 };
