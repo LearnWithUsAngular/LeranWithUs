@@ -15,7 +15,7 @@ export const getCategoryService = async (
         let condition: any = { deleted_at: null };
         const result = await Category
                                 .find(condition)
-                                .populate('subcategory')
+                                .populate('subcategories.subcategory')
                                 // .populate({ path: 'subcategory._id', model: 'subcategory', select: 'subcategory'})
                                 // .populate({
                                 //     path: 'subcategory',

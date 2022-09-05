@@ -5,10 +5,11 @@ const categorySchema = new Schema({
         type: String,
         required: true
     },
-    subcategory: [ {
-                type: Schema.Types.ObjectId,
-                ref: "subcategory",
-            },
+    subcategories: [ 
+        {
+            type: Schema.Types.ObjectId,
+            ref: "subcategory",
+        },
     ],
     deleted_at: {
         type: Date
