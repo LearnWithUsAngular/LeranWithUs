@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
+import { validationResult } from 'express-validator';
 import Instructor from '../models/Instructor';
+import { deleteFile } from '../utils/deleteFile';
 
 export const getInstructorService = async (
     _req: Request,
@@ -26,11 +28,22 @@ export const createInstructorService = async (
     next: NextFunction
 ) => {
     try {
+        const errors = validationResult(req.body);
+        if (!errors.isEmpty()) {
+            const error: any = new Error("Validation failed!");
+            error.data = errors.array();
+            error.statusCode = 422;
+            throw error;
+        }
+        let instructorProfile: string = req.body.instructorProfile;
+        if (req.files) {
+            instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
+        }
         const instructorInsert = {
-            intructorName: req.body.intructorName,
+            instructorName: req.body.instructorName,
             headline: req.body.headline,
             biography: req.body.biography,
-            profile: req.body.profile,
+            instructorProfile: instructorProfile,
             user_id: req.body.user_id
         }
         const instructor = new Instructor(instructorInsert);
@@ -40,6 +53,83 @@ export const createInstructorService = async (
         if (!err.statusCode) {
             err.statusCode = 500;
         }
+        next(err)
+    }
+};
+
+export const findInstructorService = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const instructor = await Instructor.findById(req.params.id);
+        if (!instructor) {
+            const error: any = Error("Not Found!");
+            error.statusCode = 404;
+            throw error;
+        }
+        res.json({ data: instructor, status: 1 });
+    } catch (err) {
+        next(err)
+    }
+}
+
+export const updateInstructorService = async (
+    req: any,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const errors = validationResult(req.body);
+        if (!errors.isEmpty()) {
+            const error: any = new Error("Validation failed!");
+            error.data = errors.array();
+            error.statusCode = 422;
+            throw error;
+        }
+        const instructor: any = await Instructor.findById(req.params.id);
+        if (!instructor) {
+            const error: any = new Error("Not Found!");
+            error.statusCode = 404;
+            throw error;
+        }
+        let instructorProfile: string = req.body.instructorProfile;
+        if (req.files) {
+            instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
+            if (instructor.instructorProfile && instructor.instructorProfile != instructorProfile) {
+                deleteFile(instructor.instructorProfile);
+            }
+            if (instructorProfile) {
+                instructor.instructorProfile = instructorProfile;
+            }
+        }
+        instructor.instructureName = req.body.instructorName;
+        instructor.headline = req.body.headline;
+        instructor.biography = req.body.biography;
+        const result = await instructor.save();
+        res.json({ message: "Updated Instructor Successfully!", data: result, status: 1 });
+    } catch (err) {
+        next(err)
+    }
+};
+
+export const deleteIntructorService = async (
+    req: any,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const instructor: any = await Instructor.findById(req.params.id);
+        if (!instructor) {
+            const error: any = new Error("Not Found!");
+            error.statusCode = 404;
+            throw error;
+        }
+        instructor.deleted_at = new Date();
+        const result = await instructor.save();
+        res.json({ message: "Delete Instructor Successfully!", data: result, status: 1 });
+    } catch (err) {
         next(err)
     }
 };
