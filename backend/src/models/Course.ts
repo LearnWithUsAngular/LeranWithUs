@@ -1,43 +1,40 @@
 import { Schema, model } from "mongoose";
 
-const detailSchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    subtitle: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    language: {
-        type: String,
-        enum: ['Engish', 'Myanmar'],
-        default: 'English'
-    },
-    level: {
-        type: String,
-        enum: ['Beginner', 'Intermediate', 'Expert', 'All Level'],
-        default: ''
-    },
-    category_id: {
-        type: Schema.Types.ObjectId,
-        ref: "category"
-    },
-    subcategory_id: {
-        type: Schema.Types.ObjectId,
-        ref: "subcategory"
-    },
-    photo: {
-        type: String,
-        required: true
-    }
-}
-)
-
+// const detailSchema = new Schema({
+//     title: {
+//         type: String,
+//         // required: true
+//     },
+//     subtitle: {
+//         type: String,
+//         // required: true
+//     },
+//     description: {
+//         type: String,
+//         // required: true
+//     },
+//     language: {
+//         type: String,
+//         enum: ['Engish', 'Myanmar'],
+//     },
+//     level: {
+//         type: String,
+//         enum: ['Beginner', 'Intermediate', 'Expert', 'All Level'],
+//     },
+//     category_id: {
+//         type: Schema.Types.ObjectId,
+//         ref: "category"
+//     },
+//     subcategory_id: {
+//         type: Schema.Types.ObjectId,
+//         ref: "subcategory"
+//     },
+//     courseCover: {
+//         type: String,
+//         // required: true
+//     }
+// }
+// )
 
 const priceSchema = new Schema(
     {
@@ -49,7 +46,7 @@ const priceSchema = new Schema(
         price: {
             type: String,
             enum: ['Free', '$19.99', '$24.99', '$34.99'],
-            default: 'USD'
+            default: 'Free'
         },
         promocode: {
             type: String,
@@ -60,17 +57,13 @@ const priceSchema = new Schema(
 
 const courseuploadSchema = new Schema(
     {
-        name: {
+        courseName: {
             type: String,
-            enum: ['USD', 'AUD', 'MM', 'SGD'],
-            default: 'USD'
         },
         description: {
             type: String,
-            enum: ['Free', '$19.99', '$24.99', '$34.99'],
-            default: 'USD'
         },
-        video: {
+        courseVideo: {
             type: String,
             default: ''
         }
@@ -79,9 +72,42 @@ const courseuploadSchema = new Schema(
 
 const courseSchema = new Schema(
     {
-        detail: detailSchema,
-        price: priceSchema,
-        couseUpload: [ courseuploadSchema ],
+        detail: {
+            title: {
+                type: String,
+                // required: true
+            },
+            subtitle: {
+                type: String,
+                // required: true
+            },
+            description: {
+                type: String,
+                // required: true
+            },
+            language: {
+                type: String,
+                enum: ['Engish', 'Myanmar'],
+            },
+            level: {
+                type: String,
+                enum: ['Beginner', 'Intermediate', 'Expert', 'All Level'],
+            },
+            category_id: {
+                type: Schema.Types.ObjectId,
+                ref: "category"
+            },
+            subcategory_id: {
+                type: Schema.Types.ObjectId,
+                ref: "subcategory"
+            },
+            courseCover: {
+                type: String,
+                // required: true
+            }
+        },
+        coursePrice: priceSchema,
+        courseUpload: [ courseuploadSchema ],
         instructor_id: {
             type: Schema.Types.ObjectId,
             ref: "instructor"

@@ -3,20 +3,21 @@ import { validationResult } from 'express-validator';
 import Subcategory from '../models/Subcategory';
 
 export const getSubcategoryService = async (
-    req: Request,
+    _req: Request,
     res: Response,
     next: NextFunction
 ) => {
     try {
-        const page: any = req.query.page || 0;
-        const subcategoryPerPage: any = req.query.scpp || 5;
+        // const page: any = req.query.page || 0;
+        // const subcategoryPerPage: any = req.query.scpp || 5;
 
         let condition: any = { deleted_at: null };
         const result = await Subcategory
                                     .find(condition)
+                                    // .aggregate([{$group:{_id:"$category_id", data:{$push:"$$ROOT"}}}])
                                     .populate({ path: 'category_id', select: 'category',})
-                                    .skip(page * subcategoryPerPage)
-                                    .limit(subcategoryPerPage);
+                                    // .skip(page * subcategoryPerPage)
+                                    // .limit(subcategoryPerPage);
         res.json({ data: result, status: 1 });
     } catch (err) {
         next(err);
