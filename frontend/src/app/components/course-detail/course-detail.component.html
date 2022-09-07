@@ -1,0 +1,70 @@
+<div [formGroup]="courseSvc.courseDetailForm" class="container">
+    <h2>Course Details</h2>
+
+    <mat-form-field class="" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+        <mat-error *ngIf="f['title'].hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Subtitle</mat-label>
+        <input matInput formControlName="subtitle">
+        <mat-error *ngIf="f['subtitle'].hasError('required')">Subtitle is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-label>Basic Info</mat-label>
+    <div class="info clearfix">
+        <div class="upper">
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="language">
+                    <mat-option *ngFor="let language of languages" [value]="language.value">
+                        {{language.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="level" placeholder="--Select Level--">
+                    <mat-option *ngFor="let level of levels" [value]="level.value">
+                        {{level.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="development" placeholder="Development">
+                    <mat-option *ngFor="let development of developments" [value]="development.value">
+                        {{development.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="subCat" placeholder="--Select SubCategory--">
+                    <mat-option *ngFor="let subCat of subCats" [value]="subCat.value">
+                        {{subCat.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-label>Course Image</mat-label>
+    <div class="courseImg clearfix">
+        <div class="img1">
+            <img [src]="courseImage" height="200px">
+        </div>
+        <div class="img2">
+            <input type="file" class="course-img" formControlName="courseImg" (change)="imageUpload($event)"
+                accept="image/*">
+        </div>
+    </div>
+
+</div>
+<button mat-raised-button type="button" color="primary" style="float: right;" matStepperNext>Next</button>
