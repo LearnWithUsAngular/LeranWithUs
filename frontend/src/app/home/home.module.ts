@@ -7,11 +7,10 @@ import { HomeComponent } from './home.component';
 import { IvyCarouselModule } from "angular-responsive-carousel";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TooltipModule } from 'ng2-tooltip-directive';
-import { PopupComponent } from '../components/popup/popup.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, PopupComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
