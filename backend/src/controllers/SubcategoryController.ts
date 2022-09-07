@@ -3,41 +3,41 @@ import { createSubcategoryService, deleteSubcategoryService, findSubcategoryServ
 
 
 export const getSubcategory = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-    getSubcategoryService(req, res, next);
+  getSubcategoryService(req, res, next);
 };
 
 export const createSubcategory = async (
-    req: any,
-    res: Response,
-    next: NextFunction
+  req: any,
+  res: Response,
+  next: NextFunction
 ) => {
-    createSubcategoryService(req, res, next);
+  createSubcategoryService(req, res, next);
 };
 
 export const findSubcategory = async (
-    req: any,
-    res: Response,
-    next: NextFunction
+  req: any,
+  res: Response,
+  next: NextFunction
 ) => {
-    findSubcategoryService(req, res, next);
+  findSubcategoryService(req, res, next);
 };
 
 export const updateSubcategory = async (
-    req: any,
-    res: Response,
-    next: NextFunction
+  req: any,
+  res: Response,
+  next: NextFunction
 ) => {
-    updateSubcategoryService(req, res, next);
+  updateSubcategoryService(req, res, next);
 };
 
 export const deleteSubcategory = async (
-    req: any,
-    res: Response,
-    next: NextFunction
+  req: any,
+  res: Response,
+  next: NextFunction
 ) => {
-    deleteSubcategoryService(req, res, next);
+  deleteSubcategoryService(req, res, next);
 };

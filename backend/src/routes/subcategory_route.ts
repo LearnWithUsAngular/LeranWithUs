@@ -5,19 +5,19 @@ import { createSubcategory, findSubcategory, getSubcategory, updateSubcategory, 
 const router = express.Router();
 
 router
-    .route('/')
-    .get(getSubcategory)
-    .post(
-        // [
-        //     body("subcategory").notEmpty().withMessage("Subcategory Name must not be empty"),
-        //     body("category_id").notEmpty().withMessage("Category must not be empty"),
-        // ],
+  .route('/')
+  .get(getSubcategory)
+  .post(
+    // [
+    //     body("subcategory").notEmpty().withMessage("Subcategory Name must not be empty"),
+    //     body("category_id").notEmpty().withMessage("Category must not be empty"),
+    // ],
     createSubcategory)
 
-    router
-    .route('/:id')
-    .get(findSubcategory)
-    .put(
+router
+  .route('/:id')
+  .get(findSubcategory)
+  .put(
     updateSubcategory)
-    .delete(deleteSubcategory)
+  .delete(deleteSubcategory)
 export default router;

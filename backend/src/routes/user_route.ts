@@ -5,19 +5,19 @@ import { createUser, deleteUser, findUser, getUser, updateUser } from '../contro
 const router = express.Router();
 
 router
-    .route('/')
-    .get(getUser)
-    .post(
-        [
-            body("name").notEmpty().withMessage("Name must note be empty"),
-            body("email").notEmpty().withMessage("Email must note be empty"),
-            body("password").notEmpty().withMessage("Password must not be empty")
-        ],
+  .route('/')
+  .get(getUser)
+  .post(
+    [
+      body("name").notEmpty().withMessage("Name must note be empty"),
+      body("email").notEmpty().withMessage("Email must note be empty"),
+      body("password").notEmpty().withMessage("Password must not be empty")
+    ],
     createUser)
 
 router
-    .route("/:id")
-    .get(findUser)
-    .put(updateUser)
-    .delete(deleteUser)
+  .route("/:id")
+  .get(findUser)
+  .put(updateUser)
+  .delete(deleteUser)
 export default router;

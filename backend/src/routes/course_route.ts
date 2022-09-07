@@ -4,8 +4,8 @@ import { createCourse, getCourse } from '../controllers/CourseController';
 const router = express.Router();
 
 router
-    .route('/')
-    .get(getCourse)
-    .post(createCourse)
+  .route('/')
+  .get(getCourse)
+  .post(createCourse)
 
 export default router;

@@ -3,17 +3,17 @@ import { createCourseService, getCourseService } from '../services/CourseService
 
 
 export const getCourse = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
-    getCourseService(req, res, next);
+  getCourseService(req, res, next);
 };
 
 export const createCourse = async (
-    req: any,
-    res: Response,
-    next: NextFunction
+  req: any,
+  res: Response,
+  next: NextFunction
 ) => {
-    createCourseService(req, res, next);
+  createCourseService(req, res, next);
 };

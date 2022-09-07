@@ -26,33 +26,32 @@ export const createCourseService = async (
     next: NextFunction
 ) => {
     try {
-        const obj = JSON.parse(req.body.detail);
-        // console.log(obj);
-        // const obj = JSON.parse(JSON.stringify(req.body.detail));
-        console.log(JSON.parse(obj).title)
+        const det = JSON.parse(JSON.stringify(req.body.detail));
+        const fee = JSON.parse(JSON.stringify(req.body.coursePrice));
+        // console.log(JSON.parse(obj).title)
         // console.log(req.files.courseCover[0].path.replace("\\","/"))
-        // const courseForm = {
-        //     // detail: req.body.detail,
-        //     // cousePrice: req.body.coursePrice,
-        //     // courseUpload: req.body.courseUpload,
-        //     instructor_id: req.body.instructor_id,
-        //     detail: {
-        //        title: req.body.title,
-        //        subtitle: req.body.subtitle,
-        //        description: req.body.description,
-        //        language: req.body.language,
-        //        level: req.body.level,
-        //        category_id: req.body.category_id,
-        //        subcategory_id: req.body.subcategory_id,
-        //        courseCover: req.files.courseCover[0].path.replace("\\","/")
-        //     },
-        //     coursePrice: {
-        //         currency: req.body.currency,
-        //         price: req.body.price,
-        //         promocode: req.body.promocode
-        //     }
-        // }
-        // console.log(JSON.parse(JSON.stringify(courseForm)))
+        const courseForm = {
+            // detail: req.body.detail,
+            // cousePrice: req.body.coursePrice,
+            // courseUpload: req.body.courseUpload,
+            // instructor_id: req.body.instructor_id,
+            detail: {
+               title: JSON.parse(det).title,
+               subtitle: JSON.parse(det).subtitle,
+               description: JSON.parse(det).description,
+               language: JSON.parse(det).language,
+               level: JSON.parse(det).level,
+               category_id: JSON.parse(det).category_id,
+               subcategory_id: JSON.parse(det).subcategory_id,
+               courseCover: req.files.courseCover[0].path.replace("\\","/")
+            },
+            coursePrice: {
+                currency: JSON.parse(fee).currency,
+                price: JSON.parse(fee).price,
+                promocode: JSON.parse(fee).promocode
+            }
+        }
+        console.log(courseForm)
         // const course = new Course(JSON.parse(JSON.stringify(courseForm)));
         // const result = await course.save();
         // console.log(result)

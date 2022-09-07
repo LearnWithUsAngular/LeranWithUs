@@ -3,14 +3,14 @@ import { getInstructor, createInstructor, findInstructor, updateInstructor, dele
 const router = express.Router();
 
 router
-    .route('/')
-    .get(getInstructor)
-    .post(createInstructor)
+  .route('/')
+  .get(getInstructor)
+  .post(createInstructor)
 
 router
-    .route("/:id")
-    .get(findInstructor)
-    .put(updateInstructor)
-    .delete(deleteInstructor)
-    
+  .route("/:id")
+  .get(findInstructor)
+  .put(updateInstructor)
+  .delete(deleteInstructor)
+
 export default router;
