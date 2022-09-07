@@ -101,10 +101,10 @@ const courseSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: "subcategory"
             },
-            courseCover: {
-                type: String,
-                // required: true
-            }
+            // courseCover: {
+            //     type: String,
+            //     // required: true
+            // }
         },
         coursePrice: priceSchema,
         courseUpload: [ courseuploadSchema ],

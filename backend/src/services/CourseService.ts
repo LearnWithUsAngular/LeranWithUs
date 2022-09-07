@@ -26,10 +26,10 @@ export const createCourseService = async (
     next: NextFunction
 ) => {
     try {
-        // const obj = JSON.parse(JSON.stringify(req.body)); 
+        const obj = JSON.parse(req.body.detail);
         // console.log(obj);
         // const obj = JSON.parse(JSON.stringify(req.body.detail));
-        console.log(req.body.detail)
+        console.log(JSON.parse(obj).title)
         // console.log(req.files.courseCover[0].path.replace("\\","/"))
         // const courseForm = {
         //     // detail: req.body.detail,
