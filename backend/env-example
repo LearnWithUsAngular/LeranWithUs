@@ -1,2 +1,7 @@
 PORT=3000
 DATABASE=mongodb+srv://kyawlinthu:<password>@learnwithus.6h525ee.mongodb.net/learnwithus?retryWrites=true&w=majority
+BASE_URL=http://localhost:4200
+HOST=smtp.gmail.com
+SERVICE=gmail
+USER=
+PASS=
