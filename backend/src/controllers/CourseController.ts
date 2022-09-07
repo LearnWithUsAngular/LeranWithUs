@@ -1,7 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { createCourseService, getCourseService } from '../services/CourseService';
 
-
+/**
+ * Get Course
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const getCourse = async (
   req: Request,
   res: Response,
@@ -10,6 +15,12 @@ export const getCourse = async (
   getCourseService(req, res, next);
 };
 
+/**
+ * Create Course
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const createCourse = async (
   req: any,
   res: Response,

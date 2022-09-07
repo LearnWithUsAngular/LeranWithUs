@@ -3,25 +3,32 @@ import { validationResult } from 'express-validator';
 import Instructor from '../models/Instructor';
 import { deleteFile } from '../utils/deleteFile';
 
+/**
+ * Get Instructor Service
+ * @param _req 
+ * @param res 
+ * @param next 
+ */
 export const getInstructorService = async (
   _req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    // const page: any = req.query.page || 0;
-    // const instructorPerPage: any = req.query.ipp || 5;
-
     let condition: any = { deleted_at: null };
     const result = await Instructor.find(condition).populate({ path: 'user_id' })
-    // .skip(page * instructorPerPage)
-    // .limit(instructorPerPage);
     res.json({ data: result, status: 1 });
   } catch (err) {
     next(err);
   }
 };
 
+/**
+ * Create Instructor Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const createInstructorService = async (
   req: any,
   res: Response,
@@ -57,6 +64,12 @@ export const createInstructorService = async (
   }
 };
 
+/**
+ * Find Instructor Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const findInstructorService = async (
   req: Request,
   res: Response,
@@ -75,6 +88,12 @@ export const findInstructorService = async (
   }
 }
 
+/**
+ * Update Instructor Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const updateInstructorService = async (
   req: any,
   res: Response,
@@ -114,6 +133,12 @@ export const updateInstructorService = async (
   }
 };
 
+/**
+ * Delete Instructor Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const deleteInstructorService = async (
   req: any,
   res: Response,

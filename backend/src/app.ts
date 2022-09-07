@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import category_route from './routes/category_route';
 import error from './middlewares/error';
-import subcategory_route from './routes/subcategory_route';
+import bodyParser from "body-parser";
 import user_route from './routes/user_route';
 import multer, { FileFilterCallback } from 'multer';
 import { v4 } from 'uuid';
@@ -15,14 +15,10 @@ import auth_route from './routes/auth_route';
 import cors from 'cors';
 import passport from 'passport';
 
-const bodyParser = require('body-parser');
-
 require('./config/passport');
-
 dotenv.config();
 
 const PORT = process.env.PORT;
-
 const app = express();
 
 const fileStorage = multer.diskStorage({
@@ -87,10 +83,9 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     app.use("/api/categories", passport.authenticate('jwt', { session: false }), category_route);
-    app.use("/api/subcategories", passport.authenticate('jwt', { session: false }), subcategory_route);
     app.use("/api/users", passport.authenticate('jwt', { session: false }), user_route);
     app.use("/api/instructors", passport.authenticate('jwt', { session: false }), instructor_route);
-    app.use("/api/courses", course_route);
+    app.use("/api/courses", passport.authenticate('jwt', { session: false }), course_route);
     app.use("/api", auth_route);
     app.use(error)
   }

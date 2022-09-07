@@ -25,10 +25,6 @@ import { Schema, model } from "mongoose";
 //         type: Schema.Types.ObjectId,
 //         ref: "category"
 //     },
-//     subcategory_id: {
-//         type: Schema.Types.ObjectId,
-//         ref: "subcategory"
-//     },
 //     courseCover: {
 //         type: String,
 //         // required: true
@@ -95,10 +91,6 @@ const courseSchema = new Schema(
       category_id: {
         type: Schema.Types.ObjectId,
         ref: "category"
-      },
-      subcategory_id: {
-        type: Schema.Types.ObjectId,
-        ref: "subcategory"
       },
       courseCover: {
         type: String,

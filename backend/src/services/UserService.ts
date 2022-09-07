@@ -4,25 +4,32 @@ import bcrypt from 'bcrypt'
 import { deleteFile } from '../utils/deleteFile';
 import { validationResult } from 'express-validator';
 
+/**
+ * Get User Service
+ * @param _req 
+ * @param res 
+ * @param next 
+ */
 export const getUserService = async (
   _req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    // const page: any = req.query.page || 0;
-    // const userPerPage: any = req.query.upp || 5;
-
     let condition: any = { deleted_at: null };
     const result = await User.find(condition)
-    // .skip(page * userPerPage)
-    // .limit(userPerPage);
     res.json({ data: result, status: 1 });
   } catch (err) {
     next(err);
   }
 };
 
+/**
+ * Create User Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const createUserService = async (
   req: any,
   res: Response,
@@ -58,6 +65,12 @@ export const createUserService = async (
   }
 };
 
+/**
+ * Find User Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const findUserService = async (
   req: Request,
   res: Response,
@@ -76,6 +89,12 @@ export const findUserService = async (
   }
 }
 
+/**
+ * Update User Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const updateUserService = async (
   req: any,
   res: Response,
@@ -115,6 +134,12 @@ export const updateUserService = async (
   }
 };
 
+/**
+ * Delete  User Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const deleteUserService = async (
   req: any,
   res: Response,

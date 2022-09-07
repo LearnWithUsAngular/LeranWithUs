@@ -3,35 +3,33 @@ import { validationResult } from 'express-validator';
 import Category from '../models/Category';
 import { CategoryCreate } from '../interfaces/Category';
 
+/**
+ * Get Category Service
+ * @param _req 
+ * @param res 
+ * @param next 
+ */
 export const getCategoryService = async (
   _req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    // const page: any = req.query.page || 0;
-    // const categoryPerPage: any = req.query.cpp || 5;
-
     let condition: any = { deleted_at: null };
-    const result = await Category
-      .find(condition)
-      .populate('subcategories.subcategory')
-    // .populate({ path: 'subcategory._id', model: 'subcategory', select: 'subcategory'})
-    // .populate({
-    //     path: 'subcategory',
-    //     model: 'subcategory',
-    //     select: 'subcategory'
-    // })
-
-    // .skip(page * categoryPerPage)
-    // .limit(categoryPerPage)
-
+    const result = await Category.find(condition)
     res.json({ data: result, status: 1 });
   } catch (err) {
     next(err);
   }
 };
 
+
+/**
+ * Create Category Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const createCategoryService = async (
   req: any,
   res: Response,
@@ -46,7 +44,8 @@ export const createCategoryService = async (
       throw error;
     }
     const categoryInsert: CategoryCreate = {
-      category: req.body.category
+      category: req.body.category,
+      subcategories: req.body.subcategories
     }
     const category = new Category(categoryInsert);
     const result = await category.save();
@@ -59,13 +58,19 @@ export const createCategoryService = async (
   }
 };
 
+/**
+ * Find Category Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const findCategoryService = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const category = await Category.findById(req.params.id).populate("subcategory");
+    const category = await Category.findById(req.params.id)
     if (!category) {
       const error: any = Error("Not Found!");
       error.statusCode = 404;
@@ -80,7 +85,12 @@ export const findCategoryService = async (
   }
 }
 
-
+/**
+ * Update Category Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const updateCategoryService = async (
   req: any,
   res: Response,
@@ -101,6 +111,7 @@ export const updateCategoryService = async (
       throw error;
     }
     category.category = req.body.category;
+    category.subcategories = req.body.subcategories
     const result = await category.save();
     res.json({ message: "Updated Successfully!", data: result, status: 1 });
   } catch (err: any) {
@@ -111,6 +122,12 @@ export const updateCategoryService = async (
   }
 };
 
+/**
+ * Delete Category Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const deleteCategoryService = async (
   req: any,
   res: Response,

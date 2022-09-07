@@ -1,6 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { createInstructorService, deleteInstructorService, findInstructorService, getInstructorService, updateInstructorService } from '../services/InstructorService';
 
+/**
+ * Get Instructor
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const getInstructor = async (
   req: Request,
   res: Response,
@@ -9,6 +15,12 @@ export const getInstructor = async (
   getInstructorService(req, res, next);
 };
 
+/**
+ * Create Instructor
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const createInstructor = async (
   req: any,
   res: Response,
@@ -17,6 +29,12 @@ export const createInstructor = async (
   createInstructorService(req, res, next);
 };
 
+/**
+ * Find Instructor
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const findInstructor = async (
   req: Request,
   res: Response,
@@ -25,6 +43,12 @@ export const findInstructor = async (
   findInstructorService(req, res, next);
 }
 
+/**
+ * Update Instructor
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const updateInstructor = async (
   req: any,
   res: Response,
@@ -33,6 +57,12 @@ export const updateInstructor = async (
   updateInstructorService(req, res, next);
 };
 
+/**
+ * Delete Instructor
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const deleteInstructor = async (
   req: any,
   res: Response,

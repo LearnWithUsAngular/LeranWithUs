@@ -4,6 +4,12 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import User from '../models/User';
 
+
+/**
+ * Login Service
+ * @param req 
+ * @param res 
+ */
 export const loginService = async (
   req: Request,
   res: Response
@@ -39,6 +45,12 @@ export const loginService = async (
   })
 }
 
+/**
+ * Logout Service
+ * @param req 
+ * @param res 
+ * @returns 
+ */
 export const logoutService = (req: any, res: Response) => {
   req.session = null;
   return res.json({ "message": "Logout Successfully" });
