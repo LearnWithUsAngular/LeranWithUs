@@ -1,10 +1,9 @@
 import express, { Request } from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import category_route from './routes/category_route';
-import error from './middlewares/error';
-import bodyParser from "body-parser";
-import user_route from './routes/user_route';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import passport from 'passport';
 import multer, { FileFilterCallback } from 'multer';
 import { v4 } from 'uuid';
 import path from 'path';
@@ -12,8 +11,9 @@ import { rootDir } from './utils/deleteFile';
 import instructor_route from './routes/instructor_route';
 import course_route from './routes/course_route';
 import auth_route from './routes/auth_route';
-import cors from 'cors';
-import passport from 'passport';
+import category_route from './routes/category_route';
+import user_route from './routes/user_route';
+import error from './middlewares/error';
 
 require('./config/passport');
 dotenv.config();

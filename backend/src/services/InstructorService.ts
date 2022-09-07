@@ -43,7 +43,7 @@ export const createInstructorService = async (
       throw error;
     }
     let instructorProfile: string = req.body.instructorProfile;
-    if (req.files) {
+    if (req?.files?.instructorProfile?.length > 0) {
       instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
     }
     const instructorInsert = {
@@ -114,7 +114,7 @@ export const updateInstructorService = async (
       throw error;
     }
     let instructorProfile: string = req.body.instructorProfile;
-    if (req.files) {
+    if (req?.files?.instructorProfile?.length > 0) {
       instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
       if (instructor.instructorProfile && instructor.instructorProfile != instructorProfile) {
         deleteFile(instructor.instructorProfile);
