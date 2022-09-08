@@ -85,7 +85,7 @@ mongoose
     app.use("/api/categories", passport.authenticate('jwt', { session: false }), category_route);
     app.use("/api/users", passport.authenticate('jwt', { session: false }), user_route);
     app.use("/api/instructors", passport.authenticate('jwt', { session: false }), instructor_route);
-    app.use("/api/courses", course_route);
+    app.use("/api/courses", passport.authenticate('jwt', { session: false }), course_route);
     app.use("/api", auth_route);
     app.use(error)
   }
