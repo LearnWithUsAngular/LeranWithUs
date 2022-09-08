@@ -1,11 +1,11 @@
-import { compareSync } from 'bcrypt';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import crypto from 'crypto';
+import { compareSync, hash } from 'bcrypt';
 import User from '../models/User';
 import PasswordReset from '../models/PasswordReset';
-import crypto from 'crypto';
-const sendEmail = require("../utils/sendEmail");
+import { sendEmail } from '../utils/sendEmail';
+
 /**
  * Login Service
  * @param req 
@@ -31,8 +31,8 @@ export const loginService = async (
     }
 
     const payload = {
-      email: await bcrypt.hash(user.email, 12),
-      id: await bcrypt.hash(user.id, 12)
+      email: await hash(user.email, 12),
+      id: await hash(user.id, 12)
     }
 
     const token = jwt.sign(payload, 'abcd', { expiresIn: '1d' });
@@ -103,7 +103,7 @@ export const resetPasswordService = async (req: Request, res: Response) => {
     });
     if (!passwordReset) return res.status(400).send("Invalid link or expired");
 
-    user.password = await bcrypt.hash(req.body.password, 12);
+    user.password = await hash(req.body.password, 12);
     await user.save();
     await passwordReset.delete();
 
@@ -149,7 +149,7 @@ export const passwordChangeService = async (req: Request, res: Response) => {
           });
         }
 
-        user.password = await bcrypt.hash(req.body.newPassword, 12);
+        user.password = await hash(req.body.newPassword, 12);
         await user.save();
         res.json({ message: "Password Change Successfully!" });
       })

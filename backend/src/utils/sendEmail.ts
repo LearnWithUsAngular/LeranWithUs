@@ -6,7 +6,7 @@ import { createTransport } from "nodemailer";
  * @param subject 
  * @param text 
  */
-const sendEmail = async (email: any, subject: any, text: any) => {
+export const sendEmail = async (email: any, subject: any, text: any) => {
   try {
     const transporter = createTransport({
       host: process.env.HOST,
@@ -28,5 +28,3 @@ const sendEmail = async (email: any, subject: any, text: any) => {
   } catch (error) {
   }
 };
-
-module.exports = sendEmail;
