@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
+import { AngularMaterialsModule } from './angular-materials.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMaterialsModule,
+    TooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
