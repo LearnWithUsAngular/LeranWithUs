@@ -30,25 +30,14 @@ const routes: Routes = [
   {
     path: 'instructor',
     loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
-<<<<<<< .mine
   },
   {
     path: 'contactus',
-    loadChildren: () => import('./pages/contactus/contactus.module').then(m => ContactusModule)
-=======
+    loadChildren: () => import('./pages/contactus/contactus.module').then(m => m.ContactusModule)
   },
   {
     path: 'aboutus',
     loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
->>>>>>> .theirs
-  },
-{
-    path: 'aboutus',
-    loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
-  },
-{
-    path: 'contactus',
-    loadChildren: () => import('./pages/contactus/contactus.module').then(m => ContactusModule)
   }
 ];
 
