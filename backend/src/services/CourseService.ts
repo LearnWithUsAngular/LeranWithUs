@@ -30,56 +30,64 @@ export const getCourseService = async (
  */
 export const createCourseService = async (
   req: any,
-  res: Response,
+  _res: Response,
   next: NextFunction
 ) => {
   try {
-    const detail = JSON.parse(JSON.stringify(req.body.detail));
-    const price = JSON.parse(JSON.stringify(req.body.coursePrice));
-    // const cupload = JSON.parse(JSON.stringify(req.body.courseUpload));
+    // const detail = JSON.parse(JSON.stringify(req.body.detail));
+    // const price = JSON.parse(JSON.stringify(req.body.coursePrice));
+    const cupload = JSON.parse(JSON.stringify(req.body.courseUpload));
     // console.log(JSON.parse(cupload))
 
-    // JSON.parse(cupload).map((res:any) => {
-    //     let result = {
-    //         courseName: res.courseName,
-    //         description: res.description,
-    //     }
-    //     console.log(result)
+    let courses: any = [];
+    JSON.parse(cupload).map((res:any) => {
+        let result = {
+            courseName: res.courseName,
+            description: res.description,
+            courseVideo: req.files.courseVideo[0].path.replace("\\","/")
+        }
+        courses.push(result)
+    })
+    console.log(courses)
+
+    // req.files.courseVideo.map((res: any) => {
+    //   let result = {
+    //     courseVideo: res.path.replace("\\","/")
+    //   }
+    //   console.log(result)
     // })
-    // console.log(JSON.parse(detail))
-    // console.log(req.files)
-    // console.log(req.files.courseCover[0].path.replace("\\","/"))
-    const courseForm = {
-      detail: {
-        title: JSON.parse(detail).title,
-        subtitle: JSON.parse(detail).subtitle,
-        description: JSON.parse(detail).description,
-        language: JSON.parse(detail).language,
-        level: JSON.parse(detail).level,
-        category_id: JSON.parse(detail).category_id,
-        courseCover: req.files.courseCover[0].path.replace("\\", "/")
-      },
-      coursePrice: {
-        currency: JSON.parse(price).currency,
-        price: JSON.parse(price).price,
-        promocode: JSON.parse(price).promocode
-      },
-      // courseUpload: JSON.parse(cupload).map((res:any) => {
-      //     let result = {
-      //         courseName: res.courseName,
-      //         description: res.description,
-      //     }
-      //     console.log(result)
-      // }),
-      instructor_id: req.body.instructor_id,
-    }
-    console.log(courseForm)
-    const course = new Course(courseForm);
-    const result = await course.save();
-    console.log(result)
-    res
-      .status(201)
-      .json({ message: "Created Successfully!", data: result, status: 1 });
+    
+    // const courseForm = {
+    //   detail: {
+    //     title: JSON.parse(detail).title,
+    //     subtitle: JSON.parse(detail).subtitle,
+    //     description: JSON.parse(detail).description,
+    //     language: JSON.parse(detail).language,
+    //     level: JSON.parse(detail).level,
+    //     category_id: JSON.parse(detail).category_id,
+    //     courseCover: req.files.courseCover[0].path.replace("\\", "/")
+    //   },
+    //   coursePrice: {
+    //     currency: JSON.parse(price).currency,
+    //     price: JSON.parse(price).price,
+    //     promocode: JSON.parse(price).promocode
+    //   },
+    //   // courseUpload: JSON.parse(cupload).map((res:any) => {
+    //   //     let result = {
+    //   //         courseName: res.courseName,
+    //   //         description: res.description,
+    //   //     }
+    //   //     console.log(result)
+    //   // }),
+    //   instructor_id: req.body.instructor_id,
+    // }
+    // console.log(courseForm)
+    // const course = new Course(courseForm);
+    // const result = await course.save();
+    // console.log(result)
+    // res
+    //   .status(201)
+    //   .json({ message: "Created Successfully!", data: result, status: 1 });
   } catch (err) {
     next(err);
   }
