@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from 'express'
-import User from '../models/User'
-import bcrypt from 'bcrypt'
-import { deleteFile } from '../utils/deleteFile';
+import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
+import bcrypt from 'bcrypt'
+import User from '../models/User'
+import { deleteFile } from '../utils/deleteFile';
+import { logger } from '../logger/logger';
 
 /**
  * Get User Service
@@ -20,6 +21,8 @@ export const getUserService = async (
     const result = await User.find(condition)
     res.json({ data: result, status: 1 });
   } catch (err) {
+    logger.error("get UserService Error");
+    logger.error(err);
     next(err);
   }
 };
@@ -61,6 +64,8 @@ export const createUserService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("create UserService Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -85,6 +90,8 @@ export const findUserService = async (
     }
     res.json({ data: user, status: 1 });
   } catch (err) {
+    logger.error("find UserService Error");
+    logger.error(err);
     next(err)
   }
 }
@@ -130,6 +137,8 @@ export const updateUserService = async (
     const result = await user.save();
     res.json({ message: "Updated User Successfully!", data: result, status: 1 });
   } catch (err) {
+    logger.error("update UserService Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -156,6 +165,8 @@ export const deleteUserService = async (
     const result = await user.save();
     res.json({ message: "Delete User Successfully!", data: result, status: 1 });
   } catch (err) {
+    logger.error("delete UserService Error");
+    logger.error(err);
     next(err)
   }
 };

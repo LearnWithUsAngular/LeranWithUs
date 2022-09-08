@@ -1,5 +1,6 @@
-import { Request, Response, NextFunction } from 'express'
-import Course from '../models/Course'
+import { Request, Response, NextFunction } from 'express';
+import Course from '../models/Course';
+import { logger } from '../logger/logger';
 
 /**
  * Get Course Service
@@ -13,11 +14,12 @@ export const getCourseService = async (
   _next: NextFunction
 ) => {
   try {
-
     let condition: any = { deleted_at: null };
     const resume = await Course.find(condition)
     res.json({ data: resume, status: 1 });
   } catch (err) {
+    logger.error("Get Course Service Error");
+    logger.error(err);
     res.send("An error occured");
   }
 };
@@ -89,6 +91,8 @@ export const createCourseService = async (
     //   .status(201)
     //   .json({ message: "Created Successfully!", data: result, status: 1 });
   } catch (err) {
+    logger.error("Create Course Service Error");
+    logger.error(err);
     next(err);
   }
 };

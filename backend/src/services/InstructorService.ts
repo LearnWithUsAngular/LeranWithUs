@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
 import Instructor from '../models/Instructor';
 import { deleteFile } from '../utils/deleteFile';
+import { logger } from '../logger/logger';
 
 /**
  * Get Instructor Service
@@ -19,6 +20,8 @@ export const getInstructorService = async (
     const result = await Instructor.find(condition).populate({ path: 'user_id' })
     res.json({ data: result, status: 1 });
   } catch (err) {
+    logger.error("Get Instructor Service Error");
+    logger.error(err);
     next(err);
   }
 };
@@ -60,6 +63,8 @@ export const createInstructorService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("Create Instructor Server Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -84,6 +89,8 @@ export const findInstructorService = async (
     }
     res.json({ data: instructor, status: 1 });
   } catch (err) {
+    logger.error("Find Instructor Service Error");
+    logger.error(err);
     next(err)
   }
 }
@@ -129,6 +136,8 @@ export const updateInstructorService = async (
     const result = await instructor.save();
     res.json({ message: "Updated Instructor Successfully!", data: result, status: 1 });
   } catch (err) {
+    logger.error("Update Instructor Service Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -155,6 +164,8 @@ export const deleteInstructorService = async (
     const result = await instructor.save();
     res.json({ message: "Delete Instructor Successfully!", data: result, status: 1 });
   } catch (err) {
+    logger.error("Delete Instructor Service Error");
+    logger.error(err);
     next(err)
   }
 };

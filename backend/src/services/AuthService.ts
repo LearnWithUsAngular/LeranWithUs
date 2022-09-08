@@ -5,6 +5,7 @@ import { compareSync, hash } from 'bcrypt';
 import User from '../models/User';
 import PasswordReset from '../models/PasswordReset';
 import { sendEmail } from '../utils/sendEmail';
+import { logger } from '../logger/logger';
 
 /**
  * Login Service
@@ -15,35 +16,40 @@ export const loginService = async (
   req: Request,
   res: Response
 ) => {
-  User.findOne({ email: req.body.email }).then(async (user: any) => {
-    if (!user) {
-      return res.status(401).send({
-        success: false,
-        message: 'Could not find user'
-      })
-    }
+  try {
+    User.findOne({ email: req.body.email }).then(async (user: any) => {
+      if (!user) {
+        return res.status(401).send({
+          success: false,
+          message: 'Could not find user'
+        })
+      }
 
-    if (!compareSync(req.body.password, user.password)) {
-      return res.status(401).send({
-        success: false,
-        messages: 'Incorrect password'
+      if (!compareSync(req.body.password, user.password)) {
+        return res.status(401).send({
+          success: false,
+          messages: 'Incorrect password'
+        });
+      }
+
+      const payload = {
+        email: await hash(user.email, 12),
+        id: await hash(user.id, 12)
+      }
+
+      const token = jwt.sign(payload, 'abcd', { expiresIn: '1d' });
+
+      return res.status(200).send({
+        success: true,
+        message: 'Login Successfully!',
+        user: user,
+        token: token
       });
-    }
-
-    const payload = {
-      email: await hash(user.email, 12),
-      id: await hash(user.id, 12)
-    }
-
-    const token = jwt.sign(payload, 'abcd', { expiresIn: '1d' });
-
-    return res.status(200).send({
-      success: true,
-      message: 'Login Successfully!',
-      user: user,
-      token: token
-    });
-  })
+    })
+  } catch (err) {
+    logger.error("User Login Service Error");
+    logger.error(err);
+  }
 }
 
 /**
@@ -53,8 +59,13 @@ export const loginService = async (
  * @returns 
  */
 export const logoutService = (req: any, res: Response) => {
-  req.session = null;
-  return res.json({ "message": "Logout Successfully" });
+  try {
+    req.session = null;
+    return res.json({ "message": "Logout Successfully" });
+  } catch (err) {
+    logger.error("User Logout Service Error");
+    logger.error(err);
+  }
 };
 
 /**
@@ -83,6 +94,8 @@ export const forgetPasswordService = async (req: any, res: Response) => {
       message: "Password reset link sent to your email account."
     });
   } catch (error) {
+    logger.error("Forget Password Service Error");
+    logger.error(error);
     res.send("An error occured");
   }
 };
@@ -111,6 +124,8 @@ export const resetPasswordService = async (req: Request, res: Response) => {
       message: "Password reset sucessfully."
     });
   } catch (error) {
+    logger.error("Reset Password Service Error");
+    logger.error(error);
     res.send("An error occured");
   }
 }
@@ -154,7 +169,8 @@ export const passwordChangeService = async (req: Request, res: Response) => {
         res.json({ message: "Password Change Successfully!" });
       })
   } catch (error) {
+    logger.error("Password Change Service Error");
+    logger.error(error);
     res.send("An error occured");
-    // next(error)
   }
 }

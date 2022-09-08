@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
 import Category from '../models/Category';
 import { CategoryCreate } from '../interfaces/Category';
+import { logger } from '../logger/logger';
 
 /**
  * Get Category Service
@@ -20,6 +21,8 @@ export const getCategoryService = async (
     res.json({ data: result, status: 1 });
   } catch (err) {
     next(err);
+    logger.error("Get Category Service Error");
+    logger.error(err);
   }
 };
 
@@ -54,6 +57,8 @@ export const createCategoryService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("Create Category Service Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -81,6 +86,8 @@ export const findCategoryService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("Find Category Service Error");
+    logger.error(err);
     next(err)
   }
 }
@@ -118,6 +125,8 @@ export const updateCategoryService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("Update Category Service Error");
+    logger.error(err);
     next(err)
   }
 };
@@ -147,6 +156,8 @@ export const deleteCategoryService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
+    logger.error("delete category service error");
+    logger.error(err);
     next(err)
   }
 };

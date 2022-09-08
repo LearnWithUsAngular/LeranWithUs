@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <div class="mainvisual">
+    <div class="content">
+      <p>Connecting people with knowledge</p>
+      <img src="../../../assets/images/l7.png" style="width: 600px;height:400px;">
+    </div>
+  </div>
+
+  <div class="second-blk">
+    <div class="inner">
+      <div class="lt-blk">
+        <h3>Get In Touch</h3>
+        <p>
+          Fill in your details below to arrange a call back and
+          discover more about our innovative approach to digital learning
+        </p>
+        <form [formGroup]="contactForm" (ngSubmit)="contactSubmit()" class="contact-form">
+
+          <mat-form-field class="form-group" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name" placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field class="form-group" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Email Address">
+          </mat-form-field>
+
+          <mat-form-field class="form-group" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput type="text" (keypress)="keyPress($event)" formControlName="phone" placeholder="Phone">
+          </mat-form-field>
+
+          <mat-form-field class="form-group" appearance="outline">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+          </mat-form-field>
+
+          <div class="btn">
+            <button mat-flat-button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+          </div>
+        </form>
+      </div>
+      <div class="rt-blk">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4542.1651689704295!2d96.13597601124322!3d16.802010211175375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb4393cc724b%3A0xb23b58779e329de0!2zMjM1IOGAm-GAkOGAlOGArOGAnOGAmeGAuuGAuCwg4YCb4YCU4YC64YCA4YCv4YCU4YC6!5e0!3m2!1smy!2smm!4v1662612790555!5m2!1smy!2smm"
+          width="100%" height="450px" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
