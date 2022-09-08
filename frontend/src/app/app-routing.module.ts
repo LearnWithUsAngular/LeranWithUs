@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactusModule } from './pages/contactus/contactus.module';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'instructor',
     loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
+  },
+  {
+    path: 'contactus',
+    loadChildren: () => import('./pages/contactus/contactus.module').then(m => ContactusModule)
   }
 ];
 
