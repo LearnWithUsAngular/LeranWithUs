@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSelectModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMenuModule
   ],
 })
 export class AngularMaterialsModule { }

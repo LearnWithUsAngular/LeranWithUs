@@ -1,47 +1,4 @@
 <div class="wrapper">
-  <div class="header clearfix">
-    <div class="title">
-      <h1><a href="home">Learn With Us</a></h1>
-    </div>
-    <ul class="nav clearfix">
-      <li class="dropdown">
-        <button class="dropbtn">Dropdown</button>
-        <div class="dropdown-content">
-          <a href="#">Development</a>
-          <a href="#">Business</a>
-          <a href="#">Finance & Accounting</a>
-          <a href="#">IT & Software</a>
-          <a href="#">Design</a>
-          <a href="#">Music</a>
-        </div>
-      </li>
-      <li class="whishlist">
-        <button><i class="fa-regular fa-heart"></i></button>
-      </li>
-      <li class="cart">
-        <button [tooltip]="$any(cartContent)" [options]="myOptions" contentType="template" placement="bottom">
-          <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-        </button>
-        <ng-template #cartContent>
-          <div *ngFor="let item of cartItems" style="display: flex;justify-content:start">
-            <div>
-              <img src="{{ item.img}}" style="width: 100px;height: 100px;padding-top: 15px;">
-            </div>
-            <div>
-              <p style="font-size: 16px;font-weight:bold;text-align: left;">
-                {{item.title}}
-                <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
-                  {{item.author}}
-                </span>
-                <span style="text-align: left;display:block;padding-top: 5px;">{{item.price}}</span>
-              </p>
-            </div>
-          </div>
-        </ng-template>
-      </li>
-    </ul>
-  </div>
-
   <div class="mainvisual">
     <img src="../../assets/images/learn.jpg" alt="">
   </div>
@@ -213,10 +170,5 @@
         </button>
       </div>
     </div>
-  </div>
-
-  <div class="footer">
-    <span class="rt-blk">Seattle Consulting Myanmar</span>
-    <span class="lt-blk">Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</span>
   </div>
 </div>
