@@ -1,0 +1,972 @@
+openapi: 3.0.2
+servers:
+  - url: http://127.0.0.1:3000
+info:
+  description: This is API Doc for Angular+ NodeJS Learn With Us
+  title: Swagger API Doc for Learn With Us
+  version: 1.0.0
+
+tags:
+  - name: Authentication
+    description: Operations about Authentication
+  - name: Instructor
+    description: Operations about Instructor
+  - name: Course
+    description: Operations about Course
+  - name: Category
+    description: Operations about Category
+  - name: User
+    description: Operations about User
+
+paths:
+  # Auth Routes
+  /api/login:
+    post:
+      tags:
+        - Authentication
+      summary: Logs user into the system
+      description: Logs user into the system
+      requestBody:
+        description: Login User into the system
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "email@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "email@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "email@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+      responses:
+        "200":
+          description: Login Successfully!.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 
+                    example: Login Successfully!.
+        "400":
+          description: Invalid value
+
+  /api/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Logs out current logged in user session
+      description: Logs out current logged in user session
+      operationId: logoutUser
+      parameters: []
+      responses:
+        default:
+          description: Logout Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 
+                    example: Logout Successfully.
+
+  /api/signup:
+    post:
+      tags:
+        - Authentication
+      summary: Sign Up
+      description: Sign Up
+      requestBody:
+        description: Signup user into the system
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "UserOne"
+                email:
+                  type: string
+                  example: "email@gmail.com"
+                password:
+                  type: string
+                  format: password
+                  example: "password123"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/signupResponse"
+        "400":
+          description: Invalid value
+
+  /api/forgot-password:
+    post:
+      tags:
+        - Authentication
+      summary: Forget Password
+      description: Forget Password
+      requestBody:
+        description: Enter email to get Password reset link
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "email@gmail.com"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/forgetPasswordResponse"
+        "400":
+          description: Invalid value
+
+  /api/password-reset-update/:userId/:token:
+    post:
+      tags:
+        - Authentication
+      summary: Password Reset Update
+      description: Password Reset Update
+      requestBody:
+        description: Enter new password
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "email@gmail.com"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/passwordResetResponse"
+        "400":
+          description: Invalid value
+
+  /api/password-change/:userId:
+    post:
+      tags:
+        - Authentication
+      summary: Change password for user
+      description: Change password for user
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Enter new password
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                oldPassword:
+                  type: string
+                  example: "xxxx"
+                newPassword:
+                  type: string
+                  example: "xxxx"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/passwordChangeResponse"
+        "400":
+          description: Invalid value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  # Category Routes
+  /api/categories:
+    get:
+      tags:
+        - Category
+      summary: Get Categories
+      description: Get Categories
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/categoriesResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    post:
+      tags:
+        - Category
+      description: Create Category
+      summary: Create Category
+      security:
+        - bearerAuth: []
+      operationId: createCategory
+      requestBody:
+        description: Enter Category Name and Subcategories
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  example: "CategoryOne"
+                subcategories:
+                  type: array
+                  example: ["SubCategoryOne", "SubCategoryTwo"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/createCategoryResponse"
+        "400":
+          description: Invalid category value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /api/categories/{id}:
+    get:
+      tags:
+        - Category
+      summary: Get Category by Id
+      description: Get Category by Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of category to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/categoryByIdResponse"
+        "400":
+          description: Invalid category value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    put:
+      tags:
+        - Category
+      description: Update Category by Id
+      summary: Update Category by Id
+      operationId: updateCategoryId
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of category to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Enter Category Name and Subcategories
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category:
+                  type: string
+                  example: "CategoryOne"
+                subcategories:
+                  type: array
+                  example: ["SubCategoryOne", "SubCategoryTwo"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/updateCategoryResponse"
+        "400":
+          description: Invalid category value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    delete:
+      tags:
+        - Category
+      description: Delete Category By Id
+      summary: Delete Category By Id
+      security:
+        - bearerAuth: []
+      operationId: deleteCategory
+      parameters:
+        - name: id
+          in: path
+          description: Category id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/deleteCategoryResponse"
+        "400":
+          description: Invalid category value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  # Instructor Routes
+  /api/instructors:
+    get:
+      tags:
+        - Instructor
+      summary: Get Instructors
+      description: Get Instructors
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/instructorResponse"
+    post:
+      tags:
+        - Instructor
+      description: Create Instructor
+      summary: Create Instructor
+      security:
+        - bearerAuth: []
+      operationId: createInstructor
+      requestBody:
+        description: Enter Instructor Data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instructorName:
+                  type: string
+                  example: "John Doe"
+                headline:
+                  type: string
+                  example: "Android Developer"
+                biography:
+                  type: string
+                  example: "My name is John Doe"
+                instructorProfile:
+                  type: string
+                  example: "apiUploads/instructors/profile.jpg"
+                user_id:
+                  type: string
+                  example: "63194cf2e52affece96486c3"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/instructorResponse"
+        "400":
+          description: Invalid instructor value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /api/instructors/{id}:
+    get:
+      tags:
+        - Instructor
+      description: Get Instructor by Id
+      summary: Get Instructor by Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of instructor to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/instructorByIdResponse"
+        "400":
+          description: Invalid instructor value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    put:
+      tags:
+        - Instructor
+      description: Update Instructor by Id
+      summary: Update Instructor by Id
+      security:
+        - bearerAuth: []
+      operationId: updateInstructorId
+      parameters:
+        - name: id
+          in: path
+          description: ID of instructor to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Enter Instructor Data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instructorName:
+                  type: string
+                  example: "John Doe"
+                headline:
+                  type: string
+                  example: "Android Developer"
+                biography:
+                  type: string
+                  example: "My name is John Doe"
+                instructorProfile:
+                  type: string
+                  example: "apiUploads/instructors/profile.jpg"
+                user_id:
+                  type: string
+                  example: "63194cf2e52affece96486c3"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/updateInstructorResponse"
+        "400":
+          description: Invalid instructor value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    delete:
+      tags:
+        - Instructor
+      description: Delete Instructor By Id
+      security:
+        - bearerAuth: []
+      operationId: deleteInstructor
+      parameters:
+        - name: id
+          in: path
+          description: Instructor Id id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/deleteInstructorResponse"
+        "400":
+          description: Invalid instructor value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  # User Routes
+  /api/users:
+    get:
+      tags:
+        - User
+      summary: Get Users
+      description: Get Users
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/usersResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    post:
+      tags:
+        - User
+      description: Create User
+      summary: Create User
+      security:
+        - bearerAuth: []
+      operationId: createUser
+      requestBody:
+        description: Enter User Data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  example: "user@gmail.com"
+                password:
+                  type: string
+                  example: "xxxxxx"
+                phone:
+                  type: string
+                  example: "09123456789"
+                userProfile:
+                  type: string
+                  example: "apiUploads/users/profile.jpg"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/createUserResponse"
+        "400":
+          description: Invalid user value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /api/users/{id}:
+    get:
+      tags:
+        - User
+      description: Get User by Id
+      summary: Get User by Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/userByIdResponse"
+        "400":
+          description: Invalid user value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    put:
+      tags:
+        - User
+      description: Update User by Id
+      summary: Update User by Id
+      security:
+        - bearerAuth: []
+      operationId: updateUserId
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Enter User Data
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                email:
+                  type: string
+                  example: "user@gmail.com"
+                password:
+                  type: string
+                  example: "xxxxxx"
+                phone:
+                  type: string
+                  example: "09123456789"
+                userProfile:
+                  type: string
+                  example: "apiUploads/users/profile.jpg"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/updateUserResponse"
+        "400":
+          description: Invalid user value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    delete:
+      tags:
+        - User
+      description: Delete User By Id
+      security:
+        - bearerAuth: []
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          description: User Id id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/deleteUserResponse"
+        "400":
+          description: Invalid user value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # optional, arbitrary value for documentation purposes
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+
+  schemas:
+    # Auth schemas.
+    signupResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Created Successfully
+        data:
+          type: object
+          description: user signup data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            name: UserOne
+            email: user@example.com
+            password: password123
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    forgetPasswordResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Password reset link sent to your email account.
+
+    passwordResetResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Password reset sucessfully.
+
+    passwordChangeResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Password Change Successfully!
+
+    # Category Schemas.
+    categoriesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: user signup data
+          example: []
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    createCategoryResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Created Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            category: "category"
+            subcategories: ["subcategory1", "subcategory2"]
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    categoryByIdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: instructor data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            category: "category"
+            subcategories: ["subcategory1", "subcategory2"]
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    updateCategoryResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Updated Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            category: "category"
+            subcategories: ["subcategory1", "subcategory2"]
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    deleteCategoryResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Deleted Successfully!
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    # Instructor Schemas.
+    instructorResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: instructor data
+          example: []
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    createInstructorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Created Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            instructorName: "John Doe"
+            headline: "Android Developer"
+            biography: "My name is John Doe"
+            instructorProfile: "apiUploads/instructors/profile.jpg"
+            user_id: "63194cf2e52affece96486c3"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    instructorByIdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: instructor data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            instructorName: "John Doe"
+            headline: "Android Developer"
+            biography: "My name is John Doe"
+            instructorProfile: "apiUploads/instructors/profile.jpg"
+            user_id: "63194cf2e52affece96486c3"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    updateInstructorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Updated Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            instructorName: "John Doe"
+            headline: "Android Developer"
+            biography: "My name is John Doe"
+            instructorProfile: "apiUploads/instructors/profile.jpg"
+            user_id: "63194cf2e52affece96486c3"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    deleteInstructorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Deleted Successfully!
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    # User Schemas.
+    usersResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: user data
+          example: []
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    createUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Created Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            name: "John Doe"
+            email: "Android Developer"
+            userProfile: "apiUploads/users/profile.jpg"
+            phone: "09123456789"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    userByIdResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: user data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            name: "John Doe"
+            email: "Android Developer"
+            userProfile: "apiUploads/users/profile.jpg"
+            phone: "09123456789"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    updateUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Updated Successfully
+        data:
+          type: object
+          description: category data
+          example:
+            _id: "63194cf2e52affece96486c3"
+            name: "John Doe"
+            email: "Android Developer"
+            userProfile: "apiUploads/users/profile.jpg"
+            phone: "09123456789"
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    deleteUserResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Deleted Successfully!
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+# 2) Apply the security globally to all operations
+security:
+  - bearerAuth: []
