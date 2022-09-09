@@ -29,28 +29,6 @@ paths:
       requestBody:
         description: Login User into the system
         content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: "email@gmail.com"
-                password:
-                  type: string
-                  format: password
-                  example: "password123"
-          application/xml:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: "email@gmail.com"
-                password:
-                  type: string
-                  format: password
-                  example: "password123"
           application/x-www-form-urlencoded:
             schema:
               type: object
@@ -71,7 +49,7 @@ paths:
                 type: object
                 properties:
                   message:
-                    type: string 
+                    type: string
                     example: Login Successfully!.
         "400":
           description: Invalid value
@@ -93,7 +71,7 @@ paths:
                 type: object
                 properties:
                   message:
-                    type: string 
+                    type: string
                     example: Logout Successfully.
 
   /api/signup:
@@ -105,7 +83,7 @@ paths:
       requestBody:
         description: Signup user into the system
         content:
-          application/json:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
@@ -155,22 +133,37 @@ paths:
         "400":
           description: Invalid value
 
-  /api/password-reset-update/:userId/:token:
+  /api/password-reset-update/{userId}/{token}:
     post:
       tags:
         - Authentication
       summary: Password Reset Update
       description: Password Reset Update
+      operationId: passwordResetUpdate
+      parameters:
+        - name: userId
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
+        - name: token
+          in: path
+          description: token of user
+          required: true
+          schema:
+            type: string
       requestBody:
         description: Enter new password
         content:
-          application/json:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
-                email:
+                password:
                   type: string
-                  example: "email@gmail.com"
+                  format: password
+                  example: "password123"
       responses:
         "200":
           description: OK
@@ -181,27 +174,37 @@ paths:
         "400":
           description: Invalid value
 
-  /api/password-change/:userId:
+  /api/password-change/{userId}:
     post:
       tags:
         - Authentication
       summary: Change password for user
       description: Change password for user
+      operationId: passwordChange
+      parameters:
+        - name: userId
+          in: path
+          description: ID of user to return
+          required: true
+          schema:
+            type: string
       security:
         - bearerAuth: []
       requestBody:
         description: Enter new password
         content:
-          application/json:
+          application/x-www-form-urlencoded:
             schema:
               type: object
               properties:
                 oldPassword:
                   type: string
-                  example: "xxxx"
+                  format: password
+                  example: "oldpassword"
                 newPassword:
                   type: string
-                  example: "xxxx"
+                  format: password
+                  example: "password123"
       responses:
         "200":
           description: OK
@@ -384,7 +387,7 @@ paths:
       requestBody:
         description: Enter Instructor Data
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -399,7 +402,7 @@ paths:
                   example: "My name is John Doe"
                 instructorProfile:
                   type: string
-                  example: "apiUploads/instructors/profile.jpg"
+                  format: binary
                 user_id:
                   type: string
                   example: "63194cf2e52affece96486c3"
@@ -459,7 +462,7 @@ paths:
       requestBody:
         description: Enter Instructor Data
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -474,7 +477,7 @@ paths:
                   example: "My name is John Doe"
                 instructorProfile:
                   type: string
-                  example: "apiUploads/instructors/profile.jpg"
+                  format: binary
                 user_id:
                   type: string
                   example: "63194cf2e52affece96486c3"
@@ -544,7 +547,7 @@ paths:
       requestBody:
         description: Enter User Data
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -556,13 +559,14 @@ paths:
                   example: "user@gmail.com"
                 password:
                   type: string
-                  example: "xxxxxx"
+                  format: password
+                  example: "password1234"
                 phone:
                   type: string
                   example: "09123456789"
                 userProfile:
                   type: string
-                  example: "apiUploads/users/profile.jpg"
+                  format: binary
       responses:
         "200":
           description: OK
@@ -619,7 +623,7 @@ paths:
       requestBody:
         description: Enter User Data
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
@@ -631,13 +635,14 @@ paths:
                   example: "user@gmail.com"
                 password:
                   type: string
-                  example: "xxxxxx"
+                  format: password
+                  example: "password123"
                 phone:
                   type: string
                   example: "09123456789"
                 userProfile:
                   type: string
-                  example: "apiUploads/users/profile.jpg"
+                  format: binary
       responses:
         "200":
           description: OK
