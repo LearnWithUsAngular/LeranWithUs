@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { AngularMaterialsModule } from './angular-materials.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AngularMaterialsModule } from './angular-materials.module';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialsModule,
-    TooltipModule
+    TooltipModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

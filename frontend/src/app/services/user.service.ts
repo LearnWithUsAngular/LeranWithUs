@@ -13,4 +13,8 @@ export class UserService {
   createAccount(payload: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/signup`, payload);
   }
+
+  getUsers(payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/getUser`, payload);
+  }
 }
