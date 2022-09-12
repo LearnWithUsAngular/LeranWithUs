@@ -13,23 +13,51 @@ export class PricingPromotionComponent implements OnInit {
 
   currencys = [
     { value: 'USD' },
-    { value: 'EUR' },
-    { value: 'AUD' },
-    { value: 'BRL' },
-    { value: 'CAD' },
-    { value: 'CLP' },
-    { value: 'EGP' },
-    { value: 'INR' },
+    { value: 'Myanmar' }
   ];
 
-  pricings = [
-    { value: 'English(US)' },
-    { value: 'Italiano' },
-    { value: 'Behasa Indonesia' },
-    { value: 'Nederlands' },
-    { value: 'Suomi' },
-    { value: 'Telugu' },
-    { value: 'Khmer' },
+  pricingsUSD = [
+    { value: '19.99$' },
+    { value: '29.99$' },
+    { value: '39.99$' },
+    { value: '49.99$' },
+    { value: '59.99$' },
+    { value: '69.99$' },
+    { value: '79.99$' },
+    { value: '89.99$' },
+    { value: '99.99$' },
+    { value: '109.99$' },
+    { value: '119.99$' },
+    { value: '129.99$' },
+    { value: '139.99$' },
+    { value: '149.99$' },
+    { value: '159.99$' },
+    { value: '169.99$' },
+    { value: '179.99$' },
+    { value: '189.99$' },
+    { value: '199.99$' },
+  ];
+
+  pricingsMyan = [
+    { value: '41,979MMK' },
+    { value: '62,979MMK' },
+    { value: '83,979MMK' },
+    { value: '104,979MMK' },
+    { value: '125,979MMK' },
+    { value: '146,979MMK' },
+    { value: '167,979MMK' },
+    { value: '188,979MMK' },
+    { value: '209,979MMK' },
+    { value: '230,979MMK' },
+    { value: '251,979MMK' },
+    { value: '272,979MMK' },
+    { value: '293,979MMK' },
+    { value: '314,979MMK' },
+    { value: '335,979MMK' },
+    { value: '356,979MMK' },
+    { value: '377,979MMK' },
+    { value: '398,979MMK' },
+    { value: '419,979MMK' },
   ];
   @Output() onInitEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -39,42 +67,6 @@ export class PricingPromotionComponent implements OnInit {
     public courseSvc: CourseServiceService
   ) { }
 
-  get pricingPromotion(): FormArray {
-    return this.courseSvc.pricingPromotionForm.get("pricingPromotion") as FormArray
-  }
-
-  newpricingPromotion(): FormGroup {
-    return this.fb.group({
-      currency: ['USD'],
-      pricing: ['',Validators.required],
-      promotion: ['']
-    })
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    const formArr = this.courseSvc.pricingPromotionForm.get("pricingPromotion") as FormArray;
-    const from = event.previousIndex;
-    const to = event.currentIndex;
-    this.moveItemInFormArray(formArr, from, to)
-  }
-  moveItemInFormArray(formArray: FormArray, fromIndex: number, toIndex: number): void {
-    const from = this.clamp(fromIndex, formArray.length - 1);
-    const to = this.clamp(toIndex, formArray.length - 1);
-
-    if (from === to) {
-      return;
-    }
-
-    const previous = formArray.at(from);
-    const current = formArray.at(to);
-    formArray.setControl(to, previous);
-    formArray.setControl(from, current);
-  }
-
-  clamp(value: number, max: number): number {
-    return Math.max(0, Math.min(max, value));
-  }
-
   ngOnInit(): void {
     const data = {
       childName: 'pricingForm',
@@ -83,21 +75,13 @@ export class PricingPromotionComponent implements OnInit {
     this.onInitEvent.emit(data);
   }
 
-  add() {
-    this.pricingPromotion.push(this.newpricingPromotion());
+  get f() {
+    return this.courseSvc.pricingPromotionForm.controls;
   }
 
-  remove(i: number) {
-    this.pricingPromotion.removeAt(i);
-  }
-
-  pricingIndex(index:any){
-    let pricing = this.courseSvc.pricingPromotionForm.get('pricingPromotion') as FormArray;
-    const formgroup = pricing.controls[index] as FormGroup;
-    return formgroup;
-  }
   onCopy() {
-    const promotion = this.courseSvc.pricingPromotionForm.value.pricingPromotion.map((x:any) => x.promotion);
+    const promotion = this.courseSvc.pricingPromotionForm.controls['promotion'].value;
+    console.log(promotion)
     this.clipboard.copy(promotion);
   }
 

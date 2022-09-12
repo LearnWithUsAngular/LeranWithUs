@@ -5,6 +5,9 @@
       </h1>
     </div>
     <ul class="nav clearfix">
+      <li>
+        <button mat-button class="common-btn" [routerLink]="['/home']"> Home</button>
+      </li>
       <li class="dropdown">
         <button mat-button [matMenuTriggerFor]="menu" class="common-btn">Category</button>
         <mat-menu #menu="matMenu">
@@ -52,6 +55,5 @@
 <router-outlet></router-outlet>
 
 <div class="footer">
-  <span class="rt-blk">Seattle Consulting Myanmar</span>
-  <span class="lt-blk">Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</span>
+  <p>Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</p>
 </div>

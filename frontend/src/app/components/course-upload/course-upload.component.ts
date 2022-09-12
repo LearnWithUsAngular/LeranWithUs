@@ -11,6 +11,7 @@ import { CourseServiceService } from 'src/app/services/course-service.service';
 export class CourseUploadComponent implements OnInit {
 
   uploadImage: any = [];
+  uploadVdo:any = [];
   imgFile: any = [];
 
   @Output() onInitEvent: EventEmitter<any> = new EventEmitter<any>();
@@ -27,7 +28,7 @@ export class CourseUploadComponent implements OnInit {
   newcourseUpload(): FormGroup {
     return this.fb.group({
       title: ['', Validators.required],
-      uploadImg: [''],
+      uploadVideo: [''],
       description: [''],
     })
   }
@@ -78,15 +79,15 @@ export class CourseUploadComponent implements OnInit {
     return formgroup;
   }
 
-  imageUpload(event: any, index: any) {
+  videoUpload(event: any, index: any){
     if (event.target.files && event.target.files.length > 0) {
       this.imgFile[index] = event.target.files[index];
       const reader = new FileReader();
-      reader.onload = e => this.uploadImage[index] = reader.result;
+      reader.onload = e => this.uploadVdo[index] = (<FileReader>e.target).result;
       reader.readAsDataURL(event.target.files[0]);
     }else{
       this.imgFile[index] = null;
-      this.uploadImage[index] = null;
+      this.uploadVdo[index] = null;
     }
   }
 }
