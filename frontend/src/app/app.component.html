@@ -29,25 +29,26 @@
         <button><i class="fa-regular fa-heart"></i></button>
       </li>
       <li class="nav-icon">
-        <button [tooltip]="$any(cartContent)" [options]="cartOptions" contentType="template" placement="bottom">
+        <button class="cart" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
           <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-        </button>
-        <ng-template #cartContent>
-          <div *ngFor="let item of cartItems" style="display: flex;justify-content:start">
-            <div>
-              <img src="{{ item.img}}" style="width: 100px;height: 100px;padding-top: 15px;">
-            </div>
-            <div>
-              <p style="font-size: 16px;font-weight:bold;text-align: left;">
-                {{item.title}}
-                <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
-                  {{item.author}}
-                </span>
-                <span style="text-align: left;display:block;padding-top: 5px;">{{item.price}}</span>
-              </p>
+          <div class="hover_content">
+            <div *ngFor="let item of cartItems" style="display: flex;justify-content:start">
+              <div>
+                <img src="{{ item.img}}" style="width: 100px;height: 100px;">
+              </div>
+              <div>
+                <p style="font-size: 16px;font-weight:bold;text-align: left;">
+                  {{item.title}}
+                  <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+                    {{item.author}}
+                  </span>
+                  <span style="text-align: left;display:block;padding-top: 5px;">{{item.price}}</span>
+                </p>
+              </div>
             </div>
           </div>
-        </ng-template>
+        </button>
+        
       </li>
     </ul>
   </div>
