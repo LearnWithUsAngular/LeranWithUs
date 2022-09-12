@@ -25,13 +25,13 @@
           must be more than 8characters long.</mat-error>
       </mat-form-field>
 
-      <div class="policy">
+      <div class="checkbox">
         <mat-checkbox class="tips" color="primary" formControlName="tips">
           Send me special offers,personalized recommemdations and learning tips.</mat-checkbox>
       </div>
 
       <div class="button-group">
-        <button mat-flat-button type="submit" color="primary"
+        <button mat-flat-button type="submit" [disabled]="!signupForm.valid" color="primary"
           class="btn-submit">Sign Up</button>
       </div>
 

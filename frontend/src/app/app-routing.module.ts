@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   },
   {
-    path: 'reset-password',
+    path: 'forget-password-update/:userId/:token',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
   },
   {
