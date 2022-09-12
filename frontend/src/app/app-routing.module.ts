@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'aboutus',
     loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
+  },
+  {
+    path: 'userprofile',
+    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
   }
 ];
 

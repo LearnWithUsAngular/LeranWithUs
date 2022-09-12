@@ -1,0 +1,64 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" class="side" opened>
+        <mat-list>
+            <a [routerLink]="['/userprofile']">
+                <mat-list-item>User Profile</mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <a [routerLink]="['/userprofile']">
+                <mat-list-item>Password Setting</mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+            <a [routerLink]="['/userprofile']">
+                <mat-list-item>Courses</mat-list-item>
+            </a>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <mat-card class="profile-card">
+            <div class="image">
+                <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" class="profileimg" />
+            </div>
+            <mat-card-content class="pf-width">
+                <mat-list>
+                    <mat-list-item>
+                      <div class="pf-detail clearfix">
+                        <div class="fl-left">
+                          <b>NAME :</b>
+                        </div>
+                        <div class="fl-right">
+                          Kyaw Linn Thu
+                        </div>
+                      </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                      <div class="pf-detail clearfix">
+                        <div class="fl-left">
+                          <b>EMAIL  :</b>
+                        </div>
+                        <div class="fl-right">
+                          scm.kyawlinthu@gmail.com
+                        </div>
+                      </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                      <div class="pf-detail clearfix">
+                        <div class="fl-left">
+                          <b>PHONE  :</b>
+                        </div>
+                        <div class="fl-right">
+                          09-123456789
+                        </div>
+                      </div>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions class="pfbutton">
+              <button mat-raised-button>Edit Profile</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-sidenav-content>
+</mat-sidenav-container>
