@@ -38,9 +38,12 @@ router
 
 router
   .route('/password-reset-update/:userId/:token')
-  .post(resetPassword);
+  .post(
+    [
+      body("password")
+    ], resetPassword);
 
 router
-  .route('/password-change/:userId/:token')
+  .route('/password-change/:userId')
   .post(passwordChange);
 export default router;
