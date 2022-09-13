@@ -1,1 +1,50 @@
-<p>cart works!</p>
+<table>
+  <tr>
+    <td *ngFor="let item of productItem">
+      <div class="thumbnail">
+        <img [src]="item.imageUrl" alt="{{item.name}}" style="width: 200px; height: 200px">
+        <div class="caption">
+          <h3>{{item.name}}</h3>
+          <p>
+            Price {{item.price}} USD
+          </p>
+          <button class="btn btn-primary" role="button" id="{{item.id}}" (click)="onCartUpdated($event)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+<div class="cart-list">
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let item of cartItems; let i = index">
+      <td>{{item.name}}</td>
+      <td>{{item.price}} USD</td>
+      <td><input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity"
+          (change)="onCartItemChanged($event)"></td>
+      <td>{{item.quantity * item.price}} USD</td>
+      <td>
+        <button type="button" id={{item.id}} (click)="onCartItemDeleted($event)">
+          <mat-icon>delete</mat-icon>
+          <span class="glyphicon glyphicon-remove" aria-hidden="true" id={{item.id}}>
+          </span>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="5" style="text-align: right;">
+        <h4>Total {{cartTotal}}</h4>
+      </td>
+    </tr>
+  </table>
+</div>

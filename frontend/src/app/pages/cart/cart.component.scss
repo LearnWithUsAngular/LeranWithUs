@@ -1,0 +1,26 @@
+
+.cart-list {
+  width: 100%;
+
+  table {
+    width: 90%;
+    margin: 0 auto;
+    border-style: 1px solid #000;
+
+    tr{
+      width: 90%;
+      text-align: center;
+      border: 1px solid #000;
+
+      th{
+        text-align: center;
+        border: 1px solid #000;
+      }
+
+      td{
+        text-align: center;
+        border: 1px solid #000;
+      }
+    }
+  }
+}
