@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'userprofile',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
+  },
+  {
+    path: 'userpasswordchange',
+    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule)
   }
 ];
 
