@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'usercourses',
     loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then(m=> m.CartModule)
   }
 ];
 
