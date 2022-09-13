@@ -1,0 +1,23 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" class="side" opened>
+    <mat-list>
+      <a [routerLink]="['/userprofile']">
+        <mat-list-item>User Profile</mat-list-item>
+      </a>
+      <mat-divider></mat-divider>
+      <a [routerLink]="['/userpasswordchange']">
+        <mat-list-item>Password Setting</mat-list-item>
+      </a>
+      <mat-divider></mat-divider>
+      <a [routerLink]="['/usercourses']">
+        <mat-list-item>Courses</mat-list-item>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <!-- <mat-card class="profile-card">
+
+    </mat-card> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
