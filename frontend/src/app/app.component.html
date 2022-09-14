@@ -26,7 +26,7 @@
         <button><i class="fa-regular fa-heart"></i></button>
       </li>
       <li class="nav-icon">
-        <button [tooltip]="$any(cartContent)" [options]="cartOptions" contentType="template" placement="bottom">
+        <button [tooltip]="$any(cartContent)" [options]="cartOptions" [routerLink]="['/cart']" contentType="template" placement="bottom">
           <i class="fa-sharp fa-solid fa-cart-shopping"></i>
         </button>
         <ng-template #cartContent>

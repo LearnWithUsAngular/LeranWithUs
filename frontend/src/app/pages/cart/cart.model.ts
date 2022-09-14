@@ -6,7 +6,6 @@ export class CartItem {
   public total: number;
 
   constructor(id: number, name: string, quantity: number, price: number) {
-  // constructor(public name: string, public quantity: number, public price: number) {
     this.id = id;
     this.name = name;
     this.quantity = quantity;

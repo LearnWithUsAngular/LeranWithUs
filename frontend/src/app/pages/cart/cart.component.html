@@ -28,15 +28,23 @@
       <th>Action</th>
     </tr>
     <tr *ngFor="let item of cartItems; let i = index">
-      <td>{{item.name}}</td>
-      <td>{{item.price}} USD</td>
-      <td><input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity"
-          (change)="onCartItemChanged($event)"></td>
-      <td>{{item.quantity * item.price}} USD</td>
+      <td>
+        {{item.name}}
+      </td>
+      <td>
+        {{item.price}} USD
+      </td>
+      <td>
+        <input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity"
+          (change)="onCartItemChanged($event)">
+        </td>
+      <td>
+        {{item.quantity * item.price}} USD
+      </td>
       <td>
         <button type="button" id={{item.id}} (click)="onCartItemDeleted($event)">
           <mat-icon>delete</mat-icon>
-          <span class="glyphicon glyphicon-remove" aria-hidden="true" id={{item.id}}>
+          <span aria-hidden="true" id={{item.id}}>
           </span>
         </button>
       </td>
