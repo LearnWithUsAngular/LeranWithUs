@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { AngularMaterialsModule } from '../../angular-materials.module';
 import { HomeComponent } from './home.component';
-import { IvyCarouselModule } from "angular-responsive-carousel";
+// import { IvyCarouselModule } from "angular-responsive-carousel";
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TooltipModule } from 'ng2-tooltip-directive';
 
@@ -15,7 +15,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     CommonModule,
     HomeRoutingModule,
     AngularMaterialsModule,
-    IvyCarouselModule,
+    // IvyCarouselModule,
     CarouselModule,
     TooltipModule
   ]
