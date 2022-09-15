@@ -1,57 +1,56 @@
-  <div class="header clearfix">
-    <div class="title">
-      <h1>
-        <a [routerLink]="['/home']" routerLinkActive="active">Learn With Us</a>
-      </h1>
-    </div>
-    <ul class="nav clearfix">
-      <li class="dropdown">
-        <button mat-button [matMenuTriggerFor]="menu" class="common-btn">Category</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>Development</button>
-          <button mat-menu-item>Business</button>
-          <button mat-menu-item>Finance & Accounting</button>
-          <button mat-menu-item>IT & Software</button>
-          <button mat-menu-item>Design</button>
-          <button mat-menu-item>Music</button>
-        </mat-menu>
-      </li>
-      <li>
-        <button mat-button class="common-btn" [routerLink]="['/aboutus']"> About Us</button>
-      </li>
-      <li>
-        <button mat-button class="common-btn" [routerLink]="['/contactus']"> Contact Us</button>
-      </li>
-      <li class="nav-icon">
-        <button><i class="fa-regular fa-heart"></i></button>
-      </li>
-      <li class="nav-icon">
-        <button [tooltip]="$any(cartContent)" [options]="cartOptions" contentType="template" placement="bottom">
-          <i class="fa-sharp fa-solid fa-cart-shopping"></i>
-        </button>
-        <ng-template #cartContent>
-          <div *ngFor="let item of cartItems" style="display: flex;justify-content:start">
-            <div>
-              <img src="{{ item.img}}" style="width: 100px;height: 100px;padding-top: 15px;">
-            </div>
-            <div>
-              <p style="font-size: 16px;font-weight:bold;text-align: left;">
-                {{item.title}}
-                <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
-                  {{item.author}}
-                </span>
-                <span style="text-align: left;display:block;padding-top: 5px;">{{item.price}}</span>
-              </p>
-            </div>
-          </div>
-        </ng-template>
-      </li>
-    </ul>
+<div class="header clearfix">
+  <div class="title">
+    <h1>
+      <a [routerLink]="['/home']" routerLinkActive="active">Learn With Us</a>
+    </h1>
   </div>
+  <ul class="nav clearfix">
+    <li class="dropdown">
+      <button mat-button [matMenuTriggerFor]="menu" class="common-btn">Category</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/category-list']">Development</button>
+        <button mat-menu-item [routerLink]="['/category-list']">Business</button>
+        <button mat-menu-item [routerLink]="['/category-list']">Finance & Accounting</button>
+        <button mat-menu-item [routerLink]="['/category-list']">IT & Software</button>
+        <button mat-menu-item [routerLink]="['/category-list']">Design</button>
+        <button mat-menu-item [routerLink]="['/category-list']">Music</button>
+      </mat-menu>
+    </li>
+    <li>
+      <button mat-button class="common-btn" [routerLink]="['/aboutus']"> About Us</button>
+    </li>
+    <li>
+      <button mat-button class="common-btn" [routerLink]="['/contactus']"> Contact Us</button>
+    </li>
+    <li class="nav-icon">
+      <button><i class="fa-regular fa-heart"></i></button>
+    </li>
+    <li class="nav-icon">
+      <button [tooltip]="$any(cartContent)" [options]="cartOptions" contentType="template" placement="bottom">
+        <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+      </button>
+      <ng-template #cartContent>
+        <div *ngFor="let item of cartItems" style="display: flex;justify-content:start">
+          <div>
+            <img src="{{ item.img}}" style="width: 100px;height: 100px;padding-top: 15px;">
+          </div>
+          <div>
+            <p style="font-size: 16px;font-weight:bold;text-align: left;">
+              {{item.title}}
+              <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+                {{item.author}}
+              </span>
+              <span style="text-align: left;display:block;padding-top: 5px;">{{item.price}}</span>
+            </p>
+          </div>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+</div>
 
 <router-outlet></router-outlet>
 
 <div class="footer">
-  <span class="rt-blk">Seattle Consulting Myanmar</span>
-  <span class="lt-blk">Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</span>
+  <p>Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</p>
 </div>

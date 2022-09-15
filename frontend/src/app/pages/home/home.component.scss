@@ -36,15 +36,14 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
         border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        margin-left: 8%;
         position: relative;
+        margin: 8%;
+      }
 
-        a {
-          text-decoration: none;
-          color: #000
-        }
+      a {
+        text-decoration: none;
+        color: #000;
+
       }
 
       .content {
@@ -59,6 +58,62 @@
         i {
           color: #6c6c6c;
         }
+      }
+
+      .hover_content {
+        position: absolute;
+        width: 300px;
+        visibility: hidden;
+        border: 1px solid #cecece;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        background-color: #fff;
+        display: none;
+        padding: 0 8px;
+        right: -145%;
+      }
+
+      .hover_content::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #cecece;
+        border-color: transparent #fff transparent transparent;
+      }
+
+      .content_left {
+        position: absolute;
+        width: 300px;
+        visibility: hidden;
+        border: 1px solid #cecece;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        background-color: #fff;
+        display: none;
+        right: unset;
+        left: -140%;
+      }
+
+      .content_left::after {
+        content: " ";
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        margin-top: -5px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent transparent #fff;
+      }
+
+      .card:hover .hover_content {
+        display: block;
+        visibility: visible;
       }
 
       .info {

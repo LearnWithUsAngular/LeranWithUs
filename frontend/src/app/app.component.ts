@@ -24,4 +24,17 @@ export class AppComponent {
   ngOnInit(): void {
     this.cartItems = cartItem;
   }
+
+  onMOver(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '10';
+  }
+  onMOut(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '0';
+  }
 }

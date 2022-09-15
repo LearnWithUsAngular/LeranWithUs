@@ -146,10 +146,6 @@ export const passwordChangeService = async (req: Request, res: Response) => {
           })
         }
 
-        const token = req.params.token;
-        if (!token) return res.status(401).send("Unauthorized");
-
-
         if (!compareSync(req.body.oldPassword, user.password)) {
           return res.send({
             success: false,

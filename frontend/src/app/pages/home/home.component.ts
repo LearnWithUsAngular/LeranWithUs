@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { popular, top, cartItem, instructor } from 'src/app/constants/learn';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { TooltipOptions } from 'ng2-tooltip-directive';
 
 @Component({
   selector: 'app-home',
@@ -15,32 +14,15 @@ export class HomeComponent implements OnInit {
   instructors: any;
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     autoplay: false,
     items: 5,
     slideBy: 5,
-    center: true,
+    center: false,
     dots: false,
     navSpeed: 70,
     autoHeight: true,
     autoWidth: true,
-  }
-
-  myOptions: TooltipOptions = {
-    placement: 'right',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px",
-    pointerEvents: 'auto',
-  }
-
-  cartOptions: TooltipOptions = {
-    placement: 'bottom',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px"
   }
 
   constructor() { }
@@ -50,5 +32,20 @@ export class HomeComponent implements OnInit {
     this.tops = top;
     this.cartItems = cartItem;
     this.instructors = instructor;
+
   }
+
+  onMOver(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '10';
+  }
+  onMOut(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '0';
+  }
+
 }
