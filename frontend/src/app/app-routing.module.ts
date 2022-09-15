@@ -40,6 +40,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
   },
   {
+    path: 'userprofile',
+    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
+  },
+  {
+    path: 'userpasswordchange',
+    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule)
+  },
+  {
+    path: 'usercourses',
+    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule)
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
   }

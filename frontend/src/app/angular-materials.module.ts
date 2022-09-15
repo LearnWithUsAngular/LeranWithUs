@@ -20,9 +20,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 
 @NgModule({
   declarations: [],
@@ -51,6 +51,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatStepperModule,
     MatMenuModule,
+    MatSidenavModule
     MatTooltipModule
   ],
 })

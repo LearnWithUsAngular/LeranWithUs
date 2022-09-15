@@ -1,0 +1,43 @@
+.side {
+  width: 20%;
+  height: 100vh;
+  background: #eee;
+  color: #fff;
+  font-size: 16px;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+}
+
+.content {
+  width: 80%;
+  height: 100vh;
+  background: #f8f6f6;
+  padding: 20px;
+  font-size: 16px;
+
+  .profile-card {
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+
+    table {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 20px;
+      text-align: center;
+
+        th {
+          font-size: 16px;
+        }
+
+        td {
+          text-align: left;
+        }
+
+    }
+  }
+}
