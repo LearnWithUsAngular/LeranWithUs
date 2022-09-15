@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TooltipOptions } from 'ng2-tooltip-directive';
+// import { TooltipOptions } from 'ng2-tooltip-directive';
 import { cartItem } from 'src/app/constants/learn';
 
 @Component({
@@ -11,13 +11,13 @@ export class AppComponent {
   title = 'frontend';
   cartItems: any;
 
-  cartOptions: TooltipOptions = {
-    placement: 'bottom',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px"
-  }
+  // cartOptions: TooltipOptions = {
+  //   placement: 'bottom',
+  //   display: true,
+  //   zIndex: 100,
+  //   theme: 'light',
+  //   "max-width": "280px"
+  // }
 
   constructor() { }
 

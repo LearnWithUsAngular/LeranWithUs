@@ -51,7 +51,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatStepperModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
     MatTooltipModule
   ],
 })
