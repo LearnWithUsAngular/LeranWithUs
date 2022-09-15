@@ -350,4 +350,273 @@ export const instructor = [
     degree: 'B.C.SC',
     subject: 'Web Development'
   },
+];
+
+export const category = [
+  {
+    name: 'Web Development'
+  },
+  {
+    name: 'Software Development'
+  },
+  {
+    name: 'Java'
+  },
+  {
+    name: 'Javascript'
+  },
+  {
+    name: 'Python'
+  },
+  {
+    name: 'Design'
+  },
+  {
+    name: 'Angular'
+  },
+  {
+    name: 'PHP'
+  },
+  {
+    name: 'Laravel'
+  },
+  {
+    name: 'React'
+  },
+  {
+    name: 'Vue'
+  },
+  {
+    name: 'C++'
+  },
+  {
+    name: 'C#'
+  },
+  {
+    name: 'Testing'
+  }
+];
+
+export const subcategory = [
+  {
+    name: 'Web Development'
+  },
+  {
+    name: 'Software Development'
+  },
+  {
+    name: 'Java'
+  },
+  {
+    name: 'Javascript'
+  },
+  {
+    name: 'Python'
+  },
+  {
+    name: 'Design'
+  },
+  {
+    name: 'Angular'
+  },
+  {
+    name: 'PHP'
+  },
+  {
+    name: 'Laravel'
+  },
+  {
+    name: 'React'
+  },
+  {
+    name: 'Vue'
+  },
+  {
+    name: 'C++'
+  },
+  {
+    name: 'C#'
+  },
+  {
+    name: 'Testing'
+  }
+];
+
+export const userList = [
+  {
+    name : 'Aung Aung',
+    email: 'aung@gmail.com',
+    phone : '09789098789',
+    address: 'YGN'
+  },
+  {
+    name : 'Kyaw Kyaw',
+    email: 'kyaw@gmail.com',
+    phone : '09789098789',
+    address: 'BGO'
+  },
+  {
+    name : 'Hnin Hnin',
+    email: 'hnin@gmail.com',
+    phone : '09789098789',
+    address: 'Pyay'
+  },
+  {
+    name : 'Thazin',
+    email: 'tahzin@gmail.com',
+    phone : '09789098789',
+    address: 'BGo'
+  },
+  {
+    name : 'Thura',
+    email: 'thura@gmail.com',
+    phone : '09789098789',
+    address: 'YGN'
+  },
+  {
+    name : 'Zaw Zaw',
+    email: 'zaw@gmail.com',
+    phone : '09789098789',
+    address: 'YGN'
+  },
+  {
+    name : 'Mg Mg',
+    email: 'mgmg@gmail.com',
+    phone : '09789098789',
+    address: 'YGN'
+  },
+  {
+    name : 'Aye Aye',
+    email: 'aye@gmail.com',
+    phone : '09789098789',
+    address: 'MLM'
+  },
+  {
+    name : 'Phyo Phyo',
+    email: 'phyo@gmail.com',
+    phone : '09789098789',
+    address: 'YGN'
+  },
+
+];
+
+export const instructorList = [
+  {
+    name : 'Thura',
+    age : '31',
+    degree : 'B.C.Sc',
+    gender: 'Male',
+    language : 'Nodejs'
+  },
+  {
+    name : 'Thiha',
+    age : '41',
+    degree : 'B.C.Tech',
+    gender: 'Male',
+    language : 'React'
+  },
+  {
+    name : 'Thida',
+    age : '35',
+    degree : 'B.C.Sc',
+    gender: 'Female',
+    language : 'Angular'
+  },
+  {
+    name : 'Mya Mya',
+    age : '42',
+    degree : 'B.C.Sc',
+    gender: 'Female',
+    language : 'Java'
+  },
+  {
+    name : 'Hsu Hsu',
+    age : '38',
+    degree : 'B.C.Sc',
+    gender: 'Female',
+    language : 'Python'
+  },
+  {
+    name : 'Yamin',
+    age : '34',
+    degree : 'B.C.Sc',
+    gender: 'Female',
+    language : 'C#'
+  },
+  {
+    name : 'Aye Myat',
+    age : '29',
+    degree : 'B.C.Sc',
+    gender: 'Female',
+    language : 'Vue'
+  },
+  {
+    name : 'Nyan Nyan',
+    age : '36',
+    degree : 'B.C.Sc',
+    gender: 'Male',
+    language : 'Laravel'
+  },
+  {
+    name : 'Chan Chan',
+    age : '32',
+    degree : 'B.C.Sc',
+    gender: 'Male',
+    language : 'PHP'
+  },
+  {
+    name : 'A Lin',
+    age : '31',
+    degree : 'B.C.Sc',
+    gender: 'Male',
+    language : 'React'
+  }
+];
+
+export const courseList = [
+  {
+    title : 'React: The Complete Guide',
+    author : 'Avinash Jain',
+    price : 'S$50'
+  },
+  {
+    title : 'Angular: The Complete Guide',
+    author : 'Dr Angela Yu',
+    price : 'S$50'
+  },
+  {
+    title : 'Learn Selenium with Java, Cucumber + Live Project',
+    author : 'Avinash Jain',
+    price : 'S$50'
+  },
+  {
+    title : 'Learn JAVA Programming - Beginner to Master',
+    author : 'Pavan Kumar',
+    price : 'S$50'
+  },
+  {
+    title : 'Modern React with Redux',
+    author : 'Colt Steele',
+    price : 'S$50'
+  },
+  {
+    title : 'The Web Developer Bootcamp 2022',
+    author : 'Colt Steele',
+    price : 'S$50'
+  },
+  {
+    title : 'React: The Complete Guide',
+    author : 'Avinash Jain',
+    price : 'S$50'
+  },
+  {
+    title : 'React: The Complete Guide',
+    author : 'Colt Steele',
+    price : 'S$50'
+  },
+  {
+    title : 'Modern React with Redux',
+    author : 'Pavan Kumar',
+    price : 'S$50'
+  },
 ]

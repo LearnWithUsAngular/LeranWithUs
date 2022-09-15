@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { popular, top, cartItem, instructor } from 'src/app/constants/learn';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { TooltipOptions } from 'ng2-tooltip-directive';
 
 @Component({
   selector: 'app-home',
@@ -24,23 +23,6 @@ export class HomeComponent implements OnInit {
     navSpeed: 70,
     autoHeight: true,
     autoWidth: true,
-  }
-
-  myOptions: TooltipOptions = {
-    placement: 'right',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px",
-    pointerEvents: 'auto',
-  }
-
-  cartOptions: TooltipOptions = {
-    placement: 'bottom',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px"
   }
 
   constructor() { }

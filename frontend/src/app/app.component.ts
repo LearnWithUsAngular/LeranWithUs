@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TooltipOptions } from 'ng2-tooltip-directive';
+import { NavigationEnd, Router } from '@angular/router';
 import { cartItem } from 'src/app/constants/learn';
 
 @Component({
@@ -10,16 +10,19 @@ import { cartItem } from 'src/app/constants/learn';
 export class AppComponent {
   title = 'frontend';
   cartItems: any;
+  showNavBar = true;
 
-  cartOptions: TooltipOptions = {
-    placement: 'bottom',
-    display: true,
-    zIndex: 100,
-    theme: 'light',
-    "max-width": "280px"
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        if (this.router.url === '/login' || this.router.url === '/') {
+          this.showNavBar = false;
+        } else {
+          this.showNavBar = true;
+        }
+      }
+    });
   }
-
-  constructor() { }
 
   ngOnInit(): void {
     this.cartItems = cartItem;
