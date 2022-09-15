@@ -13,10 +13,8 @@
     </div>
   </mat-drawer>
   <mat-drawer-content class="content">
-    <ejs-chart id="chart-container" [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'>
-      <e-series-collection>
-        <e-series [dataSource]='chartData' type='Column' xName='months' yName='category'></e-series>
-      </e-series-collection>
-    </ejs-chart>
+    <div class="chart">
+      <canvas id="myChart" ></canvas>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
