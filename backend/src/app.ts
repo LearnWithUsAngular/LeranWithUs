@@ -74,7 +74,7 @@ app.use(passport.initialize());
 app.use(multer({ storage: fileStorage, fileFilter }).fields([
   { name: 'instructorProfile', maxCount: 1 },
   { name: 'userProfile', maxCount: 1 },
-  { name: 'courseVideo', maxCount: 10 },
+  { name: 'courseVideo', maxCount: 1 },
   { name: 'courseCover', maxCount: 1 }
 ]));
 app.use("/apiUploads", express.static(path.join(rootDir, "apiUploads")));

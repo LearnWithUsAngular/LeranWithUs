@@ -1,21 +1,22 @@
 
 <div class="user-container">
     <h2 class="user">Signup and Start Learning</h2>
+    <div class="error-alert" *ngIf="signupErr">{{signupErr}}</div>
     <form [formGroup]="signupForm" (ngSubmit)="createAcc()" class="user-form">
-  
+
       <mat-form-field class="form-group" appearance="outline">
         <mat-label> Full Name</mat-label>
         <input matInput type="text" formControlName="name" placeholder="Full name">
         <mat-error *ngIf="myForm['name'].hasError('required')">Name is required</mat-error>
       </mat-form-field>
-  
+
       <mat-form-field class="form-group" appearance="outline">
         <mat-label>Email Address</mat-label>
         <input matInput type="email" formControlName="email" placeholder="Email Address">
         <mat-error *ngIf="myForm['email'].hasError('required')">Email address is required</mat-error>
         <mat-error *ngIf="myForm['email'].hasError('pattern')">Please enter a valid email</mat-error>
       </mat-form-field>
-  
+
       <mat-form-field class="form-group" appearance="outline">
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" placeholder="Password">
@@ -23,7 +24,7 @@
         <mat-error *ngIf="!myForm['password'].hasError('required') && myForm['password'].hasError('pattern')">Password
           must be more than 8characters long.</mat-error>
       </mat-form-field>
-  
+
       <div class="checkbox">
         <mat-checkbox class="tips" color="primary" formControlName="tips">
           Send me special offers,personalized recommemdations and learning tips.</mat-checkbox>
@@ -45,5 +46,5 @@
         </p>
       </div>
     </form>
-    
+
   </div>
