@@ -2,20 +2,6 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 
-html,
-html a {
-  -webkit-font-smoothing: antialiased;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-}
-
-body {
-  background-color: #fff;
-  color: #666;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 62.5%;
-  margin: 0 auto;
-}
-
 a {
   border: 0 none;
   outline: 0;
@@ -24,6 +10,7 @@ a {
 
 strong {
   font-weight: bold;
+  font-size: 12px;
 }
 
 p {
@@ -85,7 +72,7 @@ main {
   margin: 0 auto;
   overflow: hidden;
   padding: 1rem 0;
-  width: 960px;
+  width: 1400px;
 }
 
 .basket,
@@ -181,7 +168,7 @@ li.subtotal:before {
 
 .remove button {
   background-color: transparent;
-  color: #777;
+  color: red;
   float: none;
   text-decoration: underline;
   text-transform: uppercase;
@@ -223,8 +210,8 @@ li.subtotal:before {
   background-color: #ccc;
   border: 1px solid #aaa;
   border-radius: 4px;
-  font-size: 0.625rem;
-  padding: 2px;
+  font-size: 12px;
+  padding: 4px;
   width: 3.75rem;
 }
 
@@ -239,7 +226,7 @@ aside {
   border: 1px solid #aaa;
   padding: 1rem;
   position: fixed;
-  width: 250px;
+  width: 400px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

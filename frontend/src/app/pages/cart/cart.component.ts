@@ -25,23 +25,35 @@ export class CartComponent implements OnInit {
   onCartUpdated(event: any) {
     const id = event.target.getAttribute('id');
     const pindex = this.productItem.findIndex((elem: any) => elem.id == id);
-    const cindex = this.cartItems.findIndex(elem => elem.id == pindex)
-    if (cindex === -1) {
-      this.cartItems.push({
-        id: this.productItem[pindex].id,
-        name: this.productItem[pindex].name,
-        quantity: 1,
-        price: this.productItem[pindex].price,
-        total: this.productItem[pindex].price * 1
-      });
+
+    var pid = this.productItem[pindex].id;
+    var pname = this.productItem[pindex].name;
+    var pprice = this.productItem[pindex].price;
+    var ptotal = this.productItem[pindex].price * 1;
+
+    var item = { id: pid, name: pname, price: pprice, total: ptotal, quantity: 1 };
+
+    var mycartjson = localStorage.getItem('mycart');
+    if (!mycartjson) {
+      this.cartItems;
     } else {
-      this.cartItems[cindex].id = this.productItem[pindex].id;
-      this.cartItems[cindex].name = this.productItem[pindex].name;
-      this.cartItems[cindex].quantity + 1;
-      this.cartItems[cindex].price = this.productItem[pindex].price;
-      this.cartItems[cindex].total = this.cartItems[cindex].price * this.cartItems[cindex].quantity;
+      this.cartItems = JSON.parse(mycartjson);
+    }
+
+    var status = false;
+    this.cartItems.forEach(function (v: any) {
+      if (id == v.id) {
+        v.quantity++;
+        v.total = v.price * v.quantity
+        status = true;
+      }
+    })
+    if (status == false) {
+      this.cartItems.push(item);
     }
     this.updateCartTotal();
+
+    localStorage.setItem('mycart', JSON.stringify(this.cartItems));
   }
 
 
@@ -52,13 +64,28 @@ export class CartComponent implements OnInit {
   }
 
   onCartItemDeleted(event: any) {
-    const id = event.target.getAttribute('id');
-    const index = this.cartItems.findIndex(elem => elem.id == id)
-    this.cartItems.splice(index, 1);
-    this.updateCartTotal();
+    const rid = event.target.getAttribute('id');
+    const cartdata = JSON.parse(localStorage.getItem('mycart') || '[]');
+    console.log(cartdata)
+    // console.log(index)
+    // const index = this.cartItems.findIndex(elem => elem.id == id)
+    // this.cartItems.splice(index, 1);
+    // localStorage.setItem('mycart',JSON.stringify(this.cartItems));
+    // this.updateCartTotal();
   }
 
   onCartItemChanged(event: any) {
+    const id = event.target.getAttribute('id');
+    const quantity = event.target.value;
+    var status = false;
+    this.cartItems.forEach(function (v: any) {
+      if (id == v.id) {
+        v.quantity = quantity;
+        v.total = v.price * v.quantity
+        status = true;
+      }
+    })
+    localStorage.setItem('mycart', JSON.stringify(this.cartItems));
     this.updateCartTotal();
   }
 }
