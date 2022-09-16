@@ -18,8 +18,8 @@ export class CartComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.cartItems
+  async ngOnInit() {
+    this.cartItems = await JSON.parse(localStorage.getItem('mycart') || '[]');
     this.updateCartTotal();
   }
 
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
     const cartdata = JSON.parse(localStorage.getItem('mycart') || '[]');
     const data = cartdata.find((elist: any) => elist['id'] == id);
     this.cartItems.splice(this.cartItems.findIndex((a: any) => a['id'] === data.id), 1);
-    localStorage.setItem('mycart',JSON.stringify(this.cartItems));
+    localStorage.setItem('mycart', JSON.stringify(this.cartItems));
     this.updateCartTotal();
   }
 
