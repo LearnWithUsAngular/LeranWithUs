@@ -1,48 +1,36 @@
 <div [formGroup]="courseSvc.pricingPromotionForm" class="container">
   <h2>Pricing and Promotion</h2>
 
-  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" formArrayName="pricingPromotion">
-    <div class="example-box" *ngFor="let pricing of pricingPromotion.controls; let i=index" cdkDrag>
-      <mat-card>
-        <div [formGroupName]="i">
-          <div class="info">
-            <mat-form-field appearance="outline">
-              <mat-select formControlName="currency">
-                <mat-option *ngFor="let currency of currencys" [value]="currency.value">
-                  {{currency.value}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+  <div class="info">
+    <mat-form-field appearance="outline">
+      <mat-select formControlName="currency">
+        <mat-option *ngFor="let currency of currencys" [value]="currency.value">
+          {{currency.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-select formControlName="pricing" placeholder="Select">
-                <mat-option *ngFor="let pricing of pricings" [value]="pricing.value">
-                  {{pricing.value}}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="pricingIndex(i).controls['pricing'].hasError('required')">Please select!!</mat-error>
-            </mat-form-field>
-          </div>
-
-          <div class="input-container">
-            <input type="text" formControlName="promotion" />
-            <button (click)="onCopy()">Copy</button>
-          </div>
-
-
-          <span *ngIf="i !== 0" class="clearfix">
-            <button type="button" mat-raised-button color="warn" (click)="remove(i)" style="float: right;">
-              <mat-icon>delete_forever</mat-icon>
-            </button>
-          </span>
+    <mat-form-field appearance="outline">
+      <mat-select formControlName="pricing" placeholder="Select">
+        <div class="" *ngIf="courseSvc.pricingPromotionForm.controls['currency'].value === 'USD'">
+          <mat-option *ngFor="let pricing of pricingsUSD" [value]="pricing.value">
+            {{pricing.value}}
+          </mat-option>
         </div>
-      </mat-card>
+        <div class="" *ngIf="courseSvc.pricingPromotionForm.controls['currency'].value === 'Myanmar'">
+          <mat-option *ngFor="let pricing of pricingsMyan" [value]="pricing.value">
+            {{pricing.value}}
+          </mat-option>
+        </div>
+        
+      </mat-select>
+      <mat-error *ngIf="f['pricing'].hasError('required')">Please select!!</mat-error>
+    </mat-form-field>
+  </div>
 
-    </div>
-    <div class="add-btn">
-      <button mat-raised-button type="button" (click)="add()"><i class="material-icons">add</i> Add Course
-        Upload</button>
-    </div>
+  <div class="input-container">
+    <input type="text" formControlName="promotion" />
+    <button (click)="onCopy()">Copy</button>
   </div>
 </div>
 

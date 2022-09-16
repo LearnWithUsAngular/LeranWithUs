@@ -37,7 +37,9 @@ export class CourseServiceService {
     });
 
     this.pricingPromotionForm = this.fb.group({
-      pricingPromotion: this.fb.array([])
+      currency: ['USD'],
+      pricing: ['', Validators.required],
+      promotion: ['']
     });
   }
 
@@ -46,8 +48,8 @@ export class CourseServiceService {
 
   public resetForm() {
     this.courseDetailForm = this.fb.group({
-      title: ['',Validators.required],
-      subtitle: ['',Validators.required],
+      title: ['', Validators.required],
+      subtitle: ['', Validators.required],
       description: [''],
       language: ['English(US)'],
       level: [''],
@@ -62,7 +64,9 @@ export class CourseServiceService {
     });
 
     this.pricingPromotionForm = this.fb.group({
-      pricingPromotion: this.fb.array([])
+      currency: ['USD'],
+      pricing: ['', Validators.required],
+      promotion: ['']
     });
 
     this.createCourseForm.controls['courseDetail'] = this.courseDetailForm;
