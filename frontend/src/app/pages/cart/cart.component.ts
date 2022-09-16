@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.cartItems
     this.updateCartTotal();
   }
 
@@ -63,15 +64,12 @@ export class CartComponent implements OnInit {
     this.cartTotal = total;
   }
 
-  onCartItemDeleted(event: any) {
-    const rid = event.target.getAttribute('id');
+  onCartItemDeleted(id: any) {
     const cartdata = JSON.parse(localStorage.getItem('mycart') || '[]');
-    console.log(cartdata)
-    // console.log(index)
-    // const index = this.cartItems.findIndex(elem => elem.id == id)
-    // this.cartItems.splice(index, 1);
-    // localStorage.setItem('mycart',JSON.stringify(this.cartItems));
-    // this.updateCartTotal();
+    const data = cartdata.find((elist: any) => elist['id'] == id);
+    this.cartItems.splice(this.cartItems.findIndex((a: any) => a['id'] === data.id), 1);
+    localStorage.setItem('mycart',JSON.stringify(this.cartItems));
+    this.updateCartTotal();
   }
 
   onCartItemChanged(event: any) {

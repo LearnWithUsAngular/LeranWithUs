@@ -48,10 +48,8 @@
       </div>
       <div class="subtotal">{{item.quantity * item.price}} USD</div>
       <div class="remove">
-        <button id={{item.id}} (click)="onCartItemDeleted($event)">
+        <button (click)="onCartItemDeleted(item.id)">
           <mat-icon>delete</mat-icon>
-          <span aria-hidden="true" id={{item.id}}>
-          </span>
         </button>
       </div>
     </div>
