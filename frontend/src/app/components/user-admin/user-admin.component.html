@@ -1,0 +1,80 @@
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened class="side">
+    <h3>Admin</h3>
+    <div class="btn-gp">
+      <button mat-flat-button [routerLink]="['/admin']"> <i class="fa-solid fa-house"></i> Dashboard </button>
+      <button mat-flat-button [routerLink]="['/category-admin']"> <i class="fas fa-th"></i> Category </button>
+      <button mat-flat-button [routerLink]="['/subcategory-admin']"> <i class="fas fa-th"></i> Subcategory </button>
+      <button mat-flat-button [routerLink]="['/user-admin']"> <i class="fa-solid fa-file-pen"></i> User Lists </button>
+      <button mat-flat-button [routerLink]="['/instructor-admin']"> <i class="fa-solid fa-file-pen"></i> Instructor
+        Lists </button>
+      <button mat-flat-button [routerLink]="['/course-admin']"> <i class="fa-solid fa-file-pen"></i> Course Lists
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <div class="crud-container">
+
+      <div class="header">
+        <h2 class="title">User Lists</h2>
+
+        <div class="btn-gp clearfix">
+
+          <mat-form-field appearance="standard">
+            <mat-label>Search User</mat-label>
+            <input matInput placeholder="Search" (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+
+          <button mat-flat-button color="primary" (click)="createUser()">
+            <i class="fa-solid fa-user-plus"></i> Add User
+          </button>
+        </div>
+
+      </div>
+
+      <div class="mat-elevation-z8 table-container">
+        <table mat-table [dataSource]="dataSource" class="crud-table">
+          <!-- Name -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let user"> {{ user.name}} </td>
+          </ng-container>
+
+          <!-- Email -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let user"> {{ user.email}} </td>
+          </ng-container>
+
+          <!-- Phone -->
+          <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let user"> {{ user.phone}} </td>
+          </ng-container>
+
+          <!-- Address -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let user"> {{ user.address}} </td>
+          </ng-container>
+
+          <!-- Action -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let user">
+              <button mat-icon-button (click)="updateUser(user.id)" color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteUser(user.id)" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator>
+      </div>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

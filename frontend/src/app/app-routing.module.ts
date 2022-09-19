@@ -40,6 +40,30 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
+  },
+  {
+    path: 'category-admin',
+    loadChildren: () => import('./components/category-admin/category-admin.module').then(m => m.CategoryAdminModule)
+  },
+  {
+    path: 'subcategory-admin',
+    loadChildren: () => import('./components/subcategory-admin/subcategory-admin.module').then(m => m.SubcategoryAdminModule)
+  },
+  {
+    path: 'user-admin',
+    loadChildren: () => import('./components/user-admin/user-admin.module').then(m => m.UserAdminModule)
+  },
+  {
+    path: 'instructor-admin',
+    loadChildren: () => import('./components/instructor-admin/instructor-admin.module').then(m => m.InstructorAdminModule)
+  },
+  {
+    path: 'course-admin',
+    loadChildren: () => import('./components/course-admin/course-admin.module').then(m => m.CourseAdminModule)
+  },
+  {
     path: 'userprofile',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
   },
