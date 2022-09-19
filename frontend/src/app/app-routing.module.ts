@@ -28,7 +28,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
   },
   {
-    path: 'instructor',
+    path: 'instructor-list',
+    loadChildren: () => import('./instructors/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
+  },
+  {
+    path: 'create-instructor',
+    loadChildren: () => import('./instructors/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule)
+  },
+  {
+    path: 'edit-instructor/:id',
+    loadChildren: () => import('./instructors/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
+  },
+  {
+    path: 'create-course',
     loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
   },
   {

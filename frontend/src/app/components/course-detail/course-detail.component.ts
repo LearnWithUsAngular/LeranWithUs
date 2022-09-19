@@ -9,13 +9,8 @@ import { CourseServiceService } from 'src/app/services/course-service.service';
 export class CourseDetailComponent implements OnInit {
 
   languages = [
-    { value: 'English(US)' },
-    { value: 'Italiano' },
-    { value: 'Behasa Indonesia' },
-    { value: 'Nederlands' },
-    { value: 'Suomi' },
-    { value: 'Telugu' },
-    { value: 'Khmer' },
+    { value: 'English' },
+    { value: 'Myanmar' }
   ];
 
   levels = [
@@ -25,23 +20,7 @@ export class CourseDetailComponent implements OnInit {
     { value: 'Expert' }
   ];
 
-  developments = [
-    { value: 'Web Development' },
-    { value: 'Data Science' },
-    { value: 'Mobile Development' },
-    { value: 'Game Development' },
-    { value: 'DataBase Design and Development' },
-    { value: 'Software Testing' },
-  ];
-
-  subCats = [
-    { value: 'Web Development' },
-    { value: 'IT Certifications' },
-    { value: 'Programming Language' },
-    { value: 'Software Development' }
-  ];
-
-  courseImage: any;
+  courseCover: any;
   imgFile: any;
 
 
@@ -68,7 +47,7 @@ export class CourseDetailComponent implements OnInit {
       const file = event.target.files[0];
       this.imgFile = file;
       const reader = new FileReader();
-      reader.onload = e => this.courseImage = reader.result;
+      reader.onload = e => this.courseCover = reader.result;
       reader.readAsDataURL(file);
     }
   }

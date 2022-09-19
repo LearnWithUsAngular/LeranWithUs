@@ -1,0 +1,38 @@
+<div class="crud-container">
+  <h2 class="instructor">{{title}}</h2>
+  <form [formGroup]="instructorCrudForm" (ngSubmit)="onSubmit()" class="crud-form">
+
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Instructor Name</mat-label>
+      <input matInput type="text" formControlName="instructorName" placeholder="Instructor Name">
+      <mat-error *ngIf="myForm['instructorName'].hasError('required')">Instructor Name is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Headline</mat-label>
+      <input matInput type="text" formControlName="headline" placeholder="Headline">
+      <mat-error *ngIf="myForm['headline'].hasError('required')">Headline is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Biography</mat-label>
+      <input matInput type="text" formControlName="biography" placeholder="Password">
+      <mat-error *ngIf="myForm['biography'].hasError('required')">Biography is required</mat-error>
+    </mat-form-field>
+
+    <label>Profile</label>
+    <input #file type="file" (change)="imageUpload($event)" formControlName="instructorProfile" accept="image/*"
+      maxFileSize=2000000 class="img">
+    <div *ngIf="profileImage" class="profileimg" style="margin-top: 20px;">
+      <img [src]="profileImage" width="100" height="100">
+    </div>
+
+    <div class="button-group">
+      <button mat-flat-button type="submit" [disabled]="instructorCrudForm.invalid" color="primary"
+        class="btn-submit">{{confirmView === true ? 'Confirm' : buttonName}}</button>
+      <button mat-stroked-button type="button" (click)="clearData()" color="warn">{{confirmView === true ?
+        'Cancel' :
+        'Clear'}}</button>
+    </div>
+  </form>
+</div>

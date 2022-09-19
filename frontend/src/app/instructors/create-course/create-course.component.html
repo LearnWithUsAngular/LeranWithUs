@@ -1,43 +1,38 @@
 <div class="login-container">
-    <mat-card>
-        <form [formGroup]="courseSvc.createCourseForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-            <mat-stepper #stepper orientation="vertical">
-                <mat-step [stepControl]="courseSvc.courseDetailForm" label="Course Details">
-                    <app-course-detail (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-detail>
-                </mat-step>
+  <mat-card>
+    <form [formGroup]="courseSvc.createCourseForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
-                <mat-step [stepControl]="courseSvc.courseUploadForm" label="Course Upload">
-                    <app-course-upload (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-upload>
-                </mat-step>
+      <mat-stepper #stepper orientation="vertical">
+        <mat-step [stepControl]="courseSvc.courseDetailForm" label="Course Details">
+          <app-course-detail (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-detail>
+        </mat-step>
 
-                <mat-step [stepControl]="courseSvc.pricingPromotionForm" label="Pricing and Promotion">
-                    <app-pricing-promotion (onInitEvent)="receiveAutoMsgHandler($event)"></app-pricing-promotion>
-                </mat-step>
+        <mat-step [stepControl]="courseSvc.courseUploadForm" label="Course Upload">
+          <app-course-upload (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-upload>
+        </mat-step>
 
-                <mat-step label="Done">
-                    <!-- <ng-template matStepLabel>Done</ng-template>
-                    <p>You are now done.</p>
-                    <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button (click)="stepper.reset()">Reset</button>
-                    </div> -->
-                    <div style="text-align: center" class="personal-container">
-                        <h2>Done</h2>
-                        <p>You are now done. <br> Click reset to reset Form, or Continue to create Resume. </p>
-                        <div class="clear-fix">
-                            <button type="submit" mat-raised-button class="create-btn" color="primary">
-                                {{toggleButton === true ? 'Create' : 'Update'}}</button>
-                            <button mat-raised-button color="primary" type="button" class="create-btn"
-                                (click)="stepper.reset()">Reset</button>
-                        </div>
-                    </div>
-                    <div class="clearfix">
-                        <button type="button" mat-raised-button style="float: left;" matStepperPrevious
-                            color="primary">Back</button>
-                    </div>
-                </mat-step>
-            </mat-stepper>
-        </form>
-    </mat-card>
+        <mat-step [stepControl]="courseSvc.pricingPromotionForm" label="Pricing and Promotion">
+          <app-pricing-promotion (onInitEvent)="receiveAutoMsgHandler($event)"></app-pricing-promotion>
+        </mat-step>
+
+        <mat-step label="Done">
+          <div style="text-align: center" class="personal-container">
+            <h2>Done</h2>
+            <p>You are now done. <br> Click reset to reset Form, or Continue to create Resume. </p>
+            <div class="clear-fix">
+              <button type="submit" mat-raised-button class="create-btn" color="primary">
+                {{toggleButton === true ? 'Create' : 'Update'}}</button>
+              <button mat-raised-button color="primary" type="button" class="create-btn"
+                (click)="stepper.reset()">Reset</button>
+            </div>
+          </div>
+          <div class="clearfix">
+            <button type="button" mat-raised-button style="float: left;" matStepperPrevious
+              color="primary">Back</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </mat-card>
 </div>
 <pre>{{msgOnChildCompInit}}</pre>
