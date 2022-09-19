@@ -162,7 +162,7 @@ export const passwordChangeService = async (req: Request, res: Response) => {
 
         user.password = await hash(req.body.newPassword, 12);
         await user.save();
-        res.json({ message: "Password Change Successfully!" });
+        res.json({ message: "Password Change Successfully!", success: true });
       })
   } catch (error) {
     logger.error("Password Change Service Error");

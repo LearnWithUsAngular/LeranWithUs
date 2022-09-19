@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-password-change',
@@ -11,11 +12,11 @@ export class UserPasswordChangeComponent implements OnInit {
 
   public passwordChangeForm!: FormGroup;
   public errorMsg: string = '';
-  hide = true;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,34 @@ export class UserPasswordChangeComponent implements OnInit {
   }
 
   passwordChange() {
+    const id: string = "6327d6c486f1f2d24efd47a9";
+    const payload = {
+      oldPassword: this.passwordChangeForm.controls['password'].value,
+      newPassword: this.passwordChangeForm.controls['newPassword'].value,
+    }
+    this.authService.passwordChange(id, payload).subscribe({
+      next: result => {
+        if(result.success === true) {
+          this.authService.logout().subscribe({
+            next: result => {
+              console.log(result)
+              localStorage.clear();
+              this.router.navigateByUrl('/login');
+            },
+            error: err => {
+              console.log(err)
+            }
+          });
+        }
+        else{
+          this.errorMsg = result.message
+        }
 
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
   }
 
   changePasswordText() {
