@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aboutus/aboutus.module').then(m => m.AboutusModule)
   },
   {
-    path: 'userprofile',
+    path: 'userprofile/:id',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
   },
   {

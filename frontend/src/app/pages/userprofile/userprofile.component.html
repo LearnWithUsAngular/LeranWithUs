@@ -23,9 +23,12 @@
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <mat-card class="profile-card">
-      <div class="image">
+      <!-- <div class="image">
         <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" class="profileimg" />
-      </div>
+      </div> -->
+        <div *ngIf="profileImage" class="image">
+          <img [src]="profileImage" class="profileimg" />
+        </div>
       <mat-card-content class="pf-width">
         <mat-list>
           <mat-list-item>
@@ -34,7 +37,7 @@
                 <b>NAME :</b>
               </div>
               <div class="fl-right">
-                Kyaw Linn Thu
+                {{ name | uppercase}}
               </div>
             </div>
           </mat-list-item>
@@ -45,7 +48,7 @@
                 <b>EMAIL :</b>
               </div>
               <div class="fl-right">
-                scm.kyawlinthu@gmail.com
+                {{ email }}
               </div>
             </div>
           </mat-list-item>
@@ -56,7 +59,7 @@
                 <b>PHONE :</b>
               </div>
               <div class="fl-right">
-                09-123456789
+                {{ phone }}
               </div>
             </div>
           </mat-list-item>
