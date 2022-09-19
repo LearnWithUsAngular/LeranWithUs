@@ -64,15 +64,15 @@ const routes: Routes = [
     loadChildren: () => import('./components/course-admin/course-admin.module').then(m => m.CourseAdminModule)
   },
   {
-    path: 'userprofile',
+    path: 'user-profile/:id',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
   },
   {
-    path: 'userpasswordchange/:id',
+    path: 'user-password-change/:id',
     loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule)
   },
   {
-    path: 'usercourses',
+    path: 'user-courses',
     loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule)
   },
   {

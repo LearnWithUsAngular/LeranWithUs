@@ -4,12 +4,6 @@
   background: #eee;
   color: #fff;
   font-size: 16px;
-
-  a {
-    text-decoration: none;
-    cursor: pointer;
-  }
-
 }
 
 .content {
@@ -30,13 +24,13 @@
       margin-top: 20px;
       text-align: center;
 
-        th {
-          font-size: 16px;
-        }
+      th {
+        font-size: 16px;
+      }
 
-        td {
-          text-align: left;
-        }
+      td {
+        text-align: left;
+      }
 
     }
   }
