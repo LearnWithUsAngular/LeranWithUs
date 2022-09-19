@@ -13,6 +13,7 @@ import course_route from './routes/course_route';
 import auth_route from './routes/auth_route';
 import category_route from './routes/category_route';
 import user_route from './routes/user_route';
+import search_route from './routes/search_route';
 import error from './middlewares/error';
 import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
@@ -93,5 +94,6 @@ mongoose
     app.use("/api/instructors", instructor_route);
     app.use("/api/courses", course_route);
     app.use("/api", auth_route);
+    app.use("/api/search", search_route);
     app.use(error)
   });
