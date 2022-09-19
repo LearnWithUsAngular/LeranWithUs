@@ -13,7 +13,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CommonModule,
     HomeRoutingModule,
     AngularMaterialsModule,
-    // IvyCarouselModule,
     CarouselModule,
   ]
 })
