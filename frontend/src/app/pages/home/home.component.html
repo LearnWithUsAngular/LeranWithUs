@@ -9,10 +9,10 @@
     </div>
     <div class="carousel-inner">
       <owl-carousel-o [options]="customOptions" #owlPopular>
-        <ng-container *ngFor="let popular of populars">
+        <ng-container *ngFor="let popular of populars,let i = index">
           <ng-template carouselSlide>
-            <div class="card">
-              <a href="#">
+            <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+              <div href="#" style="display: block;">
                 <img src="{{popular.img}}" alt="C#" style="width: 100%;height: 200px;">
                 <div class="content">
                   <p><b>{{popular.title}}</b>
@@ -25,7 +25,28 @@
                   <i class="fa-solid fa-star"></i>
                   <p><b>{{popular.price}}</b></p>
                 </div>
-              </a>
+              </div>
+              <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                <div style="padding:15px">
+                  <p style="font-size: 16px;font-weight:bold;text-align: left;">
+                    {{popular.title}}
+                    <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+                      {{popular.author}}
+                    </span>
+                  </p>
+                  <p style="text-align: left;">
+                    {{popular.info}}
+                  </p>
+                  <div style="margin-bottom:15px;">
+                    <button
+                      style="text-align: center;padding:10px 50px;background-color:#8a2be2;border: none;margin-right:20px;color: #fff;">
+                      Add to cart
+                    </button>
+                    <button style="border: 50%;width: 35px;height: 35px;border-radius: 50%;border: 1px solid #aaa;">
+                      <i class="fa-regular fa-heart"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </ng-template>
         </ng-container>
@@ -46,11 +67,11 @@
       <h2>Top Course</h2>
     </div>
     <div class="carousel-inner">
-      <owl-carousel-o [options]="customOptions" #owltop>
-        <ng-container *ngFor="let top of tops">
+      <owl-carousel-o [options]="customOptions" #owlPopular>
+        <ng-container *ngFor="let top of tops,let i = index">
           <ng-template carouselSlide>
-            <div class="tooltips">
-              <div class="card">
+            <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+              <div href="#" style="display: block;">
                 <img src="{{top.img}}" alt="C#" style="width: 100%;height: 200px;">
                 <div class="content">
                   <p><b>{{top.title}}</b>
@@ -64,16 +85,36 @@
                   <p><b>{{top.price}}</b></p>
                 </div>
               </div>
+              <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                <div style="padding:15px">
+                  <p style="font-size: 16px;font-weight:bold;text-align: left;">
+                    {{top.title}}
+                    <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+                      {{top.author}}
+                    </span>
+                  </p>
+                  <p style="text-align: left;">
+                    {{top.info}}
+                  </p>
+                  <div style="margin-bottom:15px;">
+                    <button
+                      style="text-align: center;padding:10px 50px;background-color:#8a2be2;border: none;margin-right:20px;color: #fff;">
+                      Add to cart
+                    </button>
+                    <button style="border: 50%;width: 35px;height: 35px;border-radius: 50%;border: 1px solid #aaa;">
+                      <i class="fa-regular fa-heart"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </ng-template>
         </ng-container>
       </owl-carousel-o>
-
       <div class="center btn">
-        <button role="presentation" class="owl-prev prev" (click)="owltop.prev()">
+        <button role="presentation" class="owl-prev prev" (click)="owlPopular.prev()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button role="presentation" class="owl-next next" (click)="owltop.next()">
+        <button role="presentation" class="owl-next next" (click)="owlPopular.next()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>

@@ -74,7 +74,7 @@ app.use(passport.initialize());
 app.use(multer({ storage: fileStorage, fileFilter }).fields([
   { name: 'instructorProfile', maxCount: 1 },
   { name: 'userProfile', maxCount: 1 },
-  { name: 'courseVideo', maxCount: 10 },
+  { name: 'courseVideo', maxCount: 1 },
   { name: 'courseCover', maxCount: 1 }
 ]));
 app.use("/apiUploads", express.static(path.join(rootDir, "apiUploads")));
@@ -88,10 +88,10 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
-    app.use("/api/categories", passport.authenticate('jwt', { session: false }), category_route);
-    app.use("/api/users", passport.authenticate('jwt', { session: false }), user_route);
-    app.use("/api/instructors", passport.authenticate('jwt', { session: false }), instructor_route);
-    app.use("/api/courses", passport.authenticate('jwt', { session: false }), course_route);
+    app.use("/api/categories", category_route);
+    app.use("/api/users", user_route);
+    app.use("/api/instructors", instructor_route);
+    app.use("/api/courses", course_route);
     app.use("/api", auth_route);
     app.use(error)
   });

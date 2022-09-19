@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
   instructors: any;
 
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     autoplay: false,
     items: 5,
     slideBy: 5,
-    center: true,
+    center: false,
     dots: false,
     navSpeed: 70,
     autoHeight: true,
@@ -32,5 +32,20 @@ export class HomeComponent implements OnInit {
     this.tops = top;
     this.cartItems = cartItem;
     this.instructors = instructor;
+
   }
+
+  onMOver(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '10';
+  }
+  onMOut(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '0';
+  }
+
 }

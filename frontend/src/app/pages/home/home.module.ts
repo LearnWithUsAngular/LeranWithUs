@@ -13,7 +13,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     CommonModule,
     HomeRoutingModule,
     AngularMaterialsModule,
-    CarouselModule
+    CarouselModule,
   ]
 })
 export class HomeModule { }

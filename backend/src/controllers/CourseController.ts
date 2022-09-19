@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { createCourseService, getCourseService } from '../services/CourseService';
+import { createCourseService, deleteCourseService, findCourseService, getCourseService, updateCourseService } from '../services/CourseService';
 
 /**
  * Get Course
@@ -27,4 +27,46 @@ export const createCourse = async (
   next: NextFunction
 ) => {
   createCourseService(req, res, next);
+};
+
+/**
+ * Find Course
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+ export const findCourse = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  findCourseService(req, res, next);
+};
+
+/**
+ * Update Course
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+export const updateCourse = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  updateCourseService(req, res, next);
+};
+
+/**
+ * Delete Course
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+export const deleteCourse = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  deleteCourseService(req, res, next);
 };

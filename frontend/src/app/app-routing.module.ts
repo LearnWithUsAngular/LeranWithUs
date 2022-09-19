@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
   },
   {
-    path: 'reset-password',
+    path: 'forget-password-update/:userId/:token',
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
   },
   {
@@ -63,6 +63,26 @@ const routes: Routes = [
     path: 'course-admin',
     loadChildren: () => import('./components/course-admin/course-admin.module').then(m => m.CourseAdminModule)
   },
+  {
+    path: 'userprofile',
+    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
+  },
+  {
+    path: 'userpasswordchange',
+    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule)
+  },
+  {
+    path: 'usercourses',
+    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then(m=> m.CartModule)
+  },
+  {
+    path: 'category-list',
+    loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
+  }
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { cartItem } from 'src/app/constants/learn';
+// import { TooltipOptions } from 'ng2-tooltip-directive';
 
 @Component({
   selector: 'app-root',
@@ -26,5 +27,18 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.cartItems = cartItem;
+  }
+
+  onMOver(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '10';
+  }
+  onMOut(event: MouseEvent) {
+    const card = <HTMLDivElement>event.target;
+    const parent = <HTMLDivElement>card.parentElement;
+
+    parent.style.zIndex = '0';
   }
 }
