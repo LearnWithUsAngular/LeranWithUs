@@ -1,4 +1,3 @@
-
 <div class="header clearfix">
   <div class="title">
     <h1>
@@ -25,7 +24,7 @@
     </li>
     <li class="nav-icon">
       <button [routerLink]="['/cart']"><i class="fa-sharp fa-solid fa-cart-shopping"></i></button>
-    </li>
+    </li> -->
     <!-- <li class="nav-icon">
       <button [tooltip]="$any(cartContent)" [options]="cartOptions" contentType="template" placement="bottom">
         <i class="fa-sharp fa-solid fa-cart-shopping"></i>
@@ -47,11 +46,11 @@
         </div>
       </ng-template>
     </li> -->
-  </ul>
+    </ul>
 </div>
 
 <router-outlet></router-outlet>
 
-<div class="footer">
+<div class="footer" *ngIf="showNavBar">
   <p>Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</p>
 </div>

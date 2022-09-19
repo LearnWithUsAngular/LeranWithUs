@@ -1,0 +1,20 @@
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened class="side">
+    <h3>Admin</h3>
+    <div class="btn-gp">
+      <button mat-flat-button [routerLink]="['/admin']"> <i class="fa-solid fa-house"></i> Dashboard </button>
+      <button mat-flat-button [routerLink]="['/category-admin']"> <i class="fas fa-th"></i> Category </button>
+      <button mat-flat-button [routerLink]="['/subcategory-admin']"> <i class="fas fa-th"></i> Subcategory </button>
+      <button mat-flat-button [routerLink]="['/user-admin']"> <i class="fa-solid fa-file-pen"></i> User Lists </button>
+      <button mat-flat-button [routerLink]="['/instructor-admin']"> <i class="fa-solid fa-file-pen"></i> Instructor
+        Lists </button>
+      <button mat-flat-button [routerLink]="['/course-admin']"> <i class="fa-solid fa-file-pen"></i> Course Lists
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <div class="chart">
+      <canvas id="myChart" ></canvas>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

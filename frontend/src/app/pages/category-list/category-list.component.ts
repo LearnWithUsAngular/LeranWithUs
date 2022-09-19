@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { category } from 'src/app/constants/learn';
+import { categoryList } from 'src/app/constants/learn';
 
 @Component({
   selector: 'app-category-list',
@@ -14,7 +14,7 @@ export class CategoryListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.categories = category;
+    this.categories = categoryList;
   }
 
   onMOver(event: MouseEvent) {
