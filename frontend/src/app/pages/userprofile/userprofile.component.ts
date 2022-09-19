@@ -38,7 +38,7 @@ export class UserprofileComponent implements OnInit {
           this.name = this.userData.name;
           this.email = this.userData.email;
           this.phone = this.userData.phone;
-          this.profileImage = 'http://localhost:3000/' + this.userData.userProfile;
+          this.profileImage = this.userData.userProfile ? 'http://localhost:3000/' + this.userData.userProfile : "https://material.angular.io/assets/img/examples/shiba1.jpg";
         }
       },
       error: err => {
