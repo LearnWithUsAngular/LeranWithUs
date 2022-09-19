@@ -23,33 +23,29 @@ export class CartComponent implements OnInit {
     this.updateCartTotal();
   }
 
-  onCartUpdated(event: any) {
+  /**
+   * on cart update.
+   * @param event 
+   */
+  async onCartUpdated(event: any, index: number) {
     const id = event.target.getAttribute('id');
-    const pindex = this.productItem.findIndex((elem: any) => elem.id == id);
-
-    var pid = this.productItem[pindex].id;
-    var pname = this.productItem[pindex].name;
-    var pprice = this.productItem[pindex].price;
-    var ptotal = this.productItem[pindex].price * 1;
+    var pid = this.productItem[index].id;
+    var pname = this.productItem[index].name;
+    var pprice = this.productItem[index].price;
+    var ptotal = this.productItem[index].price * 1;
 
     var item = { id: pid, name: pname, price: pprice, total: ptotal, quantity: 1 };
 
     var mycartjson = localStorage.getItem('mycart');
-    if (!mycartjson) {
-      this.cartItems;
-    } else {
+    if (mycartjson) {
       this.cartItems = JSON.parse(mycartjson);
     }
 
-    var status = false;
-    this.cartItems.forEach(function (v: any) {
-      if (id == v.id) {
-        v.quantity++;
-        v.total = v.price * v.quantity
-        status = true;
-      }
-    })
-    if (status == false) {
+    const cartIndex = this.cartItems.findIndex((data: any) => (data.id === Number(id)));
+    if (cartIndex !== -1) {
+      this.cartItems[cartIndex].quantity++;
+      this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity;
+    } else {
       this.cartItems.push(item);
     }
     this.updateCartTotal();
@@ -57,32 +53,37 @@ export class CartComponent implements OnInit {
     localStorage.setItem('mycart', JSON.stringify(this.cartItems));
   }
 
-
+  /**
+   * update cart total.
+   */
   updateCartTotal() {
-    let total = 0;
-    this.cartItems.map(elem => total = total + elem.quantity * elem.price);
-    this.cartTotal = total;
+    const result = this.cartItems.reduce(function (acc: any, elem: any) { return acc + (elem.quantity * elem.price); }, 0);
+    this.cartTotal = result;
   }
 
+  /**
+   * on cart item delete.
+   * @param id 
+   */
   onCartItemDeleted(id: any) {
     const cartdata = JSON.parse(localStorage.getItem('mycart') || '[]');
-    const data = cartdata.find((elist: any) => elist['id'] == id);
-    this.cartItems.splice(this.cartItems.findIndex((a: any) => a['id'] === data.id), 1);
+    this.cartItems.splice(this.cartItems.findIndex((a: any) => a['id'] === Number(id)), 1);
     localStorage.setItem('mycart', JSON.stringify(this.cartItems));
     this.updateCartTotal();
   }
 
+  /**
+   * on cart item changed.
+   * @param event 
+   */
   onCartItemChanged(event: any) {
     const id = event.target.getAttribute('id');
     const quantity = event.target.value;
-    var status = false;
-    this.cartItems.forEach(function (v: any) {
-      if (id == v.id) {
-        v.quantity = quantity;
-        v.total = v.price * v.quantity
-        status = true;
-      }
-    })
+    const cartIndex = this.cartItems.findIndex((data: any) => (data.id === Number(id)));
+    if (cartIndex !== -1) {
+      this.cartItems[cartIndex].quantity = quantity;
+      this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity
+    }
     localStorage.setItem('mycart', JSON.stringify(this.cartItems));
     this.updateCartTotal();
   }
