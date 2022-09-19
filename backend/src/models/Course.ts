@@ -1,36 +1,5 @@
 import { Schema, model } from "mongoose";
 
-// const detailSchema = new Schema({
-//     title: {
-//         type: String,
-//         // required: true
-//     },
-//     subtitle: {
-//         type: String,
-//         // required: true
-//     },
-//     description: {
-//         type: String,
-//         // required: true
-//     },
-//     language: {
-//         type: String,
-//         enum: ['Engish', 'Myanmar'],
-//     },
-//     level: {
-//         type: String,
-//         enum: ['Beginner', 'Intermediate', 'Expert', 'All Level'],
-//     },
-//     category_id: {
-//         type: Schema.Types.ObjectId,
-//         ref: "category"
-//     },
-//     courseCover: {
-//         type: String,
-//         // required: true
-//     }
-// }
-// )
 
 const priceSchema = new Schema(
   {
@@ -49,21 +18,7 @@ const priceSchema = new Schema(
       default: ''
     }
   }
-)
-
-const courseuploadSchema = new Schema(
-  {
-    courseName: {
-      type: String,
-    },
-    description: {
-      type: String,
-    },
-    courseVideo: {
-      type: String
-    }
-  }
-)
+);
 
 const courseSchema = new Schema(
   {
@@ -98,7 +53,7 @@ const courseSchema = new Schema(
       }
     },
     coursePrice: priceSchema,
-    courseUpload: [courseuploadSchema],
+    courseUpload: [String],
     instructor_id: {
       type: Schema.Types.ObjectId,
       ref: "instructor"
