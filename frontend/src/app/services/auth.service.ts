@@ -8,7 +8,12 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
+
   constructor(private http: HttpClient) { }
+
+  public logout(): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/logout`, {}).pipe(retry(3));
+  }
 
   forgetPassword(payload: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/forgot-password`, payload).pipe(retry(3));
@@ -16,5 +21,9 @@ export class AuthService {
 
   resetPasswordUpdate(id: string, token: string, payload: any): Observable<any> {
     return this.http.post(`${environment.apiUrl}/password-reset-update/${id}/${token}`, payload).pipe(retry(3));
+  }
+
+  passwordChange(id: string, payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/password-change/${id}`, payload).pipe(retry(3));
   }
 }
