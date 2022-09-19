@@ -1,24 +1,33 @@
-const passport = require('passport');
-const passportJWT = require("passport-jwt");
-import User from "../models/User";
+import passport from "passport";
+import { Strategy } from "passport-jwt";
 
-const JWTStrategy = passportJWT.Strategy;
-const ExtractJWT = passportJWT.ExtractJwt;
+/**
+ * check http only cookie header.
+ */
+const cookieExtractor = (req: any) => {
+  let jwt = null;
+  if (req && req.cookies) {
+    jwt = req.cookies['jwt'];
+  }
+  return jwt
+}
 
-passport.use(new JWTStrategy({
-  jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'abcd'
+const JWTStrategy = Strategy;
+const secret = process.env.JWT_SECRET;
+
+/**
+ * passport authentication.
+ */
+passport.use('jwt', new JWTStrategy({
+  jwtFromRequest: cookieExtractor,
+  secretOrKey: secret
 },
-  function (jwtPayload: any, cb: any) {
-    return User.findOne({ id: jwtPayload.id }, function (err: any, user: any) {
-      if (err) {
-        return cb(err, false);
-      }
-      if (user) {
-        return cb(null, user);
-      } else {
-        return cb(null, false);
-      }
-    });
+  function (jwtPayload: any, done: any) {
+    const { expiration } = jwtPayload;
+    if (Date.now() > expiration) {
+      done('Unauthorized', false)
+    }
+
+    done(null, jwtPayload)
   }
 ));

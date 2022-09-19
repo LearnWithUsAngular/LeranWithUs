@@ -17,6 +17,7 @@ export const loginService = async (
   res: Response
 ) => {
   try {
+    const expirationtimeInMs = 600000;
     User.findOne({ email: req.body.email }).then(async (user: any) => {
       if (!user) {
         return res.status(401).send({
@@ -34,17 +35,24 @@ export const loginService = async (
 
       const payload = {
         email: await hash(user.email, 12),
-        id: await hash(user.id, 12)
+        expiration: Date.now() + expirationtimeInMs
       }
 
-      const token = jwt.sign(payload, 'abcd', { expiresIn: '1d' });
+      const token = jwt.sign(JSON.stringify(payload), "abcd");
 
-      return res.status(200).send({
-        success: true,
-        message: 'Login Successfully!',
-        user: user,
-        token: token
-      });
+      return res
+        .cookie('jwt',
+          token, {
+          httpOnly: true,
+          secure: false
+        }
+        ).status(200)
+        .json({
+          success: true,
+          message: 'Login Successfully!',
+          user: user,
+          token: token
+        });
     })
   } catch (err) {
     logger.error("User Login Service Error");
@@ -60,8 +68,18 @@ export const loginService = async (
  */
 export const logoutService = (req: any, res: Response) => {
   try {
-    req.session = null;
-    return res.json({ "message": "Logout Successfully" });
+    if (req.cookies['jwt']) {
+      res
+      .clearCookie('jwt')
+      .status(200)
+      .json({
+        "message": "Logout Successfully"
+      })
+  } else {
+      res.status(401).json({
+          error: 'Invalid jwt'
+      })
+  }
   } catch (err) {
     logger.error("User Logout Service Error");
     logger.error(err);
