@@ -28,6 +28,9 @@ export class InstructorListComponent implements OnInit {
     this.getInstructor();
   }
 
+  /**
+  * get instructor data
+  */
   getInstructor() {
     this.instructorSvc.getInstructors().subscribe((dist) => {
       this.instructorList = dist.data;
@@ -36,17 +39,26 @@ export class InstructorListComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) { }
-
+  /**
+  * create instructor form
+  */
   createInstructor() {
     this.router.navigate(["/create-instructor"]);
   }
 
+  /**
+  * update instructor form
+  * @param id
+  */
   updateInstructor(id: any) {
     console.log(id)
     this.router.navigate(['/edit-instructor/' + id]);
   }
 
+  /**
+  * delete instructor 
+  * @param data
+  */
   deleteInstructor(data: any) {
     const id = data._id;
     let dialogRef = this.dialog.open(DeleteInstructorComponent, {

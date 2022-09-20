@@ -55,6 +55,10 @@ export class CrudInstructorComponent implements OnInit {
     return this.instructorCrudForm.controls;
   }
 
+  /**
+  * create instructor
+  * update instructor
+  */
   onSubmit() {
     if (this.confirmView == true && this.buttonName === 'Create') {
       const formData = new FormData();
@@ -90,6 +94,9 @@ export class CrudInstructorComponent implements OnInit {
 
   }
 
+  /**
+  * clear button.
+  */
   clearData() {
     if (this.confirmView == true) {
       this.instructorCrudForm.controls['instructorName'].enable();
@@ -102,6 +109,10 @@ export class CrudInstructorComponent implements OnInit {
     }
   }
 
+  /**
+  * upload image
+  * @param event
+  */
   imageUpload(event: any) {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];

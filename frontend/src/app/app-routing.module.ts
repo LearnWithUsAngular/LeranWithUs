@@ -29,19 +29,19 @@ const routes: Routes = [
   },
   {
     path: 'instructor-list',
-    loadChildren: () => import('./instructors/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
+    loadChildren: () => import('./pages/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
   },
   {
     path: 'create-instructor',
-    loadChildren: () => import('./instructors/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule)
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule)
   },
   {
     path: 'edit-instructor/:id',
-    loadChildren: () => import('./instructors/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
   },
   {
     path: 'create-course',
-    loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
+    loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule)
   },
   {
     path: 'contactus',
