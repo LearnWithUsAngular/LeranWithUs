@@ -163,7 +163,6 @@ export const deleteCategoryService = async (
   }
 };
 
-
 /**
  * Search by Category Service
  * @param req 
