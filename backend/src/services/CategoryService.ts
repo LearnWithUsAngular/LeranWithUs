@@ -161,3 +161,29 @@ export const deleteCategoryService = async (
     next(err)
   }
 };
+
+
+/**
+ * Search by Category Service
+ * @param req 
+ * @param res 
+ * @param _next 
+ */
+export const searchByCategoryService = async (
+  req: any,
+  res: Response,
+  _next: NextFunction
+) => {
+  try {
+    let condition: any = { deleted_at: null };
+    req.body?.category ? condition.category = { '$regex': req.body.category, '$options': 'i' } : '';
+    req.body?.subcategories ? condition.subcategories = { '$regex': req.body.subcategories, '$options': 'i' } : '';
+
+    const category = await Category.find(condition);
+    res.json({ data: category, status: 1 });
+  } catch (err: any) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+  }
+}
