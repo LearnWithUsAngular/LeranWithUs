@@ -17,8 +17,9 @@ export const getCategoryService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await Category.find(condition)
-    res.json({ data: result, status: 1 });
+    const result = await Category.find(condition);
+    const count = await Category.count(condition);
+    res.json({ data: result, total: count, status: 1 });
   } catch (err) {
     next(err);
     logger.error("Get Category Service Error");

@@ -1,6 +1,6 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { createUser, deleteUser, findUser, getUser, updateUser } from '../controllers/UserController';
+import { createUser, deleteUser, findUser, getUser, searchByUser, updateUser } from '../controllers/UserController';
 
 const router = express.Router();
 
@@ -20,4 +20,8 @@ router
   .get(findUser)
   .put(updateUser)
   .delete(deleteUser)
+
+router
+  .route("/search")
+  .post(searchByUser)
 export default router;
