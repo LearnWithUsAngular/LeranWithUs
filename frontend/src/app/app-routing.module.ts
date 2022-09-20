@@ -28,8 +28,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
   },
   {
-    path: 'instructor',
-    loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule)
+    path: 'instructor-list',
+    loadChildren: () => import('./pages/instructor-list/instructor-list.module').then(m => m.InstructorListModule)
+  },
+  {
+    path: 'create-instructor',
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule)
+  },
+  {
+    path: 'edit-instructor/:id',
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
+  },
+  {
+    path: 'create-course',
+    loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule)
   },
   {
     path: 'contactus',
