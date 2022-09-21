@@ -94,6 +94,10 @@ const routes: Routes = [
   {
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule)
   }
 ];
 
