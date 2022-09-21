@@ -175,11 +175,12 @@ export const searchByCategoryService = async (
   _next: NextFunction
 ) => {
   try {
-    let condition: any = { deleted_at: null };
-    req.body?.category ? condition.category = { '$regex': req.body.category, '$options': 'i' } : '';
-    req.body?.subcategories ? condition.subcategories = { '$regex': req.body.subcategories, '$options': 'i' } : '';
-
-    const category = await Category.find(condition);
+    const category = await Category.find({
+      $and: [
+        { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' } }, { subcategories: { '$regex': req.body.keyword, '$options': 'i' } }] },
+        { $or: [{ deleted_at: null }] }
+      ]
+    })
     res.json({ data: category, status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {
