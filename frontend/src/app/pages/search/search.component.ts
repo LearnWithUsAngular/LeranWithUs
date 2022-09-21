@@ -56,7 +56,6 @@ export class SearchComponent implements OnInit {
   topicOptions: OwlOptions = {
     loop: true,
     autoplay: false,
-    slideBy: 5,
     center: false,
     dots: false,
     navSpeed: 30,
@@ -74,6 +73,29 @@ export class SearchComponent implements OnInit {
       },
       1240: {
       items: 5,
+      }
+    }
+  }
+  instructorOptions: OwlOptions = {
+    loop: true,
+    autoplay: false,
+    center: false,
+    dots: false,
+    navSpeed: 30,
+    autoHeight: true,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      320: {
+        items: 2
+      },
+      768: {
+        items: 3
+      },
+      1024: {
+        items: 4
       }
     }
   }

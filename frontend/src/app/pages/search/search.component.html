@@ -279,7 +279,7 @@
         <h3>Instructors</h3>
       </div>
       <div class="carousel-inner">
-        <owl-carousel-o [options]="customOptions" #owlinstructor>
+        <owl-carousel-o [options]="instructorOptions" #owlinstructor>
           <ng-container *ngFor="let instructor of instructors">
             <ng-template carouselSlide>
               <a href="#" class="card">
@@ -288,20 +288,15 @@
                 </div>
                 <div class="info">
                   <table>
-                    <tr>
-                      <td class="label">Name: </td>
-                      <td>{{instructor.name}}</td>
+                    <tr><td>{{instructor.name}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Age: </td>
                       <td>{{instructor.age}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Degree: </td>
                       <td>{{instructor.degree}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Subject: </td>
                       <td>{{instructor.subject}}</td>
                     </tr>
                   </table>

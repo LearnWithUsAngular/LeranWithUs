@@ -132,11 +132,11 @@
         display: none;
         padding: 0 8px;
         right: -100%;
-        @media only screen and (max-width:800px)  {
-          right: 10%;
-        }
         @media only screen and (max-width:1400px) {
           right: -50%;
+        }
+        @media only screen and (max-width:800px)  {
+          right: 10%;
         }
 
         .hover_card {
@@ -197,11 +197,11 @@
         display: none;
         right: unset;
         left: -85%;
-        @media only screen and (max-width:800px)  {
-          left: 10%;
-        }
         @media only screen and (max-width:1400px) {
           left: -50%;
+        }
+        @media only screen and (max-width:800px)  {
+          left: 10%;
         }
       }
 
