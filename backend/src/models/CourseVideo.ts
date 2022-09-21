@@ -7,11 +7,10 @@ const courseVideoSchema = new Schema(
       required: true,
     },
     description: {
-      type: String,
+      type: String
     },
-    courseURL: {
-      type: String,
-      // required: true,
+    video: {
+      type: String
     }
   }, {
   timestamps: true

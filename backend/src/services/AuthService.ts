@@ -49,6 +49,10 @@ export const loginService = async (
   } catch (err) {
     logger.error("User Login Service Error");
     logger.error(err);
+    return res.status(403).send({
+      success: false,
+      message: err
+    });
   }
 }
 

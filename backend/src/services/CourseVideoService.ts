@@ -16,8 +16,8 @@ export const getCourseVideoService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const resume = await CourseVideo.find(condition);
-    res.json({ data: resume, status: 1 });
+    const data = await CourseVideo.find(condition);
+    res.json({ data: data, status: 1 });
   } catch (err) {
     logger.error("Get CourseVideo Service Error");
     logger.error(err);
@@ -37,14 +37,14 @@ export const createCourseVideoService = async (
   next: NextFunction
 ) => {
   try {
-    let courseURL: string = req.body.courseURL;
-    if (req?.files && req?.files?.courseURL?.length > 0) {
-      courseURL = req.files.courseURL[0].path.replace("\\", "/");
+    let video: string = req.body.video;
+    if (req?.files && req?.files?.video?.length > 0) {
+      video = req.files.video[0].path.replaceAll("\\", "/");
     }
     let data: any = {
       courseName: req.body.courseName,
       description: req.body.description,
-      courseURL: courseURL
+      video: video
     };
     logger.info(data);
     const course = new CourseVideo(data);
@@ -108,13 +108,13 @@ export const updateCourseVideoService = async (
     courseVideo.courseName = req.body.courseName;
     courseVideo.description = req.body.description;
 
-    if (req.files) {
-      const courseVideoURL = req.files.courseURL[0].path.replace("\\", "/");
-      if (courseVideo.courseURL && courseVideo.courseURL != courseVideoURL) {
-        deleteFile(courseVideo.courseURL);
+    if (req.files && req.files?.video?.length > 0) {
+      const courseVideoURL = req.files.video[0].path.replaceAll("\\", "/");
+      if (courseVideo.video && courseVideo.video != courseVideoURL) {
+        deleteFile(courseVideo.video);
       }
       if (courseVideoURL) {
-        courseVideo.courseURL = courseVideoURL;
+        courseVideo.video = courseVideoURL;
       }
     }
 
@@ -148,7 +148,7 @@ export const deleteCourseVideoService = async (
     }
     courseVideo.deleted_at = new Date();
     if (courseVideo?.courseUR) {
-      deleteFile(courseVideo.courseURL);
+      deleteFile(courseVideo.video);
     }
     await courseVideo.save();
     res.json({ message: "Deleted Successfully!", status: 1 });
