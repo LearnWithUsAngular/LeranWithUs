@@ -77,23 +77,39 @@ const routes: Routes = [
   },
   {
     path: 'user-profile/:id',
-    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule)
+    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m => m.UserprofileModule)
   },
   {
     path: 'user-password-change/:id',
-    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule)
+    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m => m.UserPasswordChangeModule)
   },
   {
     path: 'user-courses',
-    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule)
+    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m => m.UserCoursesModule)
   },
   {
     path: 'cart',
-    loadChildren: () => import('./pages/cart/cart.module').then(m=> m.CartModule)
+    loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule)
   },
   {
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
+  },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-user/create-user.module').then(m => m.CreateUserModule)
+  },
+  {
+    path: 'edit-user/:id',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then(m => m.EditUserModule)
+  },
+  {
+    path: 'create-category',
+    loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule)
+  },
+  {
+    path: 'edit-category/:id',
+    loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule)
   }
 ];
 

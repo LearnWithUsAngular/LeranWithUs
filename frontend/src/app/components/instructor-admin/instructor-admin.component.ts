@@ -53,7 +53,6 @@ export class InstructorAdminComponent implements OnInit {
   * @param id
   */
   updateInstructor(id: any) {
-    console.log(id)
     this.router.navigate(['/edit-instructor/' + id]);
   }
 
