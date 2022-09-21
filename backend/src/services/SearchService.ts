@@ -34,6 +34,16 @@ export const searchAllService = async (
       // {
       //   "$unwind": "$instructorInfo"  // $unwind used for getting data in object or for one record only
       // },
+      {
+        '$lookup': {
+          'from': 'category',
+          'let': { "catId": { $toObjectId: "$category_id" } },
+          "pipeline": [
+            { "$match": { "$expr": [{ "_id": "$$catId" }] } },
+          ],
+          'as': 'categoryInfo'
+        }
+      },
     ]);
     res.json({ data: coresult, status: 1 })
   } catch (err) {
