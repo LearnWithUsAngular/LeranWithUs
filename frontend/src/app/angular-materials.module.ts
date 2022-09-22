@@ -23,7 +23,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [],
   imports: [
@@ -52,7 +52,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatStepperModule,
     MatMenuModule,
     MatSidenavModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatExpansionModule
   ],
 })
 export class AngularMaterialsModule { }
