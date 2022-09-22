@@ -90,22 +90,22 @@ const routes: Routes = [
   },
   {
     path: 'user-profile/:id',
-    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule),
+    loadChildren: () => import('./pages/userprofile/userprofile.module').then(m => m.UserprofileModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'user-password-change/:id',
-    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule),
+    loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m => m.UserPasswordChangeModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'user-courses',
-    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule),
+    loadChildren: () => import('./pages/user-courses/user-courses.module').then(m => m.UserCoursesModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'cart',
-    loadChildren: () => import('./pages/cart/cart.module').then(m=> m.CartModule),
+    loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule),
     canActivate: [AuthGuard]
   },
   {
@@ -117,7 +117,8 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
-  }
+  },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

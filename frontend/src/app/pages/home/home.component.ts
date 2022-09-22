@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   public instructorList: any = [];
 
   customOptions: OwlOptions = {
-    loop: false,
+    loop: true,
     autoplay: false,
-    //mergeFit: true,
+    mergeFit: true,
     center: false,
     dots: false,
     navSpeed: 70,

@@ -37,7 +37,7 @@ export const createCourseService = async (
   next: NextFunction
 ) => {
   try {
-    const courseUpload = JSON.parse(JSON.stringify(req.body.courseUpload));
+    const courseUpload = req.body.courseUpload;
 
     const courseForm = {
       detail: {
@@ -117,7 +117,7 @@ export const updateCourseService = async (
       error.statusCode = 404;
       throw error;
     }
-    const courseUpload = JSON.parse(req.body.courseUpload);
+    const courseUpload = req.body.courseUpload;
 
     let courseCover: string = req.files.courseCover;
     if (req?.files?.courseCover && req.files?.courseCover?.length > 0) {
