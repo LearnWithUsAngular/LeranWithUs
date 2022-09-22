@@ -16,11 +16,32 @@ export class HomeComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: false,
     autoplay: false,
-    items: 5,
-    slideBy: 5,
+    //mergeFit: true,
     center: false,
     dots: false,
     navSpeed: 70,
+    responsive: {
+      0: {
+        items: 1,
+        slideBy:1
+      },
+      480: {
+        items: 2,
+        slideBy:2
+      },
+      640: {
+        items: 3,
+        slideBy:3
+      },
+      768: {
+        items: 4,
+        slideBy:4
+      },
+      1280: {
+        items: 5,
+        slideBy:5
+      }
+    },
     autoHeight: true,
     autoWidth: true,
   }
@@ -32,7 +53,6 @@ export class HomeComponent implements OnInit {
     this.tops = top;
     this.cartItems = cartItem;
     this.instructors = instructor;
-
   }
 
   onMOver(event: MouseEvent) {
@@ -44,7 +64,6 @@ export class HomeComponent implements OnInit {
   onMOut(event: MouseEvent) {
     const card = <HTMLDivElement>event.target;
     const parent = <HTMLDivElement>card.parentElement;
-
     parent.style.zIndex = '0';
   }
 
