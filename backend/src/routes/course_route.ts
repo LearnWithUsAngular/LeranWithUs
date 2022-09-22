@@ -1,6 +1,6 @@
 import express from 'express';
 import { createCourse, getCourse, findCourse, deleteCourse, updateCourse } from '../controllers/CourseController';
-0
+
 const router = express.Router();
 
 router

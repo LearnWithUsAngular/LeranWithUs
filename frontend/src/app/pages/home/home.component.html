@@ -9,33 +9,33 @@
     </div>
     <div class="carousel-inner">
       <owl-carousel-o [options]="customOptions" #owlPopular>
-        <ng-container *ngFor="let popular of populars,let i = index">
+        <ng-container *ngFor="let course of courseList,let i = index">
           <ng-template carouselSlide>
             <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
               <div href="#" style="display: block;">
-                <img src="{{popular.img}}" alt="C#" style="width: 100%;height: 200px;">
+                <img src="{{'http://localhost:3000/' + course?.detail?.courseCover}}" alt="C#" style="width: 100%;height: 200px;">
                 <div class="content">
-                  <p><b>{{popular.title}}</b>
-                    <span>{{popular.author}}</span>
+                  <p><b>{{course?.detail?.title}}</b>
+                    <span>{{course?.instructor_id?.instructorName}}</span>
                   </p>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
-                  <p><b>{{popular.price}}</b></p>
+                  <p><b>{{course?.detail?.price}}</b></p>
                 </div>
               </div>
               <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
                 <div style="padding:15px">
                   <p style="font-size: 16px;font-weight:bold;text-align: left;">
-                    {{popular.title}}
+                    {{course?.detail?.title}}
                     <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
-                      {{popular.author}}
+                      {{course?.instructor_id?.instructorName}}
                     </span>
                   </p>
                   <p style="text-align: left;">
-                    {{popular.info}}
+                    {{course.detail.description}}
                   </p>
                   <div style="margin-bottom:15px;">
                     <button
@@ -52,10 +52,10 @@
         </ng-container>
       </owl-carousel-o>
       <div class="center btn">
-        <button role="presentation" class="owl-prev prev" (click)="owlPopular.prev()">
+        <button role="presentation" class="owl-prev prev" (click)="owlPopular.next()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button role="presentation" class="owl-next next" (click)="owlPopular.next()">
+        <button role="presentation" class="owl-next next" (click)="owlPopular.prev()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
@@ -67,34 +67,34 @@
       <h2>Top Course</h2>
     </div>
     <div class="carousel-inner">
-      <owl-carousel-o [options]="customOptions" #owlPopular>
-        <ng-container *ngFor="let top of tops,let i = index">
+      <owl-carousel-o [options]="customOptions" #owlTop>
+        <ng-container *ngFor="let course of courseList,let i = index">
           <ng-template carouselSlide>
             <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
-              <div href="#" style="display: block;">
-                <img src="{{top.img}}" alt="C#" style="width: 100%;height: 200px;">
+              <div href="#" style="display: block; width: 215px;">
+                <img src="{{'http://localhost:3000/' + course?.detail?.courseCover}}" alt="C#" style="width: 100%;height: 200px;">
                 <div class="content">
-                  <p><b>{{top.title}}</b>
-                    <span>{{top.author}}</span>
+                  <p><b>{{course?.detail?.title}}</b>
+                    <span>{{course?.instructor_id?.instructorName}}</span>
                   </p>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
                   <i class="fa-solid fa-star"></i>
-                  <p><b>{{top.price}}</b></p>
+                  <p><b>{{course?.detail?.price}}</b></p>
                 </div>
               </div>
               <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
                 <div style="padding:15px">
                   <p style="font-size: 16px;font-weight:bold;text-align: left;">
-                    {{top.title}}
+                    {{course?.detail?.title}}
                     <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
-                      {{top.author}}
+                      {{course?.instructor_id?.instructorName}}
                     </span>
                   </p>
                   <p style="text-align: left;">
-                    {{top.info}}
+                    {{course.detail.description}}
                   </p>
                   <div style="margin-bottom:15px;">
                     <button
@@ -111,10 +111,10 @@
         </ng-container>
       </owl-carousel-o>
       <div class="center btn">
-        <button role="presentation" class="owl-prev prev" (click)="owlPopular.prev()">
+        <button role="presentation" class="owl-prev prev" (click)="owlTop.next()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button role="presentation" class="owl-next next" (click)="owlPopular.next()">
+        <button role="presentation" class="owl-next next" (click)="owlTop.prev()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
@@ -127,28 +127,28 @@
     </div>
     <div class="carousel-inner">
       <owl-carousel-o [options]="customOptions" #owlinstructor>
-        <ng-container *ngFor="let instructor of instructors">
+        <ng-container *ngFor="let instructor of instructorList">
           <ng-template carouselSlide>
             <div class="card">
               <a href="#">
-                <img src="{{instructor.profile}}" style="width: 100%;height: 150px;">
+                <img src="{{'http://localhost:3000/' + instructor?.instructorProfile}}" style="width: 100%;height: 150px;">
                 <div class="info">
                   <table>
                     <tr>
                       <td class="label">Name: </td>
-                      <td>{{instructor.name}}</td>
+                      <td>{{instructor?.instructorName}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Age: </td>
-                      <td>{{instructor.age}}</td>
+                      <td class="label">Email: </td>
+                      <td>{{instructor?.user_id?.email}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Degree: </td>
-                      <td>{{instructor.degree}}</td>
+                      <td class="label">HeadLine: </td>
+                      <td>{{instructor?.headline}}</td>
                     </tr>
                     <tr>
-                      <td class="label">Subject: </td>
-                      <td>{{instructor.subject}}</td>
+                      <td class="label">Biography: </td>
+                      <td>{{instructor?.biography}}</td>
                     </tr>
                   </table>
                 </div>
@@ -159,10 +159,10 @@
       </owl-carousel-o>
 
       <div class="center btn">
-        <button role="presentation" class="owl-prev prev" (click)="owlinstructor.prev()">
+        <button role="presentation" class="owl-prev prev" (click)="owlinstructor.next()">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button role="presentation" class="owl-next next" (click)="owlinstructor.next()">
+        <button role="presentation" class="owl-next next" (click)="owlinstructor.prev()">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>

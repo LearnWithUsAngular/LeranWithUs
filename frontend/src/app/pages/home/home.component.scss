@@ -66,6 +66,12 @@
     .carousel-inner {
       overflow: hidden;
 
+      ::ng-deep {
+        .owl-carousel .owl-item {
+          width: 270px !important;
+        }
+      }
+
       .card {
         position: relative;
         width: 84%;
