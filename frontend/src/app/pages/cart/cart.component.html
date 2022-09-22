@@ -1,69 +1,68 @@
-<table>
-  <tr>
-    <td *ngFor="let item of productItem;let i=index">
-      <div class="thumbnail">
-        <img [src]="item.imageUrl" alt="{{item.name}}" style="width: 200px; height: 200px">
-        <div class="caption">
-          <h3>{{item.name}}</h3>
-          <p>
-            Price {{item.price}} USD
-          </p>
-          <button class="btn btn-primary" role="button" id="{{item.id}}" (click)="onCartUpdated($event, i)">
-            Add to Cart
-          </button>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-<main>
-  <div class="basket">
-    <div class="basket-module">
-      <label for="promo-code">Enter a promotional code</label>
-      <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
-      <button class="promo-code-cta">Apply</button>
-    </div>
-    <div class="basket-labels">
-      <ul>
-        <li class="item item-heading">Item</li>
-        <li class="price">Price</li>
-        <li class="quantity">Quantity</li>
-        <li class="subtotal">Subtotal</li>
-      </ul>
-    </div>
-    <div class="basket-product" *ngFor="let item of cartItems; let i = index">
-      <div class="item">
-        <div class="product-image">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FpRKXeVbKWa1Wo75eOMva5FrE7QCREZgJj8iWNRZf9me2BcCRg" alt="Placholder Image 2" class="product-frame">
-        </div>
-        <div class="product-details">
-          <strong>{{item.name}}</strong>
-        </div>
-      </div>
-      <div class="price">{{item.price}} USD</div>
-      <div class="quantity">
-        <input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity"
-          (change)="onCartItemChanged($event)" class="quantity-field">
-      </div>
-      <div class="subtotal">{{item.quantity * item.price}} USD</div>
-      <div class="remove">
-        <button (click)="onCartItemDeleted(item.id)">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </div>
-    </div>
+<div class="wrapper">
+  <div class="product-items l-inner">
+    <h2 class="main-ttl">Shopping Cart</h2>
+    <table>
+      <tr>
+        <td *ngFor="let item of productItem;let i=index">
+          <div class="thumbnail">
+            <img [src]="item.imageUrl" alt="{{item.name}}">
+            <div class="caption">
+              <h3>{{item.name}}</h3>
+              <p>
+                Price {{item.price}} USD
+              </p>
+              <button class="btn btn-primary" role="button" id="{{item.id}}" (click)="onCartUpdated($event, i)">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
-  <aside>
-    <div class="summary">
-      <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
-      <div class="summary-total">
-        <div class="total-title">Total</div>
-        <div class="total-value final-value" id="basket-total">{{cartTotal}}</div>
+  <main class="l-inner">
+    <div class="basket">
+      <div class="basket-module">
+        <label for="promo-code">Enter a promotional code</label>
+        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
+        <button class="promo-code-cta">Apply</button>
       </div>
-      <div class="summary-checkout">
-        <button class="checkout-cta">Checkout</button>
+      <div class="basket-table">
+        <table>
+          <tr>
+            <th class="product-image-ttl">Item</th>
+            <th class="price">Price</th>
+            <th class="quantity">Quantity</th>
+            <th class="subtotal">Subtotal</th>
+            <th class="remove">Action</th>
+          </tr>
+          <tr *ngFor="let item of cartItems; let i = index">
+            <td class="product-image"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FpRKXeVbKWa1Wo75eOMva5FrE7QCREZgJj8iWNRZf9me2BcCRg" alt="Placholder Image 2" class="product-frame">
+              <p>{{item.name}}</p>
+            </td>
+            <td>{{item.price}} USD</td>
+            <td><input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity" (change)="onCartItemChanged($event)" class="quantity-field"></td>
+            <td>{{item.quantity * item.price}} USD</td>
+            <td class="remove-btn">
+              <button (click)="onCartItemDeleted(item.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
-  </aside>
-</main>
+    <aside class="summary">
+      <div class="l-inner">
+        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">{{cartTotal}}</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
