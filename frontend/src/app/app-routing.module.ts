@@ -96,6 +96,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
   },
   {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule)
+  },
+  {
     path: 'create-user',
     loadChildren: () => import('./pages/create-user/create-user.module').then(m => m.CreateUserModule)
   },
