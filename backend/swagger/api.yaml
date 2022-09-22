@@ -683,6 +683,208 @@ paths:
           $ref: "#/components/responses/UnauthorizedError"
 
   # Course Video Routes
+  /api/courses:
+    get:
+      tags:
+        - Course
+      summary: Get Courses
+      description: Get Courses
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/courseResponse"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    post:
+      tags:
+        - Course
+      description: Create Courses
+      summary: Create Courses
+      security:
+        - bearerAuth: []
+      operationId: createCourses
+      requestBody:
+        description: Enter Courses Data
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Angular Beginner Tutorial"
+                subtitle:
+                  type: string
+                  example: "Angular Beginner Tutorial"
+                description:
+                  type: string
+                  example: "Angular Advanced Tutorial"
+                language:
+                  type: string
+                  example: "Myanmar"
+                level:
+                  type: string
+                  example: "Beginner"
+                category_id:
+                  type: string
+                  example: "6318417fb2abbddd02ebdcec"
+                courseCover:
+                  type: string
+                  format: binary
+                currency:
+                  type: string
+                  example: "MMK"
+                price:
+                  type: string
+                  example: "15000"
+                promocode:
+                  type: string
+                  example: "1234567"
+                courseUpload:
+                  type: string
+                  example: "['6328199d3b26a1d079f6666a', '63281ac019b807bbd05be113', '632ac27498d3e960e935ab23']"
+                instructor_id:
+                  type: string
+                  example: "631e8e55b9694e16668287c9"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/createCourseResponse"
+        "400":
+          description: Invalid course video value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  /api/courses/{id}:
+    get:
+      tags:
+        - Course
+      description: Get Course by Id
+      summary: Get Course by Id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of course to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/courseIdResponse"
+        "400":
+          description: Invalid course video value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    put:
+      tags:
+        - Course
+      description: Update Course by Id
+      summary: Update Course by Id
+      security:
+        - bearerAuth: []
+      operationId: updateCourseId
+      parameters:
+        - name: id
+          in: path
+          description: ID of Course to return
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Enter Course Data
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: "Angular Beginner Tutorial"
+                subtitle:
+                  type: string
+                  example: "Angular Beginner Tutorial"
+                description:
+                  type: string
+                  example: "Angular Advanced Tutorial"
+                language:
+                  type: string
+                  example: "MMK"
+                level:
+                  type: string
+                  example: "Beginner"
+                category_id:
+                  type: string
+                  example: "6318417fb2abbddd02ebdcec"
+                courseCover:
+                  type: string
+                  format: binary
+                currency:
+                  type: string
+                  example: "MMK"
+                price:
+                  type: string
+                  example: "15000"
+                promocode:
+                  type: string
+                  example: "1234567"
+                courseUpload:
+                  type: string
+                  example: "['6328199d3b26a1d079f6666a', '63281ac019b807bbd05be113', '632ac27498d3e960e935ab23']"
+                instructor_id:
+                  type: string
+                  example: "631e8e55b9694e16668287c9"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/updateCourseResponse"
+        "400":
+          description: Invalid courseVideo value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+    delete:
+      tags:
+        - Course
+      description: Delete Course By Id
+      security:
+        - bearerAuth: []
+      operationId: deleteCourses
+      parameters:
+        - name: id
+          in: path
+          description: CourseVideo Id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/deleteCourseResponse"
+        "400":
+          description: Invalid Course value
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+
+  # Course Video Routes
   /api/course/video:
     get:
       tags:
@@ -1122,6 +1324,75 @@ components:
           description: The status code
           example: 1
 
+# Course Schemas.
+    courseResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          description: course data
+          example: []
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    createCourseResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Created Successfully
+        data:
+          type: object
+          description: course data
+          example:
+            message: "Created Successfully!"
+            data: {}
+            status: 1
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    courseIdResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: courseVideo data
+          example:
+            data: {}
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    updateCourseResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Updated Successfully
+        data:
+          type: object
+          example: {}
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
+    deleteCourseResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Deleted Successfully!
+        status:
+          type: integer
+          description: The status code
+          example: 1
+
 # CourseVideo Schemas.
     courseVideoResponse:
       type: object
@@ -1178,7 +1449,7 @@ components:
           example: Updated Successfully
         data:
           type: object
-          description: category data
+          description: course video data
           example:
             _id: "63194cf2e52affece96486c3"
             courseName: "Angular"

@@ -5,7 +5,7 @@ const priceSchema = new Schema(
   {
     currency: {
       type: String,
-      enum: ['USD', 'AUD', 'MM', 'SGD'],
+      enum: ['USD', 'AUD', 'MMK', 'SGD'],
       default: 'USD'
     },
     price: {
@@ -37,7 +37,7 @@ const courseSchema = new Schema(
       },
       language: {
         type: String,
-        enum: ['Engish', 'Myanmar'],
+        enum: ['English', 'Myanmar'],
       },
       level: {
         type: String,
@@ -45,7 +45,8 @@ const courseSchema = new Schema(
       },
       category_id: {
         type: Schema.Types.ObjectId,
-        ref: "category"
+        ref: "category",
+        autopopulate: true
       },
       courseCover: {
         type: String,
@@ -56,7 +57,8 @@ const courseSchema = new Schema(
     courseUpload: [String],
     instructor_id: {
       type: Schema.Types.ObjectId,
-      ref: "instructor"
+      ref: "instructor",
+      autopopulate: true
     },
     deleted_at: {
       type: Date
@@ -65,5 +67,5 @@ const courseSchema = new Schema(
   timestamps: true
 }
 )
-
+courseSchema.plugin(require('mongoose-autopopulate'));
 export default model("course", courseSchema)

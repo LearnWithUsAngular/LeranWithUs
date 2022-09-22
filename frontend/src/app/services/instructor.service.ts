@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class InstructorService {
 
   constructor(private http: HttpClient) { }
   token!: string;
@@ -18,11 +18,11 @@ export class UserService {
     .set('Authorization', `Bearer ${this.token}`);
   options = { headers: this.headerOptions };
 
-  createAccount(payload: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/signup`, payload).pipe(retry(3));
-  }
-
-  getUsers(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/getUser`, this.options);
+  /**
+   * get instructors.
+   * @returns 
+   */
+  getInstructors(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/instructors`, this.options).pipe(retry(1));
   }
 }

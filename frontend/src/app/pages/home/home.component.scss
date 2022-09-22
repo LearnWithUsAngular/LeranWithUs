@@ -30,8 +30,14 @@
     .carousel-inner {
       overflow: hidden;
 
+      ::ng-deep {
+        .owl-carousel .owl-item {
+          width: 270px !important;
+        }
+      }
+
       .card {
-        width: 84%;
+        width: 215px;
         height: 100%;
         border: 1px solid #ccc;
         box-sizing: border-box;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { popular, top, cartItem, instructor } from 'src/app/constants/learn';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { popular, top, cartItem, instructor } from 'src/app/constants/learn';
+import { CourseServiceService } from 'src/app/services/course-service.service';
+import { InstructorService } from 'src/app/services/instructor.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,8 @@ export class HomeComponent implements OnInit {
   tops: any;
   cartItems: any;
   instructors: any;
+  public courseList: any = [];
+  public instructorList: any = [];
 
   customOptions: OwlOptions = {
     loop: false,
@@ -23,16 +27,20 @@ export class HomeComponent implements OnInit {
     navSpeed: 70,
     autoHeight: true,
     autoWidth: true,
-  }
+  };
 
-  constructor() { }
+  constructor(
+    public courseService: CourseServiceService,
+    public instructorService: InstructorService
+    ) { }
 
   ngOnInit(): void {
     this.populars = popular;
     this.tops = top;
     this.cartItems = cartItem;
     this.instructors = instructor;
-
+    this.getCourse();
+    this.getInstructor();
   }
 
   onMOver(event: MouseEvent) {
@@ -46,6 +54,20 @@ export class HomeComponent implements OnInit {
     const parent = <HTMLDivElement>card.parentElement;
 
     parent.style.zIndex = '0';
+  }
+
+  getCourse() {
+    this.courseService.getCourses().subscribe((course: any) => {
+      console.log('course', course.data);
+      this.courseList = course.data;
+    })
+  }
+
+  getInstructor() {
+    this.instructorService.getInstructors().subscribe((instructor: any) => {
+      console.log('instructor', instructor.data);
+      this.instructorList = instructor.data;
+    });
   }
 
 }
