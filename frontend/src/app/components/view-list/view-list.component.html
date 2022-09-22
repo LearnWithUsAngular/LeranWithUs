@@ -1,0 +1,97 @@
+<div class="wrapper">
+  <div class="" *ngIf="router.url.indexOf('/category-list') !== -1">
+    <div class="category"
+      *ngFor="let category of categories | paginate: { itemsPerPage: 5, currentPage: p }; let i=index"
+      (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+
+      <a href="#">
+        <div class="image">
+          <img src="{{category.img}}" width="300px" height="200px">
+        </div>
+        <div class="content">
+          <h3>{{ category.title }}</h3>
+          <p class="info">{{ category.info }}</p>
+          <p class="author">{{ category.author }}</p>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="price">
+          <p>{{ category.price }}</p>
+        </div>
+      </a>
+
+      <div class="hover_content" [ngClass]="((i+1) % 5 === 1) ? 'content_left' : ''">
+        <div style="padding:15px">
+          <p style="font-size: 16px;font-weight:bold;text-align: left;">
+            {{category.title}}
+            <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+              {{category.author}}
+            </span>
+          </p>
+          <p style="text-align: left;">
+            {{category.info}}
+          </p>
+          <div style="margin-bottom:15px;">
+            <button
+              style="text-align: center;padding:10px 50px;background-color:#8a2be2;border: none;margin-right:20px;color: #fff;">
+              Add to cart
+            </button>
+            <button style="border: 50%;width: 35px;height: 35px;border-radius: 50%;border: 1px solid #aaa;">
+              <i class="fa-regular fa-heart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="" *ngIf="router.url.indexOf('/course-list') !== -1">
+    <div class="category"
+      *ngFor="let course of courses | paginate: { itemsPerPage: 5, currentPage: p }; let i=index"
+      (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+
+      <a href="#">
+        <div class="image">
+          <img src="{{course.img}}" width="300px" height="200px">
+        </div>
+        <div class="content">
+          <h3>{{ course.title }}</h3>
+          <p class="info">{{ course.info }}</p>
+          <p class="author">{{ course.author }}</p>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <div class="price">
+          <p>{{ course.price }}</p>
+        </div>
+      </a>
+
+      <div class="hover_content" [ngClass]="((i+1) % 5 === 1) ? 'content_left' : ''">
+        <div style="padding:15px">
+          <p style="font-size: 16px;font-weight:bold;text-align: left;">
+            {{course.title}}
+            <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+              {{course.author}}
+            </span>
+          </p>
+          <p style="text-align: left;">
+            {{course.info}}
+          </p>
+          <div style="margin-bottom:15px;">
+            <button
+              style="text-align: center;padding:10px 50px;background-color:#8a2be2;border: none;margin-right:20px;color: #fff;">
+              Add to cart
+            </button>
+            <button style="border: 50%;width: 35px;height: 35px;border-radius: 50%;border: 1px solid #aaa;">
+              <i class="fa-regular fa-heart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+</div>
