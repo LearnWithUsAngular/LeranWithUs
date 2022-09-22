@@ -741,7 +741,7 @@ paths:
                   example: "MMK"
                 price:
                   type: string
-                  example: "15000"
+                  example: "$19.99"
                 promocode:
                   type: string
                   example: "1234567"
@@ -837,7 +837,7 @@ paths:
                   example: "MMK"
                 price:
                   type: string
-                  example: "15000"
+                  example: "$19.99"
                 promocode:
                   type: string
                   example: "1234567"
