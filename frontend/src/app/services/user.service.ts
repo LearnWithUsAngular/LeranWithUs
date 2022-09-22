@@ -23,10 +23,22 @@ export class UserService {
   }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/getUser`, this.options);
+    return this.http.get(`${environment.apiUrl}/users`, this.options);
   }
 
   findUser(userId: any): Observable<any> {
     return this.http.get(`${environment.apiUrl}/users/` + userId);
+  }
+
+  createUser(payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/users`, payload, this.options);
+  }
+
+  updateUser(payload: any, id: any): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/users/` + id, payload, this.options)
+  }
+
+  deleteUser(id: any): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/users/` + id, this.options)
   }
 }

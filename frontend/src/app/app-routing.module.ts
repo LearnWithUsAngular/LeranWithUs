@@ -118,6 +118,26 @@ const routes: Routes = [
     loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-user/create-user.module').then(m => m.CreateUserModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-user/:id',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then(m => m.EditUserModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'create-category',
+    loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-category/:id',
+    loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

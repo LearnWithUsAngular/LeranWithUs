@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="crud-title">{{ pageTitle }}</h2>
+  <div [formGroup]="categoryForm" class="crud-form">
+    <div class="crud-info">
+      <div class="extra">
+
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label> Category </mat-label>
+          <input matInput type="text" formControlName="category" placeholder="Enter category">
+          <mat-error *ngIf="myForm['category'].hasError('required')">Category Name is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div cdkDropList (cdkDropListDropped)="drop($event)" class="example-list">
+        <ng-container formArrayName="subcategory">
+          <div class="example-box" *ngFor="let subcategoryForm of subcategory.controls ; let i = index"
+            [formGroupName]="i" cdkDrag>
+            <div class="card">
+              <div class="extra">
+                <mat-form-field class="form-group" appearance="outline">
+                  <mat-label>Subcategory </mat-label>
+                  <input matInput type="text" formControlName="subcategory" placeholder="Subcategory">
+                  <mat-error *ngIf="subcon(i).controls['subcategory'].hasError('required')">Subcategory is
+                    required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div *ngIf="i !== 0">
+              <mat-icon class="delete-btn" color="warn" (click)="deleteSubcategory(i)">
+                delete_forever</mat-icon>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <button mat-mini-fab (click)="addSubcategory()">
+        <mat-icon class="add-course-btn">add</mat-icon>
+      </button>
+
+      <div class="button-group">
+        <button mat-flat-button type="button" [disabled]="categoryForm.invalid" (click)="createUpdateCategory()"
+          color="primary" class="btn-submit">{{ buttonname }}</button>
+      </div>
+    </div>
+  </div>

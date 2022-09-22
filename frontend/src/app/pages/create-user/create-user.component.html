@@ -1,0 +1,66 @@
+<div class="user-container">
+  <h2 class="user">Create User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="confirmUser()" class="user-form">
+
+    <!-- Name -->
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" placeholder="Name">
+      <mat-error *ngIf="myForm['name'].hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Email">
+      <mat-error *ngIf="myForm['email'].hasError('required')">Email address is required</mat-error>
+      <mat-error *ngIf="myForm['email'].hasError('pattern')">Please enter a valid email</mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Password">
+      <mat-error *ngIf="myForm['password'].hasError('required')">Password is required</mat-error>
+      <mat-error *ngIf="!myForm['password'].hasError('required') && myForm['password'].hasError('pattern')">
+        Password must contain at least 1uppercase and 1numeric.</mat-error>
+    </mat-form-field>
+
+    <!-- Comfirm Password -->
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="confirmPwd">
+      <mat-error *ngIf="myForm['confirmPwd'].hasError('required')">Confirm password is required</mat-error>
+      <mat-error *ngIf="myForm['confirmPwd'].hasError('mustMatch')">Password must be match</mat-error>
+    </mat-form-field>
+
+    <!-- Phone -->
+    <mat-form-field class="form-group" appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput type="text" (keypress)="keyPress($event)" formControlName="phone" placeholder="Phone">
+      <mat-error *ngIf="myForm['phone'].hasError('required')">Phone is required</mat-error>
+      <mat-error *ngIf="!myForm['phone'].hasError('required') && myForm['phone'].hasError('pattern')">
+        Phone number must be start with 09 and 11 digits</mat-error>
+    </mat-form-field>
+
+    <!-- Profile -->
+    <label>Profile</label>
+    <input #file type="file" (change)="imageUpload($event)" formControlName="profile" accept="image/*"
+      maxFileSize=2000000>
+    <div *ngIf="myForm['profile'].invalid  && (myForm['profile'].dirty || myForm['profile'].touched || submitted)">
+      <mat-error *ngIf="myForm['profile'].hasError('required')" class="profileerror">Profile can't be blank.
+      </mat-error>
+    </div>
+    <div *ngIf="profileImage">
+      <img [src]="profileImage" width="100" height="100" class="profileimg" style="margin-top: 20px;">
+    </div>
+
+    <div class="button-group">
+      <button mat-flat-button type="submit" [disabled]="userForm.invalid" color="primary"
+        class="btn-submit">{{confirmView === true ? 'Confirm' : 'Create'}}</button>
+      <button mat-stroked-button type="button" (click)="clearData()" color="warn">{{confirmView === true ?
+        'Cancel' :
+        'Clear'}}</button>
+    </div>
+  </form>
+</div>
