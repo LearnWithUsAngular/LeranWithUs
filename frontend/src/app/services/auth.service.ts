@@ -90,6 +90,16 @@ export class AuthService {
   }
 
   /**
+   * password change service.
+   * @param id 
+   * @param payload 
+   * @returns 
+   */
+  passwordChange(id: string, payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/password-change/${id}`, payload).pipe(retry(3));
+  }
+
+  /**
    * http error handler.
    * @param error 
    * @returns 

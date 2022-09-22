@@ -29,8 +29,23 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordModule)
   },
   {
-    path: 'instructor',
-    loadChildren: () => import('./instructors/create-course/create-course.module').then(m => m.CreateCourseModule),
+    path: 'instructor-list',
+    loadChildren: () => import('./pages/instructor-list/instructor-list.module').then(m => m.InstructorListModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'create-instructor',
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-instructor/:id',
+    loadChildren: () => import('./pages/crud-instructor/crud-instructor.module').then(m => m.CrudInstructorModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'create-course',
+    loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule),
     canActivate: [AuthGuard]
   },
   {
@@ -74,17 +89,17 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'userprofile',
+    path: 'user-profile/:id',
     loadChildren: () => import('./pages/userprofile/userprofile.module').then(m=> m.UserprofileModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'userpasswordchange',
+    path: 'user-password-change/:id',
     loadChildren: () => import('./pages/user-password-change/user-password-change.module').then(m=> m.UserPasswordChangeModule),
     canActivate: [AuthGuard]
   },
   {
-    path: 'usercourses',
+    path: 'user-courses',
     loadChildren: () => import('./pages/user-courses/user-courses.module').then(m=> m.UserCoursesModule),
     canActivate: [AuthGuard]
   },
@@ -96,6 +111,11 @@ const routes: Routes = [
   {
     path: 'category-list',
     loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
   }
 ];

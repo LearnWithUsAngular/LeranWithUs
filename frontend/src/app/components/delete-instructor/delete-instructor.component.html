@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Instructor Delete</h2>
+<div mat-dialog-content class="mat-dialog">
+  <mat-list role="list">
+
+    <!-- ID -->
+    <mat-list-item role="listitem">
+      <span>ID :</span>
+      <div class="dialog-data">
+        {{data._id}}
+      </div>
+    </mat-list-item>
+
+    <!-- Name -->
+    <mat-list-item role="listitem">
+      <span>Instructor Name :</span>
+      <div class="dialog-data">
+        {{data.instructorName}}
+      </div>
+    </mat-list-item>
+
+    <!-- Headline -->
+    <mat-list-item role="listitem">
+      <span>Headline :</span>
+      <div class="dialog-data">
+        {{data.headline}}
+      </div>
+    </mat-list-item>
+
+    <!-- Biography -->
+    <mat-list-item role="listitem">
+      <span>Biography :</span>
+      <div class="dialog-data">
+        {{data.biography}}
+      </div>
+    </mat-list-item>
+
+  </mat-list>
+</div>
+<div mat-dialog-actions class="close-btn">
+  <button mat-flat-button (click)="cancel()">Close</button>
+  <button mat-flat-button (click)="remove()" color="warn">Delete</button>
+</div>

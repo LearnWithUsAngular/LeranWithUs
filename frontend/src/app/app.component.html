@@ -25,6 +25,9 @@
     <li class="nav-icon">
       <button [routerLink]="['/cart']"><i class="fa-sharp fa-solid fa-cart-shopping"></i></button>
     </li>
+    <li class="nav-icon">
+      <button [routerLink]="['/search']"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </li>
     <li class="dropdown" *ngIf="isUserLoggedIn">
       <button mat-button class="user-btn" [matMenuTriggerFor]="userMenu">
         <mat-icon>person</mat-icon>

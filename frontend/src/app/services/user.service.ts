@@ -25,4 +25,8 @@ export class UserService {
   getUsers(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/getUser`, this.options);
   }
+
+  findUser(userId: any): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/users/` + userId);
+  }
 }
