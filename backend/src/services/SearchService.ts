@@ -1,15 +1,13 @@
 import { Response, NextFunction } from 'express';
-// import Category from '../models/Category';
 import Course from '../models/Course';
-// import Instructor from '../models/Instructor';
 
 export const searchAllService = async (
-  req: any,
+  _req: any,
   res: Response,
-  _next: NextFunction
+  next: NextFunction
 ) => {
   try {
-    const search = await Course.aggregate([
+    const search =await Course.aggregate([
       {
         '$lookup': {
           //searching collection name
@@ -19,11 +17,12 @@ export const searchAllService = async (
           //search query with our [searchId] value
           "pipeline": [
             //searching [searchId] value equals your field [_id]
-            { "$match": { "$expr": { "$eq": [ "$_id", "$$searchId" ] } } },
-            { "$match": { "$and": [
-              { "$or": [{ "instructorName": { '$regex': req.body.keyword, '$options': 'i' }}]},
-              { "$or": [{ "deleted_at": null }] }
-            ]} },
+            { "$match": { "$expr": { "$eq": ["$_id", "$$searchId"] } } },
+            // { "$match": { 
+            //   "$and": [
+            //     { "$or": [{ "instructorName": { '$regex': req.body.keyword, '$options': 'i' }}]},
+            //     { "$or": [{ "deleted_at": null }] }
+            // ]} },
             //projecting only fields you really need, otherwise you will store all - huge data loads
             // { "$project": { "_id": 1, "instructorName": "instructorName" } }
           ],
@@ -38,22 +37,21 @@ export const searchAllService = async (
           'from': 'categories',
           'let': { "searchId": "$detail.category_id" },
           "pipeline": [
-            { "$match": { "$expr": { "$eq": [ "$_id", "$$searchId" ] } } },
+            { "$match": { "$expr": { "$eq": ["$_id", "$$searchId"] } } },
+            // { "$match": {
+            //   "$and": [
+            //     { "$or": [{ category: { '$regex': req.body.keyword, '$options': 'i' } }, { subcategories: { '$regex': req.body.keyword, '$options': 'i' } }] },
+            //     { "$or": [{ deleted_at: null }] }
+            //   ]
+            // }}
           ],
           'as': 'detail.category_id'
         }
-      }
-      
-    ]);
-    // const search = await Course.find({
-    //   $and: [
-    //     // { $or: [{ "detail.title": { '$regex': req.body.keyword, '$options': 'i' }}, { "category": { '$regex': req.body.keyword, '$options': 'i' }} ] },
-    //     { $or: [{ "detail.category": { '$regex': req.body.keyword, '$options': 'i' }} ] },
-    //     { $or: [{ deleted_at: null }] }
-    //   ]
-    // });
+      },
+    ])
     res.json({ data: search, status: 1 })
   } catch (err) {
     console.log(err)
+    next(err)
   }
 }
