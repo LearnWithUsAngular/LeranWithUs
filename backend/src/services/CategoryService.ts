@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
 import Category from '../models/Category';
+import Subcategory from '../models/Subcategory';
 import { CategoryCreate } from '../interfaces/Category';
 import { logger } from '../logger/logger';
 
@@ -149,6 +150,14 @@ export const deleteCategoryService = async (
     }
     category.deleted_at = new Date();
     await category.save();
+
+    const subcategories: any = await Subcategory.find({ category_id: req.params.id});
+    subcategories.forEach((a: any) => {
+      a.deleted_at = new Date();
+    });
+    console.log(subcategories)
+    //need to save update data to subcategories table
+
     res.json({ message: "Deleted Successfully!", status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {
@@ -177,7 +186,8 @@ export const searchByCategoryService = async (
         { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
         { $or: [{ deleted_at: null }] }
       ]
-    })
+    }).populate("subcategories");
+    // need to filter subcategory deleted_at condition
     res.json({ data: category, status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {

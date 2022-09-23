@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { getSubcategoryService, createSubcategoryService, findSubcategoryService, updateSubcategoryService, deleteSubcategoryService } from '../services/SubcategoryService'
+import { getSubcategoryService, createSubcategoryService, findSubcategoryService, updateSubcategoryService, deleteSubcategoryService, searchBySubcategoryService } from '../services/SubcategoryService'
 
 /**
  * Get Subcategory
@@ -70,3 +70,17 @@ export const deleteSubcategory = async (
 ) => {
   deleteSubcategoryService(req, res, next);
 };
+
+/**
+ * Search By Subcategory
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+export const searchBySubcategory = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  searchBySubcategoryService(req, res, next);
+}

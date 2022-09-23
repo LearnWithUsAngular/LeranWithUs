@@ -1,6 +1,6 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { createSubcategory, deleteSubcategory, findSubategory, getSubcategory, updateSubcategory } from '../controllers/SubcategoryController';
+import { createSubcategory, deleteSubcategory, findSubategory, getSubcategory, searchBySubcategory, updateSubcategory } from '../controllers/SubcategoryController';
 
 const router = express.Router();
 
@@ -23,8 +23,8 @@ router
         updateSubcategory)
     .delete(deleteSubcategory)
 
-// router
-//     .route("/search")
-//     .post(searchByCategory)
+router
+    .route("/search")
+    .post(searchBySubcategory)
 
 export default router;
