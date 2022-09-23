@@ -90,7 +90,8 @@ const courseSchema = new Schema(
       },
       category_id: {
         type: Schema.Types.ObjectId,
-        ref: "category"
+        ref: "category",
+        autopopulate: true
       },
       courseCover: {
         type: String,
@@ -101,7 +102,8 @@ const courseSchema = new Schema(
     courseUpload: [courseuploadSchema],
     instructor_id: {
       type: Schema.Types.ObjectId,
-      ref: "instructor"
+      ref: "instructor",
+      autopopulate: true
     },
     deleted_at: {
       type: Date
@@ -111,4 +113,5 @@ const courseSchema = new Schema(
 }
 )
 
+courseSchema.plugin(require('mongoose-autopopulate'));
 export default model("course", courseSchema)
