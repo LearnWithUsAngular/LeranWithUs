@@ -10,6 +10,7 @@ import path from 'path';
 import { rootDir } from './utils/deleteFile';
 import instructor_route from './routes/instructor_route';
 import course_route from './routes/course_route';
+import course_video_route from './routes/course_video_route';
 import auth_route from './routes/auth_route';
 import category_route from './routes/category_route';
 import user_route from './routes/user_route';
@@ -38,7 +39,7 @@ const fileStorage = multer.diskStorage({
       case "courseCover":
         cb(null, 'apiUploads/covers');
         break;
-      case "courseVideo":
+      case "video":
         cb(null, 'apiUploads/courses');
         break;
       default:
@@ -75,7 +76,7 @@ app.use(passport.initialize());
 app.use(multer({ storage: fileStorage, fileFilter }).fields([
   { name: 'instructorProfile', maxCount: 1 },
   { name: 'userProfile', maxCount: 1 },
-  { name: 'courseVideo', maxCount: 1 },
+  { name: 'video', maxCount: 1 },
   { name: 'courseCover', maxCount: 1 }
 ]));
 app.use("/apiUploads", express.static(path.join(rootDir, "apiUploads")));
@@ -92,6 +93,7 @@ mongoose
     app.use("/api/categories", category_route);
     app.use("/api/users", user_route);
     app.use("/api/instructors", instructor_route);
+    app.use("/api/course/video", course_video_route);
     app.use("/api/courses", course_route);
     app.use("/api", auth_route);
     app.use("/api/search", search_route);

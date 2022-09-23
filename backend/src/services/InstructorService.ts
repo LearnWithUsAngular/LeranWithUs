@@ -48,7 +48,7 @@ export const createInstructorService = async (
     }
     let instructorProfile: string = req.body.instructorProfile;
     if (req?.files?.instructorProfile?.length > 0) {
-      instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
+      instructorProfile = req.files.instructorProfile[0].path.replaceAll("\\", "/");
     }
     const instructorInsert = {
       instructorName: req.body.instructorName,
@@ -123,7 +123,7 @@ export const updateInstructorService = async (
     }
     let instructorProfile: string = req.body.instructorProfile;
     if (req?.files?.instructorProfile?.length > 0) {
-      instructorProfile = req.files.instructorProfile[0].path.replace("\\", "/");
+      instructorProfile = req.files.instructorProfile[0].path.replaceAll("\\", "/");
       if (instructor.instructorProfile && instructor.instructorProfile != instructorProfile) {
         deleteFile(instructor.instructorProfile);
       }
@@ -131,7 +131,7 @@ export const updateInstructorService = async (
         instructor.instructorProfile = instructorProfile;
       }
     }
-    instructor.instructureName = req.body.instructorName;
+    instructor.instructorName = req.body.instructorName;
     instructor.headline = req.body.headline;
     instructor.biography = req.body.biography;
     const result = await instructor.save();

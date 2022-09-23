@@ -1,5 +1,5 @@
 .container {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     border-radius: 1px black;
     // padding: 20px;
@@ -17,15 +17,12 @@
     }
 
     .info {
-        .upper {
             display: flex;
-            justify-content: space-between;
-        }
+            justify-content:left;
 
-        // .under {
-        //     display: flex;
-        //     justify-content: end;
-        // }
+            mat-form-field{
+                margin-right: 20px;
+            }
     }
 
     mat-label{

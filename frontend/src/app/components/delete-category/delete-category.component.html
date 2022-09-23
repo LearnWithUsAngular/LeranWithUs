@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>Category Delete</h2>
+<div mat-dialog-content class="mat-dialog">
+  <mat-list role="list">
+
+    <!-- ID -->
+    <mat-list-item role="listitem">
+      <span>ID :</span>
+      <div class="dialog-data">
+        {{data._id}}
+      </div>
+    </mat-list-item>
+
+    <!-- Category -->
+    <mat-list-item role="listitem">
+      <span>Category :</span>
+      <div class="dialog-data">
+        {{data.category}}
+      </div>
+    </mat-list-item>
+
+    <!-- Created Date -->
+    <mat-list-item role="listitem">
+      <span>CreatedAt :</span>
+      <div class="dialog-data">
+        {{data.createdAt | date : 'dd/mm/yyyy'}}
+      </div>
+    </mat-list-item>
+
+  </mat-list>
+</div>
+<div mat-dialog-actions class="close-btn">
+  <button mat-flat-button (click)="cancel()">Close</button>
+  <button mat-flat-button (click)="remove()" color="warn">Delete</button>
+</div>

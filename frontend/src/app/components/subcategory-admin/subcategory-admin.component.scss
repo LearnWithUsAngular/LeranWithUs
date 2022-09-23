@@ -1,0 +1,70 @@
+.container {
+  width: 98%;
+  height: 98%;
+  margin: 1% auto;
+  border-radius: 10px;
+
+  .clearfix::after {
+    clear: both;
+    display: table;
+    content: "",
+  }
+
+  .side {
+    background-color: #575151;
+    color: #fff;
+  }
+
+  .content {
+    .crud-container {
+      width: 80%;
+      margin: 30px auto;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+
+        .btn-gp {
+
+          mat-form-field {
+            float: left;
+            margin-right: 20px;
+          }
+
+          button {
+            float: right;
+            margin-top: 10px;
+            padding: 5px 8px;
+          }
+
+          button {
+            margin-right: 30px;
+
+            mat-icon {
+              transform: scale(0.8);
+            }
+          }
+
+          mat-icon {
+            margin-right: 5px;
+            margin-bottom: 5px;
+            transform: scale(0.8);
+          }
+        }
+      }
+
+      .table-container {
+        .crud-table {
+          width: 100%;
+
+          .mat-header-cell {
+            font-size: 14px;
+            font-weight: 500;
+            background-color: #9c1de7;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

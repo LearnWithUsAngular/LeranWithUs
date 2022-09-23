@@ -16,7 +16,8 @@ export const getCourseService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const resume = await Course.find(condition).populate({ path: 'instructor_id' });
+    // const resume = await Course.find(condition).populate({ path: 'instructor_id' });
+    const resume = await Course.find(condition);
     res.json({ data: resume, status: 1 });
   } catch (err) {
     logger.error("Get Course Service Error");
@@ -37,36 +38,24 @@ export const createCourseService = async (
   next: NextFunction
 ) => {
   try {
-    const detail = JSON.parse(JSON.stringify(req.body.detail));
-    const price = JSON.parse(JSON.stringify(req.body.coursePrice));
-    const cupload = JSON.parse(JSON.stringify(req.body.courseUpload));
-
-    let courses: any = [];
-    JSON.parse(cupload).map((res: any) => {
-      let result = {
-        courseName: res.courseName,
-        description: res.description,
-        courseVideo: req.files.courseVideo[0].path.replace("\\", "/")
-      }
-      courses.push(result)
-    })
+    const courseUpload = req.body.courseUpload;
 
     const courseForm = {
       detail: {
-        title: JSON.parse(detail).title,
-        subtitle: JSON.parse(detail).subtitle,
-        description: JSON.parse(detail).description,
-        language: JSON.parse(detail).language,
-        level: JSON.parse(detail).level,
-        category_id: JSON.parse(detail).category_id,
-        courseCover: req.files.courseCover[0].path.replace("\\", "/")
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        description: req.body.description,
+        language: req.body.language,
+        level: req.body.level,
+        category_id: req.body.category_id,
+        courseCover: req.files.courseCover[0].path.replaceAll("\\", "/")
       },
       coursePrice: {
-        currency: JSON.parse(price).currency,
-        price: JSON.parse(price).price,
-        promocode: JSON.parse(price).promocode
+        currency: req.body.currency,
+        price: req.body.price,
+        promocode: req.body.promocode
       },
-      courseUpload: courses,
+      courseUpload: courseUpload,
       instructor_id: req.body.instructor_id,
     }
     console.log(courseForm)
@@ -102,6 +91,8 @@ export const findCourseService = async (
     }
     res.json({ data: course, status: 1 });
   } catch (err: any) {
+    logger.error('Get Course By Id');
+    logger.error(err);
     if (!err.statusCode) {
       err.statusCode = 500;
     }
@@ -127,13 +118,11 @@ export const updateCourseService = async (
       error.statusCode = 404;
       throw error;
     }
-    const detail = JSON.parse(JSON.stringify(req.body.detail));
-    const price = JSON.parse(JSON.stringify(req.body.coursePrice));
-    const cupload = JSON.parse(JSON.stringify(req.body.courseUpload));
+    const courseUpload = req.body.courseUpload;
 
     let courseCover: string = req.files.courseCover;
-    if (req.files) {
-      courseCover = req.files.courseCover[0].path.replace("\\", "/");
+    if (req?.files?.courseCover && req.files?.courseCover?.length > 0) {
+      courseCover = req.files.courseCover[0].path.replaceAll("\\", "/");
       if (course.detail.courseCover && course.detail.courseCover != courseCover) {
         deleteFile(course.detail.courseCover);
       }
@@ -142,34 +131,24 @@ export const updateCourseService = async (
       }
     }
 
-    let courses: any = [];
-    JSON.parse(cupload).map((res: any) => {
-      let result = {
-        courseName: res.courseName,
-        description: res.description,
-        courseVideo: req.files.courseVideo[0].path.replace("\\", "/")
-      }
-      courses.push(result)
-    })
+    course.detail.title = req.body.title;
+    course.detail.subtitle = req.body.subtitle;
+    course.detail.description = req.body.description;
+    course.detail.language = req.body.language;
+    course.detail.level = req.body.level;
+    course.detail.category_id = req.body.category_id;
 
-    course.detail.title = JSON.parse(detail).title;
-    course.detail.subtitle = JSON.parse(detail).subtitle;
-    course.detail.description = JSON.parse(detail).description;
-    course.detail.language = JSON.parse(detail).language;
-    course.detail.level = JSON.parse(detail).level;
-    course.detail.category_id = JSON.parse(detail).category_id;
-
-    course.coursePrice.currency = JSON.parse(price).currency;
-    course.coursePrice.price = JSON.parse(price).price;
-    course.coursePrice.promocode = JSON.parse(price).promocode;
-
-    course.courseUpload = courses;
-
+    course.coursePrice.currency = req.body.currency;
+    course.coursePrice.price = req.body.price;
+    course.coursePrice.promocode = req.body.promocode;
+    course.courseUpload = courseUpload;
     course.instructor_id = req.body.instructor_id;
 
     const result = await course.save();
     res.json({ message: "Updated Successfully!", data: result, status: 1 });
   } catch (err: any) {
+    logger.error('Course Update API Error');
+    logger.error(err);
     if (!err.statusCode) {
       err.statusCode = 500;
     }
@@ -202,7 +181,7 @@ export const deleteCourseService = async (
     if (!err.statusCode) {
       err.statusCode = 500;
     }
-    logger.error("delete category service error");
+    logger.error("Delete Course service API error");
     logger.error(err);
     next(err)
   }
