@@ -17,7 +17,7 @@ export const getCategoryService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await Category.find(condition);
+    const result = await Category.find(condition).populate("subcategories");
     const count = await Category.count(condition);
     res.json({ data: result, total: count, status: 1 });
   } catch (err) {
@@ -26,7 +26,6 @@ export const getCategoryService = async (
     logger.error(err);
   }
 };
-
 
 /**
  * Create Category Service
@@ -48,8 +47,7 @@ export const createCategoryService = async (
       throw error;
     }
     const categoryInsert: CategoryCreate = {
-      category: req.body.category,
-      subcategories: req.body.subcategories
+      category: req.body.category
     }
     const category = new Category(categoryInsert);
     const result = await category.save();
@@ -76,7 +74,7 @@ export const findCategoryService = async (
   next: NextFunction
 ) => {
   try {
-    const category = await Category.findById(req.params.id)
+    const category = await Category.findById(req.params.id).populate("subcategories")
     if (!category) {
       const error: any = Error("Not Found!");
       error.statusCode = 404;
@@ -119,7 +117,6 @@ export const updateCategoryService = async (
       throw error;
     }
     category.category = req.body.category;
-    category.subcategories = req.body.subcategories
     const result = await category.save();
     res.json({ message: "Updated Successfully!", data: result, status: 1 });
   } catch (err: any) {
@@ -177,7 +174,7 @@ export const searchByCategoryService = async (
   try {
     const category = await Category.find({
       $and: [
-        { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' } }, { subcategories: { '$regex': req.body.keyword, '$options': 'i' } }] },
+        { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
         { $or: [{ deleted_at: null }] }
       ]
     })
