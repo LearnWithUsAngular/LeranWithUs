@@ -1,0 +1,489 @@
+<div class="wrapper">
+  <div class="l-inner main-ttl">
+    <h2>Development Courses</h2>
+  </div>
+  <div class="course-start l-inner">
+    <h3>Courses to get you started</h3>
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Most Popular">
+        <ng-template matTabContent>
+          <div class="carousel-container">
+            <div class="carousel-inner">
+              <owl-carousel-o [options]="customOptions" #owlPopular>
+                <ng-container *ngFor="let popular of populars,let i = index">
+                  <ng-template carouselSlide>
+                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                      <a href="#">
+                        <img src="{{popular.img}}" alt="C#" class="slider-card-img">
+                        <div class="content">
+                          <p class="popular-ttl">{{popular.title}}
+                            <span>{{popular.author}}</span>
+                          </p>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <p class="price">{{popular.price}}</p>
+                        </div>
+                      </a>
+                      <div class="hover_content" [ngClass]="((i+1) % 2 === 1) ? 'content_left' : ''">
+                        <div class="hover_card">
+                          <p class="hover_content_ttl">
+                            {{popular.title}}
+                            <span>
+                              {{popular.author}}
+                            </span>
+                          </p>
+                          <p class="hover_content_info">
+                            {{popular.info}}
+                          </p>
+                          <div>
+                            <button class="add-cart-btn">
+                              Add to cart
+                            </button>
+                            <button class="fav-btn">
+                              <i class="fa-regular fa-heart"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-container>
+              </owl-carousel-o>
+              <div class="center">
+                <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="New">
+        <ng-template matTabContent>
+          <div class="carousel-container">
+            <div class="carousel-inner">
+              <owl-carousel-o [options]="customOptions" #owlPopular>
+                <ng-container *ngFor="let popular of populars,let i = index">
+                  <ng-template carouselSlide>
+                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                      <a href="#">
+                        <img src="{{popular.img}}" alt="C#" class="slider-card-img">
+                        <div class="content">
+                          <p class="popular-ttl">{{popular.title}}
+                            <span>{{popular.author}}</span>
+                          </p>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <p class="price">{{popular.price}}</p>
+                        </div>
+                      </a>
+                      <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                        <div class="hover_card">
+                          <p class="hover_content_ttl">
+                            {{popular.title}}
+                            <span>
+                              {{popular.author}}
+                            </span>
+                          </p>
+                          <p class="hover_content_info">
+                            {{popular.info}}
+                          </p>
+                          <div>
+                            <button class="add-cart-btn">
+                              Add to cart
+                            </button>
+                            <button class="fav-btn">
+                              <i class="fa-regular fa-heart"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-container>
+              </owl-carousel-o>
+              <div class="center">
+                <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Trending">
+        <ng-template matTabContent>
+          <div class="carousel-container">
+            <div class="carousel-inner">
+              <owl-carousel-o [options]="customOptions" #owlPopular>
+                <ng-container *ngFor="let popular of populars,let i = index">
+                  <ng-template carouselSlide>
+                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                      <a href="#">
+                        <img src="{{popular.img}}" alt="C#" class="slider-card-img">
+                        <div class="content">
+                          <p class="popular-ttl">{{popular.title}}
+                            <span>{{popular.author}}</span>
+                          </p>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <i class="fa-solid fa-star star"></i>
+                          <p class="price">{{popular.price}}</p>
+                        </div>
+                      </a>
+                      <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                        <div class="hover_card">
+                          <p class="hover_content_ttl">
+                            {{popular.title}}
+                            <span>
+                              {{popular.author}}
+                            </span>
+                          </p>
+                          <p class="hover_content_info">
+                            {{popular.info}}
+                          </p>
+                          <div>
+                            <button class="add-cart-btn">
+                              Add to cart
+                            </button>
+                            <button class="fav-btn">
+                              <i class="fa-regular fa-heart"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-container>
+              </owl-carousel-o>
+              <div class="center">
+                <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="component-blk">
+    <div class="component-list l-inner">
+      <div class="component">
+        <i class="fa-sharp fa-solid fa-play component-icon"></i>
+        <p class="component-txt">Learn in-demand skills with over 204,000 video courses</p>
+      </div>
+      <div class="component">
+        <i class="fa-sharp fa-solid fa-star component-icon"></i>
+        <p class="component-txt">Choose courses taught by real-world experts</p>
+      </div>
+      <div class="component">
+        <i class="fa-solid fa-infinity component-icon"></i>
+        <p class="component-txt">Learn at your own pace, with lifetime access on mobile and desktop</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-course l-inner">
+    <div class="carousel-container">
+      <div class="carousel-title">
+        <h3>Featured Courses</h3>
+      </div>
+      <div class="carousel-inner">
+        <owl-carousel-o [options]="featureOptions" #owlPopular>
+          <ng-container *ngFor="let popular of populars,let i = index">
+            <ng-template carouselSlide>
+              <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                <a href="#">
+                  <div class="feature-slider">
+                    <div class="feature-slider-img">
+                      <img src="{{popular.img}}" alt="C#">
+                    </div>
+                    <div class="content">
+                      <p><b>{{popular.title}}</b>
+                        <span style="display: block;">{{popular.author}}</span>
+                      </p>
+                      <i class="fa-solid fa-star star"></i>
+                      <i class="fa-solid fa-star star"></i>
+                      <i class="fa-solid fa-star star"></i>
+                      <i class="fa-solid fa-star star"></i>
+                      <i class="fa-solid fa-star star"></i>
+                      <p><b>{{popular.price}}</b></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+        <div class="center">
+          <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="topic-course l-inner">
+    <div class="carousel-container">
+      <div class="carousel-title">
+        <h3>Popular Topics</h3>
+      </div>
+      <div class="carousel-inner" *ngFor="let item of items;">
+        <owl-carousel-o [options]="topicOptions" #owlPopular>
+          <ng-container *ngFor="let listname of item.topic,let i = index">
+            <ng-template carouselSlide *ngFor="let list of listname.list">
+              <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                <div class="topic-slider">
+                  <div class="content">
+                    <a href="#">{{list.body}}</a>
+                  </div>
+                  <div class="content">
+                    <a href="#">{{list.body}}</a>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+        <div class="center">
+          <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="instructor l-inner">
+    <div class="carousel-container">
+      <div class="carousel-title">
+        <h3>Instructors</h3>
+      </div>
+      <div class="carousel-inner">
+        <owl-carousel-o [options]="instructorOptions" #owlinstructor>
+          <ng-container *ngFor="let instructor of instructors">
+            <ng-template carouselSlide>
+              <a href="#" class="card">
+                <div class="instructor-img">
+                  <img src="{{instructor.profile}}">
+                </div>
+                <div class="info">
+                  <table>
+                    <tr><td>{{instructor.name}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{instructor.age}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{instructor.degree}}</td>
+                    </tr>
+                    <tr>
+                      <td>{{instructor.subject}}</td>
+                    </tr>
+                  </table>
+                </div>
+              </a>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+
+        <div class="center">
+          <button role="presentation" class="owl-prev slider-prev" (click)="owlinstructor.prev()">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button role="presentation" class="owl-next slider-next" (click)="owlinstructor.next()">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="l-inner">
+    <h2>All Development courses</h2>
+    <div class="search-filter">
+      <div>
+        <button (click)="sidebar =! sidebar" mat-stroked-button color="black" class="filter-btn">
+          <mat-icon>filter_list</mat-icon>Filter
+        </button>
+        <mat-form-field appearance="fill">
+          <mat-label>Sort by</mat-label>
+          <select matNativeControl>
+            <option value="most-relevant">Most Relevant</option>
+            <option value="most-reviewed">Most Reviewed</option>
+            <option value="highest-rated">Highest Rated</option>
+            <option value="newest">Newest</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <p class="search-result">1000 results</p>
+    </div>
+  </div>
+  <div class="search-blk l-inner">
+    <div class="search-sidebar" *ngIf="sidebar" [ngClass]="sidebar ? 'show' : 'hide'" [@slideInOut]>
+      <button class="sidebar-close-btn" (click)="sidebar =! sidebar"><i class="fa-solid fa-xmark"></i></button>
+      <mat-accordion *ngFor="let item of items;" [@.disabled]="true">
+        <mat-expansion-panel *ngFor="let listname of item.rating">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{listname.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-radio-group aria-label="Select an option">
+            <div *ngFor="let list of listname.list">
+              <div>
+                <mat-radio-button class="rating-radio" value="1">
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star_half</mat-icon>
+                  <p>{{ list.one }} </p>
+                  <span class="total-num">(1,000)</span>
+                </mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button class="rating-radio" value="2">
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star_border</mat-icon>
+                  <p>{{ list.two }}</p> 
+                  <span class="total-num">(1,000)</span>
+                </mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button class="rating-radio" value="3">
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star_half</mat-icon>
+                  <mat-icon class="star-ico">star_border</mat-icon>
+                  <p>{{ list.three }}</p>
+                  <span class="total-num">(1,000)</span>
+                </mat-radio-button>
+              </div>
+              <div>
+                <mat-radio-button class="rating-radio" value="4">
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star</mat-icon>
+                  <mat-icon class="star-ico">star_border</mat-icon>
+                  <mat-icon class="star-ico">star_border</mat-icon>
+                  <p>{{ list.four }}</p>
+                  <span class="total-num">(1,000)</span>
+                </mat-radio-button>
+              </div>
+            </div>
+          </mat-radio-group>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let listname of item.video">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{listname.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let list of listname.list" class="video-lists">
+            <mat-checkbox color="primary"></mat-checkbox> {{ list.body }}<span class="total-num">(1,000)</span>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let listname of item.topic">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{listname.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div [class.show]="show" class="show-container">
+            <div *ngFor="let list of listname.list" class="video-lists">
+              <mat-checkbox color="primary"></mat-checkbox> {{ list.body }}<span class="total-num">(1,000)</span>
+            </div>
+          </div>
+          <button (click)="show = !show" class="show-btn">{{ show ? 'Show less': 'Show more' }}<i class="fa-solid {{ show ? 'fa-angle-up': 'fa-angle-down' }}"></i></button>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let listname of item.subcategory">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{listname.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let list of listname.list" class="video-lists">
+            <mat-checkbox color="primary"></mat-checkbox> {{ list.body }}<span class="total-num">(1,000)</span>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel *ngFor="let listname of item.level">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{listname.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let list of listname.list" class="video-lists">
+            <mat-checkbox color="primary"></mat-checkbox> {{ list.body }}<span class="total-num">(1,000)</span>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="search-content" [ngClass]="sidebar ? 'half' : 'full'">
+      <div class="category" *ngFor="let category of categories | paginate: { itemsPerPage: 5, currentPage: p }; let i=index" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+        <a href="#">
+          <div class="image">
+            <img src="{{category.img}}">
+          </div>
+          <div class="content">
+            <h3>{{ category.title }}</h3>
+            <p class="info">{{ category.info }}</p>
+            <p class="author">{{ category.author }}</p>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="price">
+            <p>{{ category.price }}</p>
+          </div>
+        </a>
+
+        <div class="hover_content" [ngClass]="((i+1) % 5 === 1) ? 'content_left' : ''">
+          <div style="padding:15px">
+            <p style="font-size: 16px;font-weight:bold;text-align: left;">
+              {{category.title}}
+              <span style="font-size: 12px;font-weight:normal;display:block;padding-top: 5px;">
+                {{category.author}}
+              </span>
+            </p>
+            <p style="text-align: left;">
+              {{category.info}}
+            </p>
+            <div style="margin-bottom:15px;">
+              <button style="text-align: center;padding:10px 50px;background-color:#8a2be2;border: none;margin-right:20px;color: #fff;">
+                Add to cart
+              </button>
+              <button style="border: 50%;width: 35px;height: 35px;border-radius: 50%;border: 1px solid #aaa;">
+                <i class="fa-regular fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+</div>

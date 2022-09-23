@@ -48,7 +48,7 @@ export const createUserService = async (
     }
     let userProfile: string = req.body.userProfile;
     if (req.files) {
-      userProfile = req.files.userProfile[0].path.replace("\\", "/");
+      userProfile = req.files.userProfile[0].path.replaceAll("\\", "/");
     }
     const userInsert = {
       name: req.body.name,
@@ -122,8 +122,8 @@ export const updateUserService = async (
       throw error;
     }
     let userProfile: string = req.body.userProfile;
-    if (req.files) {
-      userProfile = req.files.userProfile[0].path.replace("\\", "/");
+    if (req.files && req.files.userProfile?.length > 0) {
+      userProfile = req.files.userProfile[0].path.replaceAll("\\", "/");
       if (user.userProfile && user.userProfile != userProfile) {
         deleteFile(user.userProfile);
       }

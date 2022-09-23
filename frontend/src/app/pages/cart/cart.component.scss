@@ -2,6 +2,12 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
 
+.l-inner {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1400px;
+}
+
 a {
   border: 0 none;
   outline: 0;
@@ -47,44 +53,127 @@ img,
   width: 100%;
 }
 
-input,
-button,
-.basket,
-.basket-module,
-.basket-labels,
-.item,
-.price,
-.quantity,
-.subtotal,
-.basket-product,
-.product-image,
-.product-details {
-  float: left;
-}
-
 .hide {
   display: none;
 }
 
-main {
-  clear: both;
-  font-size: 0.75rem;
+.product-items {
+  max-width: 1400px;
   margin: 0 auto;
-  overflow: hidden;
-  padding: 1rem 0;
-  width: 1400px;
+  padding: 25px;
+
+  @media only screen and (max-width:1024px) {
+    max-width: 100%;
+    padding: 4.321vw 1.856vw;
+  }
+
+  .thumbnail {
+    img {
+      width: 200px;
+      height: 200px;
+
+      @media only screen and (max-width:768px) {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  }
+
+  table {
+    td {
+      padding-right: 10px;
+    }
+  }
+
+  .main-ttl {
+    font-size: 30px;
+  }
+}
+
+main {
+  display: flex;
+  font-size: 0.75rem;
+  justify-content: space-between;
+
+  @media only screen and (max-width:1024px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .basket,
 aside {
-  padding: 0 1rem;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .basket {
-  width: 70%;
+  width: 68%;
+
+  @media only screen and (max-width:1024px) {
+    width: 100%;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td {
+    text-align: center;
+    padding: 12px;
+  }
+
+  tr {
+    border-bottom: 1px solid #cecece;
+  }
+
+  .product-image-ttl {
+    width: 18%;
+    min-width: 173px;
+    padding: 12px;
+  }
+
+  .price,
+  .subtotal {
+    width: 18%;
+    min-width: 110px;
+    padding: 12px;
+  }
+
+  .quantity {
+    width: 18%;
+    min-width: 110px;
+    padding: 12px;
+  }
+
+  .remove {
+    width: 8%;
+    min-width: 85px;
+    padding: 12px;
+  }
+
+  .product-image {
+    width: 72%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+
+    p {
+      margin: 0;
+      padding-left: 10px;
+      font-weight: 700;
+    }
+  }
+
+  .remove-btn {
+    button {
+      background-color: transparent;
+      color: #ff0000;
+    }
+  }
 }
 
 .basket-module {
@@ -120,16 +209,18 @@ label {
   padding: 0.6875rem 1.25rem 0.625rem;
 }
 
-.basket-labels {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+.basket-table {
+  overflow-x: scroll;
+  border: 1px solid #ccc;
   margin-top: 1.625rem;
 }
 
 ul {
+  display: flex;
   list-style: none;
   margin: 0;
-  padding: 0;
+  border-bottom: 1px solid #cecece;
+  padding: 0 15px;
 }
 
 li {
@@ -138,57 +229,26 @@ li {
   padding: 0.625rem 0;
 }
 
-li.price:before,
-li.subtotal:before {
-  content: '';
-}
-
-.item {
-  width: 55%;
-}
-
-.price,
-.quantity,
-.subtotal {
-  width: 15%;
-}
-
-.subtotal {
-  text-align: right;
-}
-
-.remove {
-  bottom: 1.125rem;
-  float: right;
-  position: absolute;
-  right: 0;
-  text-align: right;
-  width: 45%;
-}
-
 .remove button {
   background-color: transparent;
   color: red;
-  float: none;
   text-decoration: underline;
   text-transform: uppercase;
 }
 
-.item-heading {
-  padding-left: 4.375rem;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .basket-product {
+  display: flex;
   border-bottom: 1px solid #ccc;
-  padding: 1rem 0;
+  padding: 10px 15px;
   position: relative;
 }
 
 .product-image {
   width: 35%;
+
+  @media only screen and (max-width:1024px) {
+    width: 50%;
+  }
 }
 
 .product-details {
@@ -213,23 +273,31 @@ li.subtotal:before {
   font-size: 12px;
   padding: 4px;
   width: 3.75rem;
-}
 
-aside {
-  float: right;
-  position: relative;
-  width: 30%;
+  @media only screen and (max-width:1024px) {
+    width: 47%;
+  }
 }
 
 .summary {
   background-color: #eee;
   border: 1px solid #aaa;
-  padding: 1rem;
-  position: fixed;
-  width: 400px;
+  padding: 10px;
+  width: 30%;
+  height: 180px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
+  @media only screen and (max-width:1024px) {
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width:768px) {
+    width: 80%;
+  }
 }
 
 .summary-total-items {
@@ -242,10 +310,13 @@ aside {
 .summary-total {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  clear: both;
   margin: 1rem 0;
   overflow: hidden;
   padding: 0.5rem 0;
+}
+
+.summary-total {
+  display: flex;
 }
 
 .subtotal-title,
@@ -255,7 +326,6 @@ aside {
 .promo-title,
 .promo-value {
   color: #111;
-  float: left;
   width: 50%;
 }
 
@@ -267,13 +337,11 @@ aside {
 }
 
 .promo-title {
-  float: left;
   width: 70%;
 }
 
 .promo-value {
   color: #8B0000;
-  float: left;
   text-align: right;
   width: 30%;
 }
@@ -298,7 +366,6 @@ aside {
 
 .checkout-cta {
   display: block;
-  float: none;
   font-size: 0.75rem;
   text-align: center;
   text-transform: uppercase;
@@ -314,71 +381,4 @@ aside {
   font-size: 0.625rem;
   height: 34px;
   width: 100%;
-}
-
-@media screen and (max-width: 640px) {
-  aside,
-  .basket,
-  .summary,
-  .item,
-  .remove {
-    width: 100%;
-  }
-  .basket-labels {
-    display: none;
-  }
-  .basket-module {
-    margin-bottom: 1rem;
-  }
-  .item {
-    margin-bottom: 1rem;
-  }
-  .product-image {
-    width: 40%;
-  }
-  .product-details {
-    width: 60%;
-  }
-  .price,
-  .subtotal {
-    width: 33%;
-  }
-  .quantity {
-    text-align: center;
-    width: 34%;
-  }
-  .quantity-field {
-    float: none;
-  }
-  .remove {
-    bottom: 0;
-    text-align: left;
-    margin-top: 0.75rem;
-    position: relative;
-  }
-  .remove button {
-    padding: 0;
-  }
-  .summary {
-    margin-top: 1.25rem;
-    position: relative;
-  }
-}
-
-@media screen and (min-width: 641px) and (max-width: 960px) {
-  aside {
-    padding: 0 1rem 0 0;
-  }
-  .summary {
-    width: 28%;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  main {
-    width: 100%;
-  }
-  .product-details {
-    padding: 0 1rem;
-  }
 }

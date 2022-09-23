@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InstructorServiceService } from 'src/app/services/instructor-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-crud-instructor',
@@ -22,7 +23,8 @@ export class CrudInstructorComponent implements OnInit {
   constructor(
     public instructorSvc: InstructorServiceService,
     public router: Router,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public location :Location
   ) {
     this.instructorCrudForm = new FormGroup({
       instructorName: new FormControl('', Validators.required),
@@ -69,7 +71,7 @@ export class CrudInstructorComponent implements OnInit {
       // formData.append('created_user_id', this.userInfo);
 
       this.instructorSvc.createInstructor(formData).subscribe((dist) => {
-        this.router.navigate(["instructor-list"]);
+       this.location.back();
       });
     } else if (this.confirmView == true && this.buttonName === 'Update') {
       const id: string = this.activatedRoute.snapshot.params['id'];
@@ -81,7 +83,7 @@ export class CrudInstructorComponent implements OnInit {
       // formData.append('created_user_id', this.userInfo);
 
       this.instructorSvc.updateInstructor(formData, id).subscribe((dist) => {
-        this.router.navigate(["instructor-list"]);
+        this.location.back();
       })
     }
     if (this.instructorCrudForm.valid) {

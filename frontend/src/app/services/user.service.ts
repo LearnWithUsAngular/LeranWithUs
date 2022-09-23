@@ -12,7 +12,7 @@ export class UserService {
   token!: string;
 
   ngOnInit(): void {
-     this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IiQyYiQxMiRwOXRzUHFVd0RON3dLLzhXdXZpNlZlek8wNW1LbGc2V2NQU1ZGQWpvVEZDRXlzM3hieThlVyIsImlkIjoiJDJiJDEyJEtoSzJkV3ZFSGJia0o5WjVGTTZzNGVhT3QxUmZrUHFBd3RRVE9UNThsSjNuRmhzSlNsVVlLIiwiaWF0IjoxNjYyOTU1NTE5LCJleHAiOjE2NjMwNDE5MTl9.JqEAFzlctKDRDr4wi9mHICT8-Mfm5eldwDgjZUrUB4g";
+     this.token = localStorage.getItem('token') || '';
   }
   headerOptions = new HttpHeaders()
     .set('Authorization', `Bearer ${this.token}`);
@@ -23,10 +23,22 @@ export class UserService {
   }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/getUser`, this.options);
+    return this.http.get(`${environment.apiUrl}/users`, this.options);
   }
 
   findUser(userId: any): Observable<any> {
     return this.http.get(`${environment.apiUrl}/users/` + userId);
+  }
+
+  createUser(payload: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/users`, payload, this.options);
+  }
+
+  updateUser(payload: any, id: any): Observable<any> {
+    return this.http.put(`${environment.apiUrl}/users/` + id, payload, this.options)
+  }
+
+  deleteUser(id: any): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/users/` + id, this.options)
   }
 }

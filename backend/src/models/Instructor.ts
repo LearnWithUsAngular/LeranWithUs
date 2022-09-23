@@ -17,7 +17,8 @@ const instructorSchema = new Schema({
   },
   user_id: {
     type: Schema.Types.ObjectId,
-    ref: "user"
+    ref: "user",
+    autopopulate: true
   },
   deleted_at: {
     type: Date
@@ -27,4 +28,5 @@ const instructorSchema = new Schema({
     timestamps: true
   }
 );
+instructorSchema.plugin(require('mongoose-autopopulate'));
 export default model("instructor", instructorSchema)

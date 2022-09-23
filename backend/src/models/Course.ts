@@ -1,42 +1,11 @@
 import { Schema, model } from "mongoose";
 
-// const detailSchema = new Schema({
-//     title: {
-//         type: String,
-//         // required: true
-//     },
-//     subtitle: {
-//         type: String,
-//         // required: true
-//     },
-//     description: {
-//         type: String,
-//         // required: true
-//     },
-//     language: {
-//         type: String,
-//         enum: ['Engish', 'Myanmar'],
-//     },
-//     level: {
-//         type: String,
-//         enum: ['Beginner', 'Intermediate', 'Expert', 'All Level'],
-//     },
-//     category_id: {
-//         type: Schema.Types.ObjectId,
-//         ref: "category"
-//     },
-//     courseCover: {
-//         type: String,
-//         // required: true
-//     }
-// }
-// )
 
 const priceSchema = new Schema(
   {
     currency: {
       type: String,
-      enum: ['USD', 'AUD', 'MM', 'SGD'],
+      enum: ['USD', 'AUD', 'MMK', 'SGD'],
       default: 'USD'
     },
     price: {
@@ -49,21 +18,7 @@ const priceSchema = new Schema(
       default: ''
     }
   }
-)
-
-const courseuploadSchema = new Schema(
-  {
-    courseName: {
-      type: String,
-    },
-    description: {
-      type: String,
-    },
-    courseVideo: {
-      type: String
-    }
-  }
-)
+);
 
 const courseSchema = new Schema(
   {
@@ -82,7 +37,7 @@ const courseSchema = new Schema(
       },
       language: {
         type: String,
-        enum: ['Engish', 'Myanmar'],
+        enum: ['English', 'Myanmar'],
       },
       level: {
         type: String,
@@ -90,7 +45,8 @@ const courseSchema = new Schema(
       },
       category_id: {
         type: Schema.Types.ObjectId,
-        ref: "category"
+        ref: "category",
+        autopopulate: true
       },
       courseCover: {
         type: String,
@@ -98,10 +54,11 @@ const courseSchema = new Schema(
       }
     },
     coursePrice: priceSchema,
-    courseUpload: [courseuploadSchema],
+    courseUpload: [String],
     instructor_id: {
       type: Schema.Types.ObjectId,
-      ref: "instructor"
+      ref: "instructor",
+      autopopulate: true
     },
     deleted_at: {
       type: Date
@@ -110,5 +67,5 @@ const courseSchema = new Schema(
   timestamps: true
 }
 )
-
+courseSchema.plugin(require('mongoose-autopopulate'));
 export default model("course", courseSchema)
