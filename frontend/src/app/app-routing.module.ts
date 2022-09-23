@@ -110,38 +110,12 @@ const routes: Routes = [
   },
   {
     path: 'category-list',
-<<<<<<< .mine
-    loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule)
+    loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'course-list',
-    loadChildren: () => import('./pages/course-list/course-list.module').then(m => m.CourseListModule)
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-    loadChildren: () => import('./pages/category-list/category-list.module').then(m => m.CategoryListModule),
+    loadChildren: () => import('./pages/course-list/course-list.module').then(m => m.CourseListModule),
     canActivate: [AuthGuard]
   },
   {
@@ -170,7 +144,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
->>>>>>> .theirs
 ];
 
 @NgModule({

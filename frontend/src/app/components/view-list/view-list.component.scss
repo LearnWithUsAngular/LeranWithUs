@@ -10,7 +10,7 @@
     a {
       text-decoration: none;
       display: flex;
-      justify-content: space-between;
+      justify-content: start;
       color: #333;
     }
 
@@ -60,7 +60,6 @@
   .content_left {
     position: absolute;
     width: 300px;
-    height: 300px;
     visibility: hidden;
     border: 1px solid #cecece;
     z-index: 1;

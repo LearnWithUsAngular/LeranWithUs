@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { retry } from 'rxjs';
+import { retry, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseServiceService {
+
+  public dataSubject : Subject<any> = new Subject();
 
   courseDetailForm!: FormGroup;
   courseUploadForm!: FormGroup;
