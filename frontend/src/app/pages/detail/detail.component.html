@@ -1,0 +1,373 @@
+<div class="header" id="header">
+  <h2 class="maintitle">{{headingtxt[0].maintitle}}</h2>
+  <ng-template [ngIf]="headingtxt[0].bestseller">
+    <p class="bestsell">Best Seller</p>
+  </ng-template>
+  <div class="content">
+    <span>{{headingtxt[0].star}}</span>
+    <i class="fa-sharp fa-solid fa-star"></i>
+    <i class="fa-sharp fa-solid fa-star"></i>
+    <i class="fa-sharp fa-solid fa-star"></i>
+    <i class="fa-sharp fa-solid fa-star"></i>
+    <i class="fa-solid fa-star-half-stroke"></i>
+    <span>(<a href="#">{{headingtxt[0].rating}}</a>)</span>
+    <span>{{headingtxt[0].student}}</span>
+  </div>
+</div>
+<div class="detail-wrapper">
+  <section class="detail-head">
+    <div class="detail-inner">
+      <div class="detail-head-txt">
+        <ul class="breadcrumb">
+          <li><a href="#">{{breadcrumbnavi[0].title}}</a></li>
+          <li><a href="#">{{breadcrumbnavi[0].lang}}</a></li>
+          <li>{{breadcrumbnavi[0].langname}}</li>
+        </ul>
+        <div class="main-visual">
+          <iframe width="100%" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+          </iframe>
+        </div>
+        <h2 class="maintitle">{{headingtxt[0].maintitle}}</h2>
+        <p class="desc">{{headingtxt[0].description}}</p>
+        <ng-template [ngIf]="headingtxt[0].bestseller">
+          <p class="bestsell">Best Seller</p>
+        </ng-template>
+        <div class="content">
+          <span>{{headingtxt[0].star}}</span>
+          <i class="fa-sharp fa-solid fa-star"></i>
+          <i class="fa-sharp fa-solid fa-star"></i>
+          <i class="fa-sharp fa-solid fa-star"></i>
+          <i class="fa-sharp fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <span>(<a href="#">{{headingtxt[0].rating}}</a>)</span>
+          <span>{{headingtxt[0].student}}</span>
+        </div>
+        <p>Created by <a href="#">{{headingtxt[0].creator[0]}}</a></p>
+        <div class="header-info">
+          <span><i class="fa-solid fa-circle-exclamation"></i> Last Updated {{headingtxt[0].lastupdate}}</span>
+          <span><i class="fa-solid fa-globe"></i> {{headingtxt[0].language}}</span>
+          <span><i class="fa-regular fa-closed-captioning"></i>{{headingtxt[0].cc}}</span>
+        </div>
+        <div class="sidebar-info">
+          <span class="discount">${{detailsidebar[0].discount}}</span>
+          <button mat-button class="add-btn">Go to Cart</button>
+          <p class="guarantee">30-Day Money-Back Guarantee</p>
+          <p>{{detailsidebar[0].accesslife}} lifetime access</p>
+          <ul class="suggest-opt">
+            <li (click)="openDialog()">Share</li>
+            <li>Gift this course</li>
+            <li (click)="showCouponForm()">Apply Coupon</li>
+          </ul>
+          <form class="coupon-form" *ngIf="detailsidebar[0].coupon">
+            <input type="text" placeholder="Enter Coupon">
+            <button type="submit">Apply</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-img" id="sidebar-img">
+        <iframe width="100%" height="245" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe>
+      </div>
+      <div class="sidebar-inner">
+        <span class="discount">${{detailsidebar[0].discount}}</span><span class="price">${{detailsidebar[0].price}}</span><span>{{detailsidebar[0].percentoff}}% off</span>
+        <p class="dayleft">
+          <mat-icon>alarm</mat-icon><strong>{{detailsidebar[0].dayleft}} day</strong>left at this price!
+        </p>
+        <button mat-button class="add-btn">Go to Cart</button>
+        <button mat-button class="btn">Buy Now</button>
+        <p class="guarantee">30-Day Money-Back Guarantee</p>
+        <h3>This course includes:</h3>
+        <ul class="course-inclusion">
+          <li>
+            <i class="fa-brands fa-youtube"></i>{{detailsidebar[0].duration}} hours on-demand video
+          </li>
+          <li>
+            <i class="fa-solid fa-file"></i>{{detailsidebar[0].article}} article
+          </li>
+          <li>
+            <i class="fa-solid fa-download"></i>{{detailsidebar[0].downloadable}} downloadable resources
+          </li>
+          <li>
+            <i class="fa-solid fa-infinity"></i>{{detailsidebar[0].accesslife}} lifetime access
+          </li>
+          <li>
+            <i class="fa-solid fa-mobile"></i>Access {{detailsidebar[0].accessible}}
+          </li>
+          <li>
+            <i class="fa-solid fa-trophy"></i>{{detailsidebar[0].achieve}}
+          </li>
+        </ul>
+        <ul class="suggest-opt">
+          <li (click)="openDialog()">Share</li>
+          <li>Gift this course</li>
+          <li (click)="showCouponForm()">Apply Coupon</li>
+        </ul>
+        <form class="coupon-form" *ngIf="detailsidebar[0].coupon">
+          <input type="text" placeholder="Enter Coupon">
+          <button type="submit">Apply</button>
+        </form>
+        <h3>Training 5 or more people?</h3>
+        <p>Get your team access to 17,000+ top Udemy courses anytime, anywhere.</p>
+        <button mat-button class="btn">Try Udemy Business</button>
+      </div>
+    </div>
+  </section>
+  <section class="main-content">
+    <div class="detail-inner">
+      <div class="main-inner box">
+        <h2>What you'll learn</h2>
+        <ul class="learnlist">
+          <li *ngFor="let learn of tolearn">{{learn}}</li>
+        </ul>
+      </div>
+      <div class="main-inner">
+        <h3 class="ttl-1">Course content</h3>
+        <div class="course-content">
+          <span>{{courses[0].section}} sections</span>
+          <span>{{courses[0].lecture}} lectures</span>
+          <span>{{courses[0].duration}} total length</span>
+          <span (click)="toggleAccord()" class="expander">{{expandtxt}}</span>
+        </div>
+      </div>
+      <div class="main-inner box accor">
+        <mat-accordion [togglePosition]="'before'" [multi]=true>
+          <mat-expansion-panel *ngFor="let accor of accord">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{accor.title}}
+              </mat-panel-title>
+              <mat-panel-description>
+                <span>{{accor.descript[0]}} lectures</span> •
+                <span>{{accor.descript[1]}} min</span>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p *ngFor="let c of accor.content" class="accor-content">
+              <i class="fa-solid fa-circle-play"></i>
+              <span><a href="#">{{c.name}}</a></span>
+              <span class="preview">{{c.trailor}}</span>
+              <span class="min">{{c.length}}</span>
+            </p>
+          </mat-expansion-panel>
+          <ng-template [ngIf]="showaccordion">
+            <mat-expansion-panel *ngFor="let accor of accord">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{accor.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  <span>{{accor.descript[0]}} lectures</span> •
+                  <span>{{accor.descript[1]}} min</span>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p *ngFor="let c of accor.content" class="accor-content">
+                <i class="fa-solid fa-circle-play"></i>
+                <span><a href="#">{{c.name}}</a></span>
+                <span class="preview">{{c.trailor}}</span>
+                <span class="min">{{c.length}}</span>
+              </p>
+            </mat-expansion-panel>
+          </ng-template>
+        </mat-accordion>
+        <button (click)="showAccord()" class="btn full-btn" *ngIf="!showaccordion">5 more sections</button>
+      </div>
+
+      <div class="main-inner">
+        <h2>Requirements</h2>
+        <ul class="requirements">
+          <li *ngFor="let r of require">{{r}}</li>
+        </ul>
+        <div [class.moreless-content]="!showMore==true">
+          <h2>Description</h2>
+          <h3>{{desc[0]}}</h3>
+          <p>
+            {{(showMore) ? desc[1] : desc[1] | slice:0:118}} <span *ngIf="!showMore">{{desc[1] | slice:120:225}}</span>
+          </p>
+        </div>
+        <a href="javascript:;" (click)="showMoreLess('0')" class="moreless">
+          <ng-template [ngIf]="showMore"><span>Show Less</span>
+            <mat-icon>expand_less</mat-icon>
+          </ng-template>
+          <ng-template [ngIf]="!showMore"><span>Show More</span>
+            <mat-icon>expand_more</mat-icon>
+          </ng-template>
+        </a>
+        <h2>Students also bought</h2>
+        <ul class="student-bought" [class.fullcontent]="showFull==true">
+          <li *ngFor="let buy of buylist">
+            <img src="{{buy.imgurl}}" alt="course image">
+            <div class="course-desc">
+              <h3>{{buy.coursename}}</h3>
+              <span>{{buy.totalhrs}}total hours</span>
+              <span>Updated {{buy.date}}</span>
+            </div>
+            <span class="star">{{buy.star}}<i class="fa-solid fa-star"></i></span>
+            <span><i class="fa-sharp fa-solid fa-user-group"></i>{{buy.bought}}</span>
+            <div class="course-fee">
+              <p>{{buy.price}}</p>
+              <p>{{buy.discount}}</p>
+            </div>
+            <div class="heart">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+          </li>
+        </ul>
+        <button (click)="showFullHeight()" class="btn full-btn">{{toggleshow}}</button>
+      </div>
+      <div class="main-inner box">
+        <h2>Frequently Bought Together</h2>
+        <ul class="frequent-buy">
+          <ng-container *ngFor="let buy of buylist,let i =index">
+            <li *ngIf="i<3">
+              <img src="{{buy.imgurl}}" alt="course image">
+              <div class="course-desc">
+                <h3>{{buy.coursename}}</h3>
+                <span class="star">{{buy.star}}
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>({{buy.bought}})</span>
+              </div>
+              <span>{{buy.price}}</span>
+            </li>
+          </ng-container>
+        </ul>
+        <div class="goto-cart">
+          <span>Total:$199.97</span>
+          <button mat-button class="cart-btn">Go to Cart</button>
+        </div>
+      </div>
+      <div class="main-inner">
+        <h2>Instructors</h2>
+        <div class="instructor" [class.moreless-content]="!showMore1==true">
+          <a href="#">{{teacher.name}}</a>
+          <h4>{{teacher.title}}</h4>
+          <div class="instructor-detail">
+            <img src="{{teacher.profile}}" alt="Instructor Image">
+            <div class="about">
+              <p><i class="fa-sharp fa-solid fa-star"></i>{{teacher.rating}} Instructor Rating</p>
+              <p><i class="fa-solid fa-award"></i>{{teacher.review}} Reviews</p>
+              <p><i class="fa-sharp fa-solid fa-user-group"></i>{{teacher.student}} Students</p>
+              <p><i class="fa-solid fa-circle-play"></i>{{teacher.courses}} Courses</p>
+            </div>
+          </div>
+          <p>
+            {{(showMore1) ? teacher.introducing : teacher.introducing | slice:0:200}} <span *ngIf="!showMore1">{{teacher.introducing | slice:200:250}}</span>
+          </p>
+        </div>
+        <a href="javascript:;" (click)="showMoreLess('1')" class="moreless">
+          <ng-template [ngIf]="showMore1"><span>Show Less</span>
+            <mat-icon>expand_less</mat-icon>
+          </ng-template>
+          <ng-template [ngIf]="!showMore1"><span>Show More</span>
+            <mat-icon>expand_more</mat-icon>
+          </ng-template>
+        </a>
+        <div class="student-feedback">
+          <h2>Student feedback</h2>
+
+          <div class="feedback">
+            <div class="lft-feedback">
+              <h3>4.4</h3>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <p>Course Rating</p>
+            </div>
+            <div class="rht-feedback">
+              <p>
+                <mat-progress-bar mode="determinate" value="43"></mat-progress-bar>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <a href="#">43%</a>
+              </p>
+              <p>
+                <mat-progress-bar mode="determinate" value="37"></mat-progress-bar>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <a href="#">37%</a>
+              </p>
+              <p>
+                <mat-progress-bar mode="determinate" value="15"></mat-progress-bar>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <a href="#">15%</a>
+              </p>
+              <p>
+                <mat-progress-bar mode="determinate" value="3"></mat-progress-bar>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <a href="#">3%</a>
+              </p>
+              <p>
+                <mat-progress-bar mode="determinate" value="2"></mat-progress-bar>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <i class="fa-sharp fa-solid fa-star"></i>
+                <a href="#">2%</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <h2>Reviews</h2>
+          <form class="review-form">
+            <div class="search">
+              <input type="text" placeholder="Search Reviews">
+              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <mat-form-field>
+              <select matNativeControl>
+                <option value="All Ratings" selected>All Ratings</option>
+                <option value="Five Stars">Five Stars</option>
+                <option value="Four Stars">Four Stars</option>
+                <option value="Three Stars">Three Stars</option>
+                <option value="Two Stars">Two Stars</option>
+                <option value="One Star">One Star</option>
+              </select>
+            </mat-form-field>
+          </form>
+          <div class="review-cmt">
+            <img src="{{reviewer[0].profile}}">
+            <div class="cmt-box">
+              <h3>{{reviewer[0].name}}</h3>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <i class="fa-sharp fa-solid fa-star"></i>
+              <span>{{reviewer[0].date}} ago</span>
+              <p>{{reviewer[0].cmt}}</p>
+              <span *ngIf="!liked && !unliked">{{reviewer[0].feedback[0]}}</span>
+              <span *ngIf="(!liked && unliked)|| (liked && !unliked)">{{reviewer[0].feedback[1]}}</span>
+              <div>
+                <button (click)="togglelike()" [class.thumb]="liked==true"><i class="fa-solid fa-thumbs-up"></i></button>
+                <button (click)="toggleunlike()" [class.thumb]="unliked==true"><i class="fa-solid fa-thumbs-down"></i></button>
+                <a href="#">Report</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
