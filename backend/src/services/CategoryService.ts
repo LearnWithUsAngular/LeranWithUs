@@ -152,11 +152,10 @@ export const deleteCategoryService = async (
     await category.save();
 
     const subcategories: any = await Subcategory.find({ category_id: req.params.id});
-    subcategories.forEach((a: any) => {
+    subcategories.forEach(async (a: any) => {
       a.deleted_at = new Date();
+      await a.save();
     });
-    console.log(subcategories)
-    //need to save update data to subcategories table
 
     res.json({ message: "Deleted Successfully!", status: 1 });
   } catch (err: any) {
@@ -181,14 +180,28 @@ export const searchByCategoryService = async (
   _next: NextFunction
 ) => {
   try {
-    const category = await Category.find({
-      $and: [
-        { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
-        { $or: [{ deleted_at: null }] }
-      ]
-    }).populate("subcategories");
-    // need to filter subcategory deleted_at condition
-    res.json({ data: category, status: 1 });
+    if(!req.body.keyword) {
+      let condition: any = { deleted_at: null };
+      const result = await Category.find(condition).populate("subcategories");
+      const count = await Category.count(condition);
+      res.json({ data: result, total: count, status: 1 });
+    }
+    
+    if(req.body.keyword) {
+      // let condition: any = { deleted_at: null };
+      // const category = await Category.find({
+      //   $and: [
+      //     { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
+      //     { $or: [ condition ] },
+      //     { "$or": [{ "subcategories.deleted_at" : ""}]}
+      //     // need to filter subcategory deleted_at condition
+      //   ]
+      // }).populate("subcategories");
+      const category = await Category.find({ "subcategory": "Test Subcat1" }).populate("subcategories")
+      // console.log(category)
+      
+      res.json({ data: category, status: 1 });
+    }
   } catch (err: any) {
     if (!err.statusCode) {
       err.statusCode = 500;
