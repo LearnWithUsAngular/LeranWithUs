@@ -1,14 +1,17 @@
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened class="side">
+  <mat-drawer #drawer mode="side" [opened]="sidebar" class="side">
     <app-admin-sidenav></app-admin-sidenav>
   </mat-drawer>
   <mat-drawer-content class="content">
+    <button class="menu-bar" (click)="drawer.toggle()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <div class="crud-container">
 
       <div class="header">
         <h2 class="title">Course Lists</h2>
 
-        <div class="btn-gp clearfix">
+        <div class="btn-gp">
 
           <mat-form-field appearance="standard">
             <mat-label>Search Course</mat-label>
@@ -26,25 +29,25 @@
         <table mat-table [dataSource]="dataSource" class="crud-table">
           <!-- Title -->
           <ng-container matColumnDef="title">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <th mat-header-cell *matHeaderCellDef class="course-admin-ttl"> Title </th>
             <td mat-cell *matCellDef="let user"> {{ user.title}} </td>
           </ng-container>
 
           <!-- Author -->
           <ng-container matColumnDef="author">
-            <th mat-header-cell *matHeaderCellDef> Author </th>
+            <th mat-header-cell *matHeaderCellDef class="course-admin-author"> Author </th>
             <td mat-cell *matCellDef="let user"> {{ user.author}} </td>
           </ng-container>
 
           <!-- Price -->
           <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <th mat-header-cell *matHeaderCellDef class="course-admin-price"> Price </th>
             <td mat-cell *matCellDef="let user"> {{ user.price}} </td>
           </ng-container>
 
           <!-- Action -->
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef class="course-admin-action"> </th>
             <td mat-cell *matCellDef="let user">
               <button mat-icon-button (click)="updateCourse(user.id)" color="primary">
                 <mat-icon>edit</mat-icon>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { courseList } from 'src/app/constants/learn';
@@ -9,19 +9,24 @@ import { courseList } from 'src/app/constants/learn';
   styleUrls: ['./course-admin.component.scss']
 })
 export class CourseAdminComponent implements OnInit {
-
+  sidebar: any;
   displayedColumns: string[] = ['title', 'author', 'price', 'action'];
   dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.dataSource = new MatTableDataSource(courseList);
       this.dataSource.paginator = this.paginator;
     }, 1000);
+    if (window.innerWidth < 1024) {
+      this.sidebar = false;
+    } else {
+      this.sidebar = true;
+    }
   }
+  @HostListener('window:resize', ['$event'])
 
   applyFilter(event: Event) {
 

@@ -1,10 +1,13 @@
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened class="side">
+  <mat-drawer #drawer mode="side" [opened]="sidebar" class="side">
     <app-admin-sidenav></app-admin-sidenav>
   </mat-drawer>
   <mat-drawer-content class="content">
+    <button class="menu-bar" (click)="drawer.toggle()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <div class="chart">
-      <canvas id="myChart" ></canvas>
+      <canvas id="myChart" width="600vw" height="400vw"></canvas>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
