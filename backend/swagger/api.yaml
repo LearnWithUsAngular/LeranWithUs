@@ -1079,6 +1079,9 @@ paths:
                 comment:
                   type: string
                   example: "It is very helpful course."
+                user_id:
+                  type: string
+                  example: "aaa"
       responses:
         "200":
           description: OK
@@ -1148,6 +1151,9 @@ paths:
                 comment:
                   type: string
                   example: "It is very helpful course."
+                user_id:
+                  type: string
+                  example: "aaa"
       responses:
         "200":
           description: OK
@@ -1652,6 +1658,7 @@ components:
             course_id: "63194cf2e52affece96486c3"
             rating: 5
             comment: "It is very helpful for learning."
+            user_id: "631582b7fb944b0d38c8c96a"
         status:
           type: integer
           description: The status code
@@ -1668,6 +1675,7 @@ components:
             course_id: "63194cf2e52affece96486c3"
             rating: 5
             comment: "It is very helpful for learning."
+            user_id: "631582b7fb944b0d38c8c96a"
         status:
           type: integer
           description: The status code
@@ -1687,6 +1695,7 @@ components:
             course_id: "63194cf2e52affece96486c3"
             rating: 5
             comment: "It is very helpful for learning."
+            user_id: "631582b7fb944b0d38c8c96a"
         status:
           type: integer
           description: The status code

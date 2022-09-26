@@ -39,7 +39,8 @@ export const createRatingService = async (
     const ratingForm = {
       course_id: req.body.course_id,
       rating: req.body.rating,
-      comment: req.body.comment
+      comment: req.body.comment,
+      user_id: req.body.user_id
     };
     const rating = new Rating(ratingForm);
     const result = await rating.save();
@@ -103,7 +104,8 @@ export const updateRatingService = async (
     rating.course_id = req.body.course_id;
     rating.rating = req.body.rating;
     rating.comment = req.body.comment;
-
+    rating.user_id = req.body.user_id;
+    
     const result = await rating.save();
     res.json({ message: "Updated Successfully!", data: result, status: 1 });
   } catch (err: any) {

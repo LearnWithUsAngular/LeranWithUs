@@ -12,6 +12,10 @@ const ratingSchema = new Schema({
   comment: {
     type: String,
   },
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
   deleted_at: {
     type: Date
   },
