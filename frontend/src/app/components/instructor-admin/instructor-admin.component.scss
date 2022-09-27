@@ -4,18 +4,27 @@
   margin: 1% auto;
   border-radius: 10px;
 
-  .clearfix::after {
-    clear: both;
-    display: table;
-    content: "",
-  }
-
   .side {
     background-color: #575151;
     color: #fff;
   }
 
   .content {
+    .menu-bar {
+      display: none;
+      width: 40px;
+      height: 40px;
+      margin: 10px;
+      font-size: 28px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #000;
+
+      @media only screen and (max-width:1024px) {
+        display: block;
+      }
+    }
     .crud-container {
       width: 80%;
       margin: 30px auto;
@@ -23,22 +32,23 @@
       .header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        .title {
+          margin: 0;
+        }
 
         .btn-gp {
           mat-form-field {
-            float: left;
             margin-right: 20px;
           }
 
           button {
-            float: right;
             margin-top: 10px;
             padding: 5px 10px;
           }
 
           button {
-            margin-right: 30px;
-
             mat-icon {
               transform: scale(0.8);
             }

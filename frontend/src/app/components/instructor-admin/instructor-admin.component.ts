@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import { DeleteInstructorComponent } from '../delete-instructor/delete-instructo
   styleUrls: ['./instructor-admin.component.scss']
 })
 export class InstructorAdminComponent implements OnInit {
-
+  sidebar: any;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['instructorName', 'headline', 'biography', 'createdAt', 'action'];
   instructorList: any;
@@ -28,8 +28,14 @@ export class InstructorAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInstructor();
+    if (window.innerWidth < 1024) {
+      this.sidebar = false;
+    } else {
+      this.sidebar = true;
+    }
   }
 
+  @HostListener('window:resize', ['$event'])
   /**
   * get instructor data
   */

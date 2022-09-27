@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,7 +12,7 @@ import { DeleteUserComponent } from '../delete-user/delete-user.component';
   styleUrls: ['./user-admin.component.scss']
 })
 export class UserAdminComponent implements OnInit {
-
+  sidebar: any;
   displayedColumns: string[] = ['name', 'email', 'phone', 'action'];
   dataSource: any;
   userList: any;
@@ -25,8 +25,14 @@ export class UserAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    if (window.innerWidth < 1024) {
+      this.sidebar = false;
+    } else {
+      this.sidebar = true;
+    }
   }
 
+  @HostListener('window:resize', ['$event'])
   /**
   * get instructor data
   */
