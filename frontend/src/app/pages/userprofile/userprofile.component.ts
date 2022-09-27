@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./userprofile.component.scss']
 })
 export class UserprofileComponent implements OnInit {
-
+  status = false;
   profileImage: any;
   userData: any;
   public userInfo: any;
@@ -45,6 +45,9 @@ export class UserprofileComponent implements OnInit {
         console.log(err)
       }
     })
+  }
+  toggleMenu() {
+    this.status = !this.status;
   }
 
 }
