@@ -19,6 +19,7 @@ import search_route from './routes/search_route';
 import error from './middlewares/error';
 import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
+import contact_route from './routes/contact_route';
 
 
 require('./config/passport');
@@ -99,5 +100,6 @@ mongoose
     app.use("/api/courses", course_route);
     app.use("/api", auth_route);
     app.use("/api/search", search_route);
+    app.use("/api/contact", contact_route);
     app.use(error)
   });
