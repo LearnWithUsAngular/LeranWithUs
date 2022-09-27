@@ -67,5 +67,6 @@ const courseSchema = new Schema(
   timestamps: true
 }
 )
+
 courseSchema.plugin(require('mongoose-autopopulate'));
 export default model("course", courseSchema)
