@@ -11,25 +11,19 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-select formControlName="pricing" placeholder="Select">
-        <div class="" *ngIf="courseSvc.pricingPromotionForm.controls['currency'].value === 'USD'">
-          <mat-option *ngFor="let pricing of pricingsUSD" [value]="pricing.value">
+      <mat-select formControlName="price" placeholder="Select">
+        <div>
+          <mat-option *ngFor="let pricing of pricings" [value]="pricing.value">
             {{pricing.value}}
           </mat-option>
         </div>
-        <div class="" *ngIf="courseSvc.pricingPromotionForm.controls['currency'].value === 'Myanmar'">
-          <mat-option *ngFor="let pricing of pricingsMyan" [value]="pricing.value">
-            {{pricing.value}}
-          </mat-option>
-        </div>
-        
       </mat-select>
-      <mat-error *ngIf="f['pricing'].hasError('required')">Please select!!</mat-error>
+      <mat-error *ngIf="f['price'].hasError('required')">Please select!!</mat-error>
     </mat-form-field>
   </div>
 
   <div class="input-container">
-    <input type="text" formControlName="promotion" />
+    <input type="text" formControlName="promocode" />
     <button (click)="onCopy()">Copy</button>
   </div>
 </div>

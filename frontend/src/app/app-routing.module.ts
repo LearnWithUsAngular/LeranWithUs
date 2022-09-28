@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { CourseResolver } from './resolvers/course.resolver';
 
 const routes: Routes = [
   {
@@ -46,7 +47,14 @@ const routes: Routes = [
   {
     path: 'create-course',
     loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+
+  },
+  {
+    path: 'edit-course/:id',
+    loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule),
+    canActivate: [AuthGuard],
+    resolve: { course: CourseResolver }
   },
   {
     path: 'contactus',
@@ -86,7 +94,8 @@ const routes: Routes = [
   {
     path: 'course-admin',
     loadChildren: () => import('./components/course-admin/course-admin.module').then(m => m.CourseAdminModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+
   },
   {
     path: 'user-profile/:id',

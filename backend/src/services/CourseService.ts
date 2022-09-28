@@ -38,6 +38,10 @@ export const createCourseService = async (
 ) => {
   try {
     const courseUpload = req.body.courseUpload;
+    let courseCover = null;
+    if (req.files?.courseCover?.length > 0) {
+      courseCover = req.files.courseCover[0].path.replaceAll("\\", "/")
+    }
 
     const courseForm = {
       detail: {
@@ -47,7 +51,7 @@ export const createCourseService = async (
         language: req.body.language,
         level: req.body.level,
         category_id: req.body.category_id,
-        courseCover: req.files.courseCover[0].path.replaceAll("\\", "/")
+        courseCover: courseCover
       },
       coursePrice: {
         currency: req.body.currency,

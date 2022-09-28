@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Course Delete</h2>
+<div mat-dialog-content class="mat-dialog">
+  <mat-list role="list">
+
+    <!-- ID -->
+    <mat-list-item role="listitem">
+      <span>ID :</span>
+      <div class="dialog-data">
+        {{data._id}}
+      </div>
+    </mat-list-item>
+
+    <!-- Title -->
+    <mat-list-item role="listitem">
+      <span>Title :</span>
+      <div class="dialog-data">
+        {{data.detail?.title}}
+      </div>
+    </mat-list-item>
+
+    <!-- Subtitle -->
+    <mat-list-item role="listitem">
+      <span>Subtitle :</span>
+      <div class="dialog-data">
+        {{data.detail?.subtitle}}
+      </div>
+    </mat-list-item>
+
+    <!-- Description -->
+    <mat-list-item role="listitem">
+      <span>Description :</span>
+      <div class="dialog-data">
+        {{data.detail?.description}}
+      </div>
+    </mat-list-item>
+
+    <!-- Language -->
+    <mat-list-item role="listitem">
+      <span>Language :</span>
+      <div class="dialog-data">
+        {{data.detail?.language}}
+      </div>
+    </mat-list-item>
+
+    <!-- Price -->
+    <mat-list-item role="listitem">
+      <span>Price :</span>
+      <div class="dialog-data">
+        {{data.coursePrice?.price}}
+      </div>
+    </mat-list-item>
+
+    <!-- Created Date -->
+    <mat-list-item role="listitem">
+      <span>CreatedAt :</span>
+      <div class="dialog-data">
+        {{data.createdAt | date : 'dd/mm/yyyy'}}
+      </div>
+    </mat-list-item>
+
+  </mat-list>
+</div>
+<div mat-dialog-actions class="close-btn">
+  <button mat-flat-button (click)="cancel()">Close</button>
+  <button mat-flat-button (click)="remove()" color="warn">Delete</button>
+</div>
