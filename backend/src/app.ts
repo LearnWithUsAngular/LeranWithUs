@@ -13,12 +13,14 @@ import course_route from './routes/course_route';
 import course_video_route from './routes/course_video_route';
 import auth_route from './routes/auth_route';
 import category_route from './routes/category_route';
+import subcategory_route from './routes/subcategory_route';
 import user_route from './routes/user_route';
+import search_route from './routes/search_route';
 import rating_route from './routes/rating_route';
+import contact_route from './routes/contact_route';
 import error from './middlewares/error';
 import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
-
 
 require('./config/passport');
 dotenv.config();
@@ -91,11 +93,14 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
     app.use("/api/categories", category_route);
+    app.use("/api/subcategories", subcategory_route);
     app.use("/api/users", user_route);
     app.use("/api/instructors", instructor_route);
     app.use("/api/course/video", course_video_route);
     app.use("/api/courses", course_route);
     app.use("/api/rating", rating_route);
     app.use("/api", auth_route);
+    app.use("/api/search", search_route);
+    app.use("/api/contact", contact_route);
     app.use(error)
   });

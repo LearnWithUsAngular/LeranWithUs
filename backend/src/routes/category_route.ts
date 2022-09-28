@@ -1,5 +1,5 @@
 import express from 'express';
-import { createCategory, deleteCategory, findCategory, getCategory, updateCategory } from '../controllers/CategoryController';
+import { createCategory, deleteCategory, searchByCategory, findCategory, getCategory, updateCategory } from '../controllers/CategoryController';
 import { body } from 'express-validator';
 
 const router = express.Router();
@@ -22,5 +22,9 @@ router
     ],
     updateCategory)
   .delete(deleteCategory)
+
+router
+  .route("/search")
+  .post(searchByCategory)
 
 export default router;
