@@ -21,6 +21,16 @@ const userSchema = new Schema({
 		type: String,
 		default: ""
 	},
+	isInstructor: {
+		type: Boolean,
+		default: false
+	},
+	// instructor_id: {
+	// 	type: Schema.Types.ObjectId,
+	// 	ref: "instructor",
+	// 	autopopulate: true,
+	// 	required: false
+	// },
 	deleted_at: {
 		type: Date
 	},
@@ -29,4 +39,5 @@ const userSchema = new Schema({
 		timestamps: true
 	}
 );
+userSchema.plugin(require('mongoose-autopopulate'));
 export default model("user", userSchema)

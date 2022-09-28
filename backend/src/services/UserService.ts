@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import bcrypt from 'bcrypt'
 import User from '../models/User'
+// import Instructor from '../models/Instructor';
 import { deleteFile } from '../utils/deleteFile';
 import { logger } from '../logger/logger';
 
@@ -162,9 +163,25 @@ export const deleteUserService = async (
       error.statusCode = 404;
       throw error;
     }
-    user.deleted_at = new Date();
-    const result = await user.save();
-    res.json({ message: "Delete User Successfully!", data: result, status: 1 });
+    if(user.isInstructor == false) {
+      user.deleted_at = new Date();
+      let result = await user.save();
+      res.json({ message: "Delete User Successfully!", data: result, status: 1 });
+    }
+    
+    if(user.isInstructor == true) {
+      user.deleted_at = new Date();
+      let result = await user.save();
+      // need object intructor value
+      
+      // let instructor: any = await Instructor.find({ user_id: user._id});
+      // instructor[0].deleted_at = new Date();
+      // console.log(instructor)
+      
+      // await instructor.save();
+      res.json({ message: "Delete User Successfully!", data: result, status: 1 });
+    }
+     
   } catch (err) {
     logger.error("delete UserService Error");
     logger.error(err);

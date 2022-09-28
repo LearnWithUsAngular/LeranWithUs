@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
 import Instructor from '../models/Instructor';
+import User from '../models/User';
 import { deleteFile } from '../utils/deleteFile';
 import { logger } from '../logger/logger';
 
@@ -58,6 +59,11 @@ export const createInstructorService = async (
       user_id: req.body.user_id
     }
     const instructor = new Instructor(instructorInsert);
+    
+    const user: any = await User.findById(req.body.user_id);
+    user.isInstructor = true;
+    // user.instructor_id = result._id;
+    await user?.save();
     const result = await instructor.save();
     res.status(201).json({ message: "Created Successfully", data: result, status: 1 })
   } catch (err: any) {
@@ -162,8 +168,11 @@ export const deleteInstructorService = async (
       throw error;
     }
     instructor.deleted_at = new Date();
-    const result = await instructor.save();
-    res.json({ message: "Delete Instructor Successfully!", data: result, status: 1 });
+    const user: any = await User.findById(instructor.user_id._id)
+    user.isInstructor = false;
+    await user.save();
+    await instructor.save();
+    res.json({ message: "Delete Instructor Successfully!", status: 1 });
   } catch (err) {
     logger.error("Delete Instructor Service Error");
     logger.error(err);
@@ -177,7 +186,7 @@ export const deleteInstructorService = async (
  * @param res 
  * @param _next 
  */
- export const searchByInstructorService = async (
+export const searchByInstructorService = async (
   req: any,
   res: Response,
   _next: NextFunction
