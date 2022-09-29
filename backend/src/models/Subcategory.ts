@@ -1,14 +1,14 @@
 import { Schema, model } from "mongoose";
 
-const categorySchema = new Schema({
-  category: {
+const subcategorySchema = new Schema({
+  subcategory: {
     type: String,
     required: true
   },
-  subcategories: [{
+  category_id: {
     type: Schema.Types.ObjectId,
-    ref: "subcategory",
-  }],
+    ref: "category",
+  },
   deleted_at: {
     type: Date
   }
@@ -16,4 +16,4 @@ const categorySchema = new Schema({
   timestamps: true
 }
 )
-export default model("category", categorySchema)
+export default model("subcategory", subcategorySchema)

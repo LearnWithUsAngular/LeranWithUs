@@ -16,6 +16,7 @@ export const getCourseService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
+    // const resume = await Course.find(condition).populate({ path: 'instructor_id' });
     const resume = await Course.find(condition);
     res.json({ data: resume, status: 1 });
   } catch (err) {
