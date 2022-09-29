@@ -4,11 +4,13 @@
 
       <mat-stepper #stepper orientation="vertical">
         <mat-step [stepControl]="courseSvc.courseDetailForm" label="Course Details">
-          <app-course-detail (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-detail>
+          <app-course-detail (onInitEvent)="receiveAutoMsgHandler($event)" (outputImage)="receiveImage($event)">
+          </app-course-detail>
         </mat-step>
 
         <mat-step [stepControl]="courseSvc.courseUploadForm" label="Course Upload">
-          <app-course-upload (onInitEvent)="receiveAutoMsgHandler($event)"></app-course-upload>
+          <app-course-upload (onInitEvent)="receiveAutoMsgHandler($event)" (outputVideo)="receiveVdo($event)">
+          </app-course-upload>
         </mat-step>
 
         <mat-step [stepControl]="courseSvc.pricingPromotionForm" label="Pricing and Promotion">

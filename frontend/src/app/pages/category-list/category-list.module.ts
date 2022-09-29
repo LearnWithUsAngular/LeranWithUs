@@ -5,6 +5,7 @@ import { CategoryListRoutingModule } from './category-list-routing.module';
 import { CategoryListComponent } from './category-list.component';
 import { AngularMaterialsModule } from 'src/app/angular-materials.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ViewListModule } from 'src/app/components/view-list/view-list.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     CategoryListRoutingModule,
     AngularMaterialsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ViewListModule
   ]
 })
 export class CategoryListModule { }

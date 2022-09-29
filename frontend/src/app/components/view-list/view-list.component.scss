@@ -1,0 +1,102 @@
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+
+  .category {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      display: flex;
+      justify-content: start;
+      color: #333;
+    }
+
+    div {
+      margin-right: 25px;
+      margin-top: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .author {
+      font-size: 12px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    i {
+      color: #ffa500;
+    }
+  }
+
+  .pagination {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+  .hover_content {
+    position: absolute;
+    width: 320px;
+    visibility: hidden;
+    border: 1px solid #cecece;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    z-index: 1;
+    background-color: #fff;
+    display: none;
+    padding: 0 8px;
+  }
+
+  .content_left {
+    position: absolute;
+    width: 300px;
+    visibility: hidden;
+    border: 1px solid #cecece;
+    z-index: 1;
+    background-color: #fff;
+    display: none;
+    top: 80%;
+    left: 50%;
+    bottom: unset;
+    margin-left: -60px;
+  }
+
+  .content_left::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    top: unset !important;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #cecece transparent !important;
+  }
+
+  .hover_content::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #cecece transparent transparent transparent;
+  }
+
+  .category:hover .hover_content {
+    display: block;
+    visibility: visible;
+  }
+
+}

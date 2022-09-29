@@ -2,12 +2,19 @@
   width: 100%;
   margin: 0 auto;
 
+  .inner {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1400px;
+  }
+
   .mainvisual {
     background-color: #ddd;
 
     .content {
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
       p {
         width: 400px;
@@ -16,42 +23,66 @@
         line-height: 1.4;
         color: #333;
         font-size: 45px;
-        margin-top: 100px;
-        margin-left: 150px;
+        @media only screen and (max-width:767.9px) {
+          width: 62.5vw;
+          font-size: 6.031vw;
+        }
+      }
+
+      .content-img {
+        max-width: 635px;
+        img {
+          width: 95%;
+        }
       }
     }
   }
 
   .second-blk {
-
     .inner {
-      max-width: 1180px;
-      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      padding: 50px 0;
-
+      padding: 60px 30px;
+      @media only screen and (max-width:767.9px) {
+        flex-direction: column;
+        padding: 9.375vw 4.688vw;
+      }
       .lt-blk {
         width: 49%;
-
+        @media only screen and (max-width:767.9px) {
+          width: 100%;
+          padding-bottom: 3.125vw;
+        }
         h3 {
           font-size: 30px;
           font-weight: 500;
           padding: 0 25px;
+          @media only screen and (max-width:767.9px) {
+            font-size: 4.688vw;
+            padding: 0 3.906vw;
+          }
         }
 
         p {
           padding: 0 25px;
           font-size: 16px;
+          @media only screen and (max-width:767.9px) {
+            padding: 0 3.906vw;
+            font-size: 2.5vw;
+          }
         }
 
         .contact-form {
           padding: 5px 25px 0 25px;
-
+          @media only screen and (max-width:767.9px) {
+            padding: 0.781vw 3.906vw 0 3.906vw;
+          }
           .form-group {
             display: block;
             margin-bottom: 5px;
-
+            @media only screen and (max-width:767.9px) {
+              margin-bottom: 0.781vw;
+            }
             textarea {
               resize: none;
             }
@@ -59,12 +90,15 @@
         }
 
         .btn {
-
           button {
             background-color: #333;
             border: 1px solid #fff;
             color: #fff;
             padding-top: 3px;
+            @media only screen and (max-width:767.9px) {
+              border: 0.156vw solid #fff;
+              padding-top: 0.469vw;
+            }
           }
         }
       }
@@ -72,6 +106,10 @@
       .rt-blk {
         width: 49%;
         padding-top: 10px;
+        @media only screen and (max-width:767.9px) {
+          width: 100%;
+          padding-top: 1.563vw;
+        }
       }
     }
   }

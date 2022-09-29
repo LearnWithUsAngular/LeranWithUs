@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Clipboard } from "@angular/cdk/clipboard";
 import { CourseServiceService } from 'src/app/services/course-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pricing-promotion',
@@ -13,58 +14,26 @@ export class PricingPromotionComponent implements OnInit {
 
   currencys = [
     { value: 'USD' },
-    { value: 'Myanmar' }
+    { value: 'AUD' },
+    { value: 'MMK' },
+    { value: 'SGD' }
   ];
 
-  pricingsUSD = [
-    { value: '19.99$' },
-    { value: '29.99$' },
-    { value: '39.99$' },
-    { value: '49.99$' },
-    { value: '59.99$' },
-    { value: '69.99$' },
-    { value: '79.99$' },
-    { value: '89.99$' },
-    { value: '99.99$' },
-    { value: '109.99$' },
-    { value: '119.99$' },
-    { value: '129.99$' },
-    { value: '139.99$' },
-    { value: '149.99$' },
-    { value: '159.99$' },
-    { value: '169.99$' },
-    { value: '179.99$' },
-    { value: '189.99$' },
-    { value: '199.99$' },
+  pricings = [
+    { value: 'Free' },
+    { value: '$19.99' },
+    { value: '$24.99' },
+    { value: '$34.99' },
   ];
 
-  pricingsMyan = [
-    { value: '41,979MMK' },
-    { value: '62,979MMK' },
-    { value: '83,979MMK' },
-    { value: '104,979MMK' },
-    { value: '125,979MMK' },
-    { value: '146,979MMK' },
-    { value: '167,979MMK' },
-    { value: '188,979MMK' },
-    { value: '209,979MMK' },
-    { value: '230,979MMK' },
-    { value: '251,979MMK' },
-    { value: '272,979MMK' },
-    { value: '293,979MMK' },
-    { value: '314,979MMK' },
-    { value: '335,979MMK' },
-    { value: '356,979MMK' },
-    { value: '377,979MMK' },
-    { value: '398,979MMK' },
-    { value: '419,979MMK' },
-  ];
   @Output() onInitEvent: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     public fb: FormBuilder,
     public clipboard: Clipboard,
-    public courseSvc: CourseServiceService
+    public courseSvc: CourseServiceService,
+    public route: ActivatedRoute,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +42,17 @@ export class PricingPromotionComponent implements OnInit {
       form: this.courseSvc.pricingPromotionForm
     }
     this.onInitEvent.emit(data);
+
+    let paramId = this.route.snapshot.paramMap.get("id");
+    if (this.router.url.indexOf('/edit-course/') !== -1 && paramId !== undefined) {
+
+      this.courseSvc.findCourse(paramId).subscribe((dist) => {
+
+        this.courseSvc.pricingPromotionForm.controls['currency'].setValue(dist.data.coursePrice.currency)
+        this.courseSvc.pricingPromotionForm.controls['price'].setValue(dist.data.coursePrice.price)
+        this.courseSvc.pricingPromotionForm.controls['promocode'].setValue(dist.data.coursePrice.promocode)
+      })
+    }
   }
 
   get f() {
@@ -81,7 +61,6 @@ export class PricingPromotionComponent implements OnInit {
 
   onCopy() {
     const promotion = this.courseSvc.pricingPromotionForm.controls['promotion'].value;
-    console.log(promotion)
     this.clipboard.copy(promotion);
   }
 
