@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./user-password-change.component.scss']
 })
 export class UserPasswordChangeComponent implements OnInit {
-
+  status = false;
   public passwordChangeForm!: FormGroup;
   public errorMsg: string = '';
 
@@ -26,7 +26,9 @@ export class UserPasswordChangeComponent implements OnInit {
       confirmPassword: new FormControl('', Validators.required)
     });
   }
-
+  toggleMenu() {
+    this.status = !this.status;
+  }
   get myForm() {
     return this.passwordChangeForm.controls;
   }
