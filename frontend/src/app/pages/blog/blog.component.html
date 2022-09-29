@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="blog-blk">
+    <h2>Blog</h2>
+    <div class="search-blog inner">
+      <select name="" id="" class="tag-filter">
+        <option>FILTER BY TAG</option>
+        <option value="{{blog.tag}}" *ngFor="let blog of blogs">{{blog.tag}}</option>
+      </select>
+      <div class="search">
+        <input placeholder="Enter title" class="search-input">
+        <button class="filter-btn">Search</button>
+      </div>
+    </div>
+    <div class="blog-content inner">
+      <div class="blog-card" *ngFor="let blog of blogs | paginate: { itemsPerPage: 6, currentPage: p }; let i=index">
+        <a href="#">
+          <p class="blog-tag">{{blog.tag}}</p>
+          <div class="img-group">
+            <div class="blog-img">
+              <img src="{{blog.image}}" alt="">
+            </div>
+            <img src="{{blog.profile}}" alt="" class="profile">
+          </div>
+          <p class="name">{{blog.name}}</p>
+          <p class="blog-ttl">{{blog.title}}</p>
+          <div class="react-icon">
+            <p><i class="fa-solid fa-heart"></i><span>{{blog.like}}</span></p>
+            <p><i class="fa-solid fa-eye"></i><span>{{blog.watch}}</span></p>
+            <p><i class="fa-solid fa-comment"></i><span>{{blog.comment}}</span></p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+</div>

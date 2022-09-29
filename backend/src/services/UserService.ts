@@ -18,8 +18,9 @@ export const getUserService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await User.find(condition)
-    res.json({ data: result, status: 1 });
+    const result = await User.find(condition);
+    const count = await User.count(condition);
+    res.json({ data: result, total: count, status: 1 });
   } catch (err) {
     logger.error("get UserService Error");
     logger.error(err);
@@ -170,3 +171,28 @@ export const deleteUserService = async (
     next(err)
   }
 };
+
+/**
+ * Search by User Service
+ * @param req 
+ * @param res 
+ * @param _next 
+ */
+ export const searchByUserService = async (
+  req: any,
+  res: Response,
+  _next: NextFunction
+) => {
+  try {
+    let condition: any = { deleted_at: null };
+    req.body?.name ? condition.name = { '$regex': req.body.name, '$options': 'i' } : '';
+    req.body?.email ? condition.email = { '$regex': req.body.email, '$options': 'i' } : '';
+
+    const user = await User.find(condition);
+    res.json({ data: user, status: 1 });
+  } catch (err: any) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+  }
+}

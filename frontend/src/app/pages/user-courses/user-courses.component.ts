@@ -7,6 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./user-courses.component.scss']
 })
 export class UserCoursesComponent implements OnInit {
+  status = false;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
   public columnToDisplay = [
     'title',
@@ -37,7 +38,9 @@ export class UserCoursesComponent implements OnInit {
     this.currentPage = 0;
     this.totalSize = this.courseList.length;
   }
-
+  toggleMenu() {
+    this.status = !this.status;
+  }
 
 
 }
