@@ -18,7 +18,8 @@ export const getInstructorService = async (
   try {
     let condition: any = { deleted_at: null };
     const result = await Instructor.find(condition).populate({ path: 'user_id' })
-    res.json({ data: result, status: 1 });
+    const count = await Instructor.count(condition);
+    res.json({ data: result, total: count, status: 1 });
   } catch (err) {
     logger.error("Get Instructor Service Error");
     logger.error(err);
@@ -169,3 +170,27 @@ export const deleteInstructorService = async (
     next(err)
   }
 };
+
+/**
+ * Search by Instructor Service
+ * @param req 
+ * @param res 
+ * @param _next 
+ */
+ export const searchByInstructorService = async (
+  req: any,
+  res: Response,
+  _next: NextFunction
+) => {
+  try {
+    let condition: any = { deleted_at: null };
+    req.body?.instructorName ? condition.instructorName = { '$regex': req.body.instructorName, '$options': 'i' } : '';
+
+    const instructor = await Instructor.find(condition);
+    res.json({ data: instructor, status: 1 });
+  } catch (err: any) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+  }
+}

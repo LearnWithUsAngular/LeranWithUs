@@ -1,37 +1,213 @@
-.side {
-  width: 20%;
-  height: 100vh;
-  background: #eee;
-  color: #fff;
-  font-size: 16px;
-}
+.example-container {
 
-.content {
-  width: 80%;
-  height: 100vh;
-  background: #f8f6f6;
-  padding: 20px;
-  font-size: 16px;
+  .side {
+    width: 20%;
+    height: 100vh;
+    background: #eee;
+    color: #fff;
+    font-size: 16px;
 
-  .profile-card {
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 20px;
+    @media only screen and (max-width:925px) {
+      position: fixed;
+      top: 0;
+      left: -100vw;
+      z-index: 2;
+      width: 57vw;
+      font-size: 2.5vw;
+      transition: 1s all ease-in-out;
+    }
 
-    table {
-      width: 80%;
+    span {
+      display: none;
+      margin: 5px 10px;
+      text-align: right;
+      cursor: pointer;
+
+      @media only screen and (max-width:925px) {
+        display: block;
+        margin: 0.781vw 1.563vw;
+      }
+
+      i {
+        color: #000;
+        font-size: 25px;
+
+        @media only screen and (max-width:925px) {
+          font-size: 3.906vw;
+        }
+      }
+    }
+
+    &.collapse {
+      left: 0;
+    }
+  }
+
+  ::ng-deep .mat-drawer-content.mat-sidenav-content.content {
+    @media only screen and (max-width:925px) {
+      margin-left: 0 !important;
+    }
+  }
+
+  .content {
+    position: relative;
+    width: 80%;
+    height: 100vh;
+    padding: 20px;
+    background: #f8f6f6;
+    font-size: 16px;
+
+    @media only screen and (max-width:925px) {
+      width: 100%;
+      padding: 1.613vw;
+      font-size: 2.5vw;
+    }
+
+    .menu-bar {
+      display: none;
+      position: absolute;
+      top: 1%;
+      left: 0.5%;
+      padding: 3px 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      @media only screen and (max-width:925px) {
+        display: block;
+        padding: 0.469vw 1.563vw;
+      }
+
+      i {
+        font-size: 24px;
+
+        @media only screen and (max-width:925px) {
+          font-size: 3.75vw;
+        }
+      }
+    }
+
+    .profile-card {
+      width: 90%;
       margin: 0 auto;
-      margin-top: 20px;
-      text-align: center;
+      border-radius: 20px;
 
-      th {
-        font-size: 16px;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        border-radius: 1.613vw;
       }
 
-      td {
-        text-align: left;
+      @media only screen and (max-width:767.9px) {
+        border-radius: 3.125vw;
       }
 
+      table {
+        width: 80%;
+        margin: 20px auto 0;
+        text-align: center;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          margin-top: 1.613vw;
+          width: 95%;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          margin-top: 3.125vw;
+          width: 99%;
+        }
+
+        ::ng-deep th.mat-header-cell:first-of-type {
+          padding-left: 1.25vw;
+        }
+
+        ::ng-deep th.mat-header-cell:last-of-type {
+          padding-right: 1.25vw;
+        }
+
+        th {
+          font-size: 16px;
+
+          @media only screen and (min-width:768px) and (max-width:1280px) {
+            font-size: 2.29vw;
+          }
+
+          @media only screen and (max-width:767.9px) {
+            font-size: 2.5vw;
+          }
+
+          ::ng-deep .mat-sort-header-container {
+            @media only screen and (min-width:768px) and (max-width:1280px) {
+              justify-content: center;
+            }
+          }
+        }
+
+        ::ng-deep td.mat-cell:first-of-type {
+
+          @media only screen and (max-width:767.9px) {
+            padding-left: 1.25vw;
+          }
+        }
+
+        ::ng-deep td.mat-cell:last-of-type {
+
+          @media only screen and (max-width:767.9px) {
+            padding-right: 1.25vw;
+          }
+        }
+
+        td {
+          text-align: left;
+
+          @media only screen and (min-width:768px) and (max-width:1280px) {
+            font-size: 1.629vw;
+            text-align: center;
+          }
+
+          @media only screen and (max-width:767.9px) {
+            font-size: 2.188vw;
+          }
+
+          ::ng-deep .mat-raised-button {
+
+            @media only screen and (min-width:768px) and (max-width:1280px) {
+              padding: 0 1.29vw;
+              min-width: 4.839vw;
+            }
+
+            @media only screen and (max-width:767.9px) {
+              padding: 0 2.5vw;
+              min-width: 9.375vw;
+            }
+
+            ::ng-deep .mat-icon {
+              font-size: 24px;
+
+              @media only screen and (min-width:768px) and (max-width:1280px) {
+                font-size: 1.935vw;
+                width: 1.935vw;
+                height: 1.935vw;
+              }
+
+              @media only screen and (max-width:767.9px) {
+                font-size: 3.75vw;
+                width: 3.75vw;
+                height: 3.75vw;
+              }
+            }
+
+          }
+        }
+      }
+
+      ::ng-deep .mat-paginator {
+        ::ng-deep .mat-paginator-range-label {
+
+          @media only screen and (max-width:767.9px) {
+            margin: 0 2vw;
+            font-size: 2.444vw;
+          }
+        }
+      }
     }
   }
 }

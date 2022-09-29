@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator';
 import Category from '../models/Category';
+import Subcategory from '../models/Subcategory';
 import { CategoryCreate } from '../interfaces/Category';
 import { logger } from '../logger/logger';
 
@@ -17,15 +18,15 @@ export const getCategoryService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await Category.find(condition)
-    res.json({ data: result, status: 1 });
+    const result = await Category.find(condition).populate("subcategories");
+    const count = await Category.count(condition);
+    res.json({ data: result, total: count, status: 1 });
   } catch (err) {
     next(err);
     logger.error("Get Category Service Error");
     logger.error(err);
   }
 };
-
 
 /**
  * Create Category Service
@@ -47,8 +48,7 @@ export const createCategoryService = async (
       throw error;
     }
     const categoryInsert: CategoryCreate = {
-      category: req.body.category,
-      subcategories: req.body.subcategories
+      category: req.body.category
     }
     const category = new Category(categoryInsert);
     const result = await category.save();
@@ -75,7 +75,7 @@ export const findCategoryService = async (
   next: NextFunction
 ) => {
   try {
-    const category = await Category.findById(req.params.id)
+    const category = await Category.findById(req.params.id).populate("subcategories")
     if (!category) {
       const error: any = Error("Not Found!");
       error.statusCode = 404;
@@ -118,7 +118,6 @@ export const updateCategoryService = async (
       throw error;
     }
     category.category = req.body.category;
-    category.subcategories = req.body.subcategories
     const result = await category.save();
     res.json({ message: "Updated Successfully!", data: result, status: 1 });
   } catch (err: any) {
@@ -151,6 +150,13 @@ export const deleteCategoryService = async (
     }
     category.deleted_at = new Date();
     await category.save();
+
+    const subcategories: any = await Subcategory.find({ category_id: req.params.id});
+    subcategories.forEach(async (a: any) => {
+      a.deleted_at = new Date();
+      await a.save();
+    });
+
     res.json({ message: "Deleted Successfully!", status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {
@@ -161,3 +167,44 @@ export const deleteCategoryService = async (
     next(err)
   }
 };
+
+/**
+ * Search by Category Service
+ * @param req 
+ * @param res 
+ * @param _next 
+ */
+export const searchByCategoryService = async (
+  req: any,
+  res: Response,
+  _next: NextFunction
+) => {
+  try {
+    if(!req.body.keyword) {
+      let condition: any = { deleted_at: null };
+      const result = await Category.find(condition).populate("subcategories");
+      const count = await Category.count(condition);
+      res.json({ data: result, total: count, status: 1 });
+    }
+    
+    if(req.body.keyword) {
+      // let condition: any = { deleted_at: null };
+      // const category = await Category.find({
+      //   $and: [
+      //     { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
+      //     { $or: [ condition ] },
+      //     { "$or": [{ "subcategories.deleted_at" : ""}]}
+      //     // need to filter subcategory deleted_at condition
+      //   ]
+      // }).populate("subcategories");
+      const category = await Category.find({ "subcategory": "Test Subcat1" }).populate("subcategories")
+      // console.log(category)
+      
+      res.json({ data: category, status: 1 });
+    }
+  } catch (err: any) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+  }
+}

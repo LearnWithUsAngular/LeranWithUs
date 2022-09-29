@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { getUserService, createUserService, findUserService, updateUserService, deleteUserService } from '../services/UserService';
+import { getUserService, createUserService, findUserService, updateUserService, deleteUserService, searchByUserService } from '../services/UserService';
 
 /**
  * Get User
@@ -70,3 +70,17 @@ export const deleteUser = async (
 ) => {
   deleteUserService(req, res, next);
 };
+
+/**
+ * Search By User
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+ export const searchByUser = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  searchByUserService(req, res, next);
+}

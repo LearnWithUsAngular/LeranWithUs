@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="blog-detail-blk inner">
+    <div class="blog-img-content">
+      <div class="lt-img-content">
+        <div class="blog-detail-img">
+          <img src="{{blogs[0].image}}" alt="">
+        </div>
+        <div class="tags-row">
+          <div class="blog-tags">
+            <p class="tag">{{blogs[0].tag}}</p>
+          </div>
+          <div class="react-button">
+            <button (click)="enableReact()"><i class="fa-solid fa-heart" [style.color]="toggle ? '#fff' : '#ff435e'"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="rt-img-content">
+        <div class="author-row">
+          <div>
+            <p class="author">Author</p>
+          </div>
+          <div class="blog-creator">
+            <div class="creator-img">
+              <img src="{{blogs[0].profile}}" alt="">
+            </div>
+            <p>{{blogs[0].name}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-content">
+      <div>
+        <h2>{{blogs[0].title}}</h2>
+        <p class="blog-txt">{{blogs[0].content}}</p>
+      </div>
+    </div>
+
+    <div class="blog-comment">
+      <h2>Leave a Comment</h2>
+      <div class="comment">
+        <div class="user-img">
+          <img src="{{comments[0].user}}" alt="">
+        </div>
+        <div class="comment-txt">
+          <div class="header">
+            <p>{{comments[0].name}}</p>
+            <span>{{comments[0].date}}</span>
+          </div>
+          <p>{{comments[0].comment}}</p>
+        </div>
+      </div>
+      <p>Comment</p>
+      <textarea cols="95" rows="10" class="comment-box" placeholder="Leave a comment"></textarea>
+      <div class="send-btn">
+        <button>Add a comment</button>
+      </div>
+    </div>
+  </div>
+</div>
