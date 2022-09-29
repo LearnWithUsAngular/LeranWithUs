@@ -143,6 +143,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'blog',
+    loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'blog-detail',
+    loadChildren: () => import('./pages/blog-detail/blog-detail.module').then(m => m.BlogDetailModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
