@@ -16,21 +16,28 @@
           Fill in your details below to arrange a call back and
           discover more about our innovative approach to digital learning
         </p>
+        <div class="error-alert" *ngIf="emailErr">{{emailErr}}</div>
+        <div class="mail-sent" *ngIf="emailSent">{{emailSent}}</div>
         <form [formGroup]="contactForm" (ngSubmit)="contactSubmit()" class="contact-form">
 
           <mat-form-field class="form-group" appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput type="text" formControlName="name" placeholder="Name">
+            <mat-error *ngIf="f['name'].hasError('required')">Name is required</mat-error>
           </mat-form-field>
 
           <mat-form-field class="form-group" appearance="outline">
             <mat-label>Email Address</mat-label>
             <input matInput type="email" formControlName="email" placeholder="Email Address">
+            <mat-error *ngIf="f['email'].hasError('required')">Name is required</mat-error>
+            <mat-error *ngIf="!f['email'].hasError('required') && f['email'].hasError('pattern')">Please enter a
+              valid email</mat-error>
           </mat-form-field>
 
           <mat-form-field class="form-group" appearance="outline">
             <mat-label>Phone</mat-label>
             <input matInput type="text" (keypress)="keyPress($event)" formControlName="phone" placeholder="Phone">
+            <mat-error *ngIf="f['phone'].hasError('required')">Phone is required</mat-error>
           </mat-form-field>
 
           <mat-form-field class="form-group" appearance="outline">
