@@ -18,8 +18,8 @@ export class AuthService {
    * is login.
    */
   async isLoggedIn() {
-    if (localStorage.getItem('userLoginData')) {
-      await this.authUserSubject.next(localStorage.getItem('userLoginData'));
+    if (localStorage.getItem('loginUser')) {
+      await this.authUserSubject.next(localStorage.getItem('loginUser'));
     } else {
       await this.authUserSubject.next(null);
     }

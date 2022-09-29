@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { CourseServiceService } from 'src/app/services/course-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-upload',
@@ -11,14 +12,17 @@ import { CourseServiceService } from 'src/app/services/course-service.service';
 export class CourseUploadComponent implements OnInit {
 
   uploadImage: any = [];
-  uploadVdo:any = [];
-  imgFile: any = [];
+  uploadVdo: any = [];
+  vdoFile: any = [];
 
   @Output() onInitEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() outputVideo: EventEmitter<any> = new EventEmitter();
 
   constructor(
     public fb: FormBuilder,
-    public courseSvc: CourseServiceService
+    public courseSvc: CourseServiceService,
+    public route: ActivatedRoute,
+    public router: Router
   ) { }
 
   get courseUpload(): FormArray {
@@ -27,9 +31,9 @@ export class CourseUploadComponent implements OnInit {
 
   newcourseUpload(): FormGroup {
     return this.fb.group({
-      title: ['', Validators.required],
-      uploadVideo: [''],
+      courseName: ['', Validators.required],
       description: [''],
+      video: [''],
     })
   }
 
@@ -60,9 +64,31 @@ export class CourseUploadComponent implements OnInit {
   ngOnInit(): void {
     const data = {
       childName: 'uploadForm',
-      form: this.courseSvc.courseUploadForm
+      form: this.courseSvc.courseUploadForm,
     }
     this.onInitEvent.emit(data);
+
+    let paramId = this.route.snapshot.paramMap.get("id");
+    if (this.router.url.indexOf('/edit-course/') !== -1 && paramId !== undefined) {
+
+      this.courseSvc.findCourse(paramId).subscribe((dist) => {
+
+        let arr = dist.data.courseUpload[0].split(",");
+        for (var i = 0; i < arr.length; i++) {
+          this.courseSvc.findCourseVideo(arr[i]).subscribe((res) => {
+
+            const mvForm = this.fb.group({
+              courseName: res.data.courseName,
+              description: res.data.description,
+              video: null,
+            });
+            this.courseUpload.push(mvForm);
+            this.uploadVdo.push('http://localhost:3000/' + res.data.video);
+          })
+
+        }
+      })
+    }
   }
 
   add() {
@@ -79,15 +105,23 @@ export class CourseUploadComponent implements OnInit {
     return formgroup;
   }
 
-  videoUpload(event: any, index: any){
+  /**
+   * *uploading video file
+  */
+  videoUpload(event: any, index: any) {
     if (event.target.files && event.target.files.length > 0) {
-      this.imgFile[index] = event.target.files[index];
+
+      if (this.vdoFile.length > index) {
+        this.vdoFile[index] = event.target.files[0];
+      } else {
+        this.vdoFile.push(event.target.files[0]);
+      }
+
+      this.outputVideo.emit(this.vdoFile);
       const reader = new FileReader();
       reader.onload = e => this.uploadVdo[index] = (<FileReader>e.target).result;
       reader.readAsDataURL(event.target.files[0]);
-    }else{
-      this.imgFile[index] = null;
-      this.uploadVdo[index] = null;
+
     }
   }
 }
