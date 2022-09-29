@@ -1,5 +1,5 @@
 import express from 'express';
-import { getInstructor, createInstructor, findInstructor, updateInstructor, deleteInstructor } from '../controllers/InstructorController';
+import { getInstructor, createInstructor, findInstructor, updateInstructor, deleteInstructor, searchByInstructor } from '../controllers/InstructorController';
 const router = express.Router();
 
 router
@@ -13,4 +13,7 @@ router
   .put(updateInstructor)
   .delete(deleteInstructor)
 
+router
+  .route("/search")
+  .post(searchByInstructor)
 export default router;

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { getCategoryService, createCategoryService, findCategoryService, updateCategoryService, deleteCategoryService } from '../services/CategoryService'
+import { getCategoryService, createCategoryService, findCategoryService, updateCategoryService, deleteCategoryService, searchByCategoryService } from '../services/CategoryService'
 
 /**
  * Get Category
@@ -70,4 +70,18 @@ export const deleteCategory = async (
 ) => {
   deleteCategoryService(req, res, next);
 };
+
+/**
+ * Search By Category
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+export const searchByCategory = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  searchByCategoryService(req, res, next);
+}
 
