@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { forkJoin, Observable, retry, subscribeOn } from 'rxjs';
-import { retry, Subject } from 'rxjs';
+import { Observable, retry, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
