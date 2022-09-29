@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import bcrypt from 'bcrypt'
 import User from '../models/User'
-// import Instructor from '../models/Instructor';
+import Instructor from '../models/Instructor';
 import { deleteFile } from '../utils/deleteFile';
 import { logger } from '../logger/logger';
 
@@ -163,25 +163,25 @@ export const deleteUserService = async (
       error.statusCode = 404;
       throw error;
     }
-    if(user.isInstructor == false) {
+    if (user.isInstructor == false) {
       user.deleted_at = new Date();
       let result = await user.save();
       res.json({ message: "Delete User Successfully!", data: result, status: 1 });
     }
-    
-    if(user.isInstructor == true) {
+
+    if (user.isInstructor == true) {
       user.deleted_at = new Date();
+      user.isInstructor = false;
+
+      let instructor: any = await Instructor.find({ user_id: user._id });
+      instructor.map(async (result: any) => {
+        result.deleted_at = new Date();
+        await result.save();
+      })
       let result = await user.save();
-      // need object intructor value
-      
-      // let instructor: any = await Instructor.find({ user_id: user._id});
-      // instructor[0].deleted_at = new Date();
-      // console.log(instructor)
-      
-      // await instructor.save();
       res.json({ message: "Delete User Successfully!", data: result, status: 1 });
     }
-     
+
   } catch (err) {
     logger.error("delete UserService Error");
     logger.error(err);
@@ -195,7 +195,7 @@ export const deleteUserService = async (
  * @param res 
  * @param _next 
  */
- export const searchByUserService = async (
+export const searchByUserService = async (
   req: any,
   res: Response,
   _next: NextFunction
