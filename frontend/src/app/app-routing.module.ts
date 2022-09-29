@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { CourseResolver } from './resolvers/course.resolver';
 
 const routes: Routes = [
   {
@@ -46,7 +47,14 @@ const routes: Routes = [
   {
     path: 'create-course',
     loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+
+  },
+  {
+    path: 'edit-course/:id',
+    loadChildren: () => import('./pages/create-course/create-course.module').then(m => m.CreateCourseModule),
+    canActivate: [AuthGuard],
+    resolve: { course: CourseResolver }
   },
   {
     path: 'contactus',
@@ -86,7 +94,8 @@ const routes: Routes = [
   {
     path: 'course-admin',
     loadChildren: () => import('./components/course-admin/course-admin.module').then(m => m.CourseAdminModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+
   },
   {
     path: 'user-profile/:id',
@@ -119,6 +128,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'course-list',
+    loadChildren: () => import('./pages/course-list/course-list.module').then(m => m.CourseListModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
@@ -141,6 +155,16 @@ const routes: Routes = [
   {
     path: 'edit-category/:id',
     loadChildren: () => import('./pages/crud-category/crud-category.module').then(m => m.CrudCategoryModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'blog',
+    loadChildren: () => import('./pages/blog/blog.module').then(m => m.BlogModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'blog-detail',
+    loadChildren: () => import('./pages/blog-detail/blog-detail.module').then(m => m.BlogDetailModule),
     canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
