@@ -119,6 +119,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'course-list',
+    loadChildren: () => import('./pages/course-list/course-list.module').then(m => m.CourseListModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule),
     canActivate: [AuthGuard]
