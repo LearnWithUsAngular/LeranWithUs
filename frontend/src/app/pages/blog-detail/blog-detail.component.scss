@@ -1,0 +1,307 @@
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 98%;
+
+  @media only screen and (max-width:767.9px) {
+    max-width: 100%;
+    width: 95%;
+  }
+}
+
+.blog-detail-blk {
+  .blog-img-content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+
+    @media only screen and (max-width:767.9px) {
+      flex-direction: column;
+      padding-top: 4.688vw;
+    }
+
+    .lt-img-content {
+      width: 68%;
+
+      @media only screen and (max-width:767.9px) {
+        width: 100%;
+      }
+
+      .blog-detail-img {
+        max-width: 952px;
+
+        @media only screen and (max-width:767.9px) {
+          max-width: 100%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .tags-row {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width:767.9px) {
+          padding: 2.5vw 0;
+        }
+
+        .blog-tags {
+          .tag {
+            color: #fff;
+            background-color: #3ba4e1;
+            font-size: 13px;
+            margin-bottom: 0;
+            padding: 3px 8px;
+            display: inline-block;
+            border-radius: 3px;
+
+            @media only screen and (max-width:767.9px) {
+              font-size: 2.031vw;
+              padding: 0.469vw 1.25vw;
+              border-radius: 0.469vw;
+            }
+          }
+        }
+
+        .react-button {
+          button {
+            border-radius: 40px;
+            width: 40px;
+            height: 40px;
+            background: #c3c3c3;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+
+            @media only screen and (max-width:767.9px) {
+              border-radius: 6.25vw;
+              width: 6.25vw;
+              height: 6.25vw;
+              border: 0.156vw solid #ffffff;
+            }
+
+            i {
+              font-size: 16px;
+
+              @media only screen and (max-width:767.9px) {
+                font-size: 2.5vw;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .rt-img-content {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      justify-content: flex-end;
+      border-left: 1px solid #cecece;
+      padding-left: 30px;
+
+      @media only screen and (max-width:767.9px) {
+        border-top: 0.156vw solid #cecece;
+        border-left: none;
+        padding-left: 0;
+        padding-top: 3.219vw;
+        width: 100%;
+      }
+
+      .author {
+        font-size: 20px;
+        font-weight: 500;
+
+        @media only screen and (max-width:767.9px) {
+          font-size: 3.125vw;
+          margin-bottom: 2.8vw;
+        }
+      }
+
+      .blog-creator {
+        display: flex;
+        align-items: center;
+
+        .creator-img {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+
+            @media only screen and (max-width:767.9px) {
+              width: 7.813vw;
+              height: 7.813vw;
+            }
+          }
+        }
+
+        p {
+          font-size: 16px;
+          padding-left: 10px;
+          margin-bottom: 0;
+
+          @media only screen and (max-width:767.9px) {
+            font-size: 2.3vw;
+            padding-left: 1.563vw;
+          }
+        }
+      }
+    }
+  }
+
+  .blog-content {
+    h2 {
+      margin: 30px 0 20px;
+      font-size: 28px;
+
+      @media only screen and (max-width:767.9px) {
+        margin: 4.688vw 0 3.125vw;
+        font-size: 4.375vw;
+      }
+    }
+
+    .blog-txt {
+      line-height: 2;
+    }
+  }
+
+  .blog-comment {
+    width: 720px;
+
+    @media only screen and (max-width:767.9px) {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 18px;
+
+      @media only screen and (max-width:767.9px) {
+        font-size: 2.813vw;
+      }
+    }
+
+    >p {
+      margin: 16px 0;
+      font-size: 16px;
+      font-weight: 500;
+
+      @media only screen and (max-width:767.9px) {
+        margin: 2.5vw 0;
+        font-size: 2.5vw;
+      }
+    }
+
+    .comment {
+      display: flex;
+      background-color: #eaeaea;
+      border-radius: 5px;
+      padding: 10px 15px;
+
+      @media only screen and (max-width:767.9px) {
+        border-radius: 0.781vw;
+        padding: 1.563vw 2.344vw;
+      }
+
+      .user-img {
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+
+          @media only screen and (max-width:767.9px) {
+            width: 7.813vw;
+            height: 7.813vw;
+          }
+        }
+      }
+
+      .comment-txt {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding-left: 20px;
+
+        @media only screen and (max-width:767.9px) {
+          padding-left: 3.125vw;
+        }
+
+        .header {
+          display: flex;
+
+          p {
+            font-size: 16px;
+            font-weight: 500;
+            padding-right: 60px;
+
+            @media only screen and (max-width:767.9px) {
+              font-size: 2.5vw;
+              padding-right: 9.375vw;
+            }
+          }
+
+          span {
+            font-size: 13px;
+            color: #848484;
+
+            @media only screen and (max-width:767.9px) {
+              font-size: 2.031vw;
+            }
+          }
+        }
+
+        p {
+          margin: 0;
+        }
+
+        >p {
+          font-size: 16px;
+
+          @media only screen and (max-width:767.9px) {
+            font-size: 2.3vw;
+          }
+        }
+      }
+    }
+
+    .comment-box {
+      border: 1px solid #cecece;
+      border-radius: 8px;
+      padding: 4px;
+      font-size: 14px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      resize: none;
+      outline: none;
+      @media only screen and (max-width:767.9px) {
+        max-width: 98%;
+      }
+    }
+
+    .send-btn {
+      padding-top: 20px;
+      @media only screen and (max-width:767.9px) {
+        padding-top: 3.125vw;
+      }
+      button {
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        background-color: #4285f4;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        color: #fff;
+        width: 125px;
+        font-size: 14px;
+        cursor: pointer;
+        @media only screen and (max-width:767.9px) {
+          padding: 1.563vw;
+          border-radius: 0.781vw;
+          width: 19.531vw;
+          font-size: 2.188vw;
+        }
+      }
+    }
+  }
+}
