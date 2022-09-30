@@ -18,9 +18,18 @@ export const getCategoryService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await Category.find(condition).populate("subcategories");
-    const count = await Category.count(condition);
-    res.json({ data: result, total: count, status: 1 });
+    // const result = await Category.find(condition).populate("subcategories");
+    const category = await Category.find(condition);
+
+    const filterCategory: any = [];
+    category.forEach((element: any) => {
+      const subcategories = element.subcategories.filter((dist: any) => !dist?.deleted_at);
+      element.subcategories = subcategories;
+      console.log('subcategor', subcategories);
+      console.log('element', element);
+      filterCategory.push(element);
+    });
+    res.json({ data: filterCategory, total: filterCategory.length, status: 1 });
   } catch (err) {
     next(err);
     logger.error("Get Category Service Error");
@@ -188,19 +197,26 @@ export const searchByCategoryService = async (
     }
     
     if(req.body.keyword) {
-      // let condition: any = { deleted_at: null };
-      // const category = await Category.find({
-      //   $and: [
-      //     { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
-      //     { $or: [ condition ] },
-      //     { "$or": [{ "subcategories.deleted_at" : ""}]}
-      //     // need to filter subcategory deleted_at condition
-      //   ]
-      // }).populate("subcategories");
-      const category = await Category.find({ "subcategory": "Test Subcat1" }).populate("subcategories")
+      const category = await Category.find({
+        $and: [
+          { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
+          { $or: [{ deleted_at: null }] },
+          // { $or: [{ subcategories.deleted_at : ""}]}
+          // need to filter subcategory deleted_at condition
+        ]
+      });
+      // const category = await Category.find({ "deleted_at": null }).populate("subcategories")
       // console.log(category)
-      
-      res.json({ data: category, status: 1 });
+      const filterCategory: any = [];
+      category.forEach((element: any) => {
+        const subcategories = element.subcategories.filter((dist: any) => !dist?.deleted_at);
+        element.subcategories = subcategories;
+        console.log('subcategor', subcategories);
+        console.log('element', element);
+        filterCategory.push(element);
+      });
+
+      res.json({ data: filterCategory, status: 1 });
     }
   } catch (err: any) {
     if (!err.statusCode) {

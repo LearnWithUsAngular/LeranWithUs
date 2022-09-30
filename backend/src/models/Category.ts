@@ -8,6 +8,7 @@ const categorySchema = new Schema({
   subcategories: [{
     type: Schema.Types.ObjectId,
     ref: "subcategory",
+    autopopulate: true
   }],
   deleted_at: {
     type: Date
@@ -16,4 +17,5 @@ const categorySchema = new Schema({
   timestamps: true
 }
 )
+categorySchema.plugin(require('mongoose-autopopulate'));
 export default model("category", categorySchema)
