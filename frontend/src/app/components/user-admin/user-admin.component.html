@@ -11,7 +11,7 @@
       <div class="header">
         <h2 class="title">User Lists</h2>
 
-        <div class="btn-gp clearfix">
+        <div class="btn-gp">
 
           <mat-form-field appearance="standard">
             <mat-label>Search User</mat-label>
@@ -29,25 +29,25 @@
         <table mat-table [dataSource]="dataSource" class="crud-table">
           <!-- Name -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef class="head-name"> Name </th>
             <td mat-cell *matCellDef="let user"> {{ user.name}} </td>
           </ng-container>
 
           <!-- Email -->
           <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <th mat-header-cell *matHeaderCellDef class="head-email"> Email </th>
             <td mat-cell *matCellDef="let user"> {{ user.email}} </td>
           </ng-container>
 
           <!-- Phone -->
           <ng-container matColumnDef="phone">
-            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <th mat-header-cell *matHeaderCellDef class="head-phone"> Phone </th>
             <td mat-cell *matCellDef="let user"> {{ user.phone}} </td>
           </ng-container>
 
           <!-- Action -->
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef class="actions"> </th>
             <td mat-cell *matCellDef="let user">
               <button mat-icon-button (click)="updateUser(user._id)" color="primary">
                 <mat-icon>edit</mat-icon>

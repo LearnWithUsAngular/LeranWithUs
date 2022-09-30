@@ -25,6 +25,7 @@
         display: block;
       }
     }
+
     .crud-container {
       width: 93%;
       margin: 30px auto;
@@ -48,12 +49,36 @@
         }
 
         .btn-gp {
+          @media only screen and (max-width:400px) {
+            width: 100%;
+            margin-bottom: 4.156vw;
+          }
+
           mat-form-field {
             margin-right: 20px;
+
+            @media only screen and (max-width:767.9px) {
+              margin-right: 3.125vw;
+            }
+
+            @media only screen and (max-width:400px) {
+              width: 100%;
+              margin-right: 0;
+            }
           }
 
           button {
+            margin-top: 10px;
             padding: 5px 10px;
+
+            @media only screen and (max-width:767.9px) {
+              margin-top: 1.563vw;
+              padding: 0.781vw 1.563vw;
+            }
+
+            @media only screen and (max-width:400px) {
+              width: 100%;
+            }
           }
 
           button {
@@ -66,12 +91,17 @@
             margin-right: 5px;
             margin-bottom: 5px;
             transform: scale(0.8);
+
+            @media only screen and (max-width:767.9px) {
+              margin-right: 0.781vw;
+              margin-bottom: 0.781vw;
+            }
           }
         }
       }
 
       .table-container {
-        overflow-x: scroll;
+        overflow-x: auto;
 
         .crud-table {
           width: 100%;
@@ -89,29 +119,48 @@
             padding: 0 20px;
           }
 
-          .course-admin-ttl {
+          .head-ttl {
             min-width: 110px;
-            width: 47%;
+            width: 18%;
           }
 
-          .course-admin-author {
-            min-width: 60px;
-            width: 25%;
+          .head-subttl {
+            min-width: 110px;
+            width: 18%;
           }
 
-          .course-admin-price {
-            min-width: 40px;
+          .head-desc {
+            min-width: 180px;
+            width: 18%;
+          }
+
+          .head-language {
+            min-width: 160px;
+            width: 18%;
+          }
+
+          .head-price {
+            min-width: 80px;
             width: 13%;
           }
 
-          .course-admin-action {
-            min-width: 88px;
-            width: 30%;
+          .head-created {
+            min-width: 100px;
+            width: 18%;
+          }
+
+          .action {
+            min-width: 80px;
+            width: 13%;
           }
         }
 
         .mat-paginator {
           background: transparent;
+
+          ::ng-deep .mat-paginator-range-label {
+            margin: 0;
+          }
         }
       }
     }

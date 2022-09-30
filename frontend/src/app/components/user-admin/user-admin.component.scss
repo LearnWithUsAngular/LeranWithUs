@@ -4,12 +4,6 @@
   margin: 1% auto;
   border-radius: 10px;
 
-  .clearfix::after {
-    clear: both;
-    display: table;
-    content: "",
-  }
-
   .side {
     background-color: #575151;
     color: #fff;
@@ -31,6 +25,7 @@
         display: block;
       }
     }
+
     .crud-container {
       width: 80%;
       margin: 30px auto;
@@ -40,20 +35,46 @@
         justify-content: space-between;
         align-items: center;
 
+        @media only screen and (max-width:767.9px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
         .title {
           margin: 0;
         }
 
         .btn-gp {
+          @media only screen and (max-width:400px) {
+            width: 100%;
+            margin-bottom: 4.156vw;
+          }
+
           mat-form-field {
-            float: left;
             margin-right: 20px;
+
+            @media only screen and (max-width:767.9px) {
+              margin-right: 3.125vw;
+            }
+
+            @media only screen and (max-width:400px) {
+              width: 100%;
+              margin-right: 0;
+            }
           }
 
           button {
-            float: right;
             margin-top: 10px;
             padding: 5px 10px;
+
+            @media only screen and (max-width:767.9px) {
+              margin-top: 1.563vw;
+              padding: 0.781vw 1.563vw;
+            }
+
+            @media only screen and (max-width:400px) {
+              width: 100%;
+            }
           }
 
           button {
@@ -66,20 +87,55 @@
             margin-right: 5px;
             margin-bottom: 5px;
             transform: scale(0.8);
+
+            @media only screen and (max-width:767.9px) {
+              margin-right: 0.781vw;
+              margin-bottom: 0.781vw;
+            }
           }
         }
       }
 
       .table-container {
+        overflow: auto;
 
         .crud-table {
           width: 100%;
+          white-space: nowrap;
 
           .mat-header-cell {
             font-size: 14px;
             font-weight: 500;
             background-color: #9c1de7;
             color: #fff;
+          }
+
+          .head-name {
+            min-width: 160px;
+            width: 5%;
+          }
+
+          .head-email {
+            min-width: 180px;
+            width: 8%;
+          }
+
+          .head-phone {
+            min-width: 100px;
+            width: 6%;
+          }
+
+          .actions {
+            min-width: 90px;
+            width: 5%;
+          }
+        }
+
+        .mat-paginator {
+          background: transparent;
+
+          ::ng-deep .mat-paginator-range-label {
+            margin: 0;
           }
         }
       }
