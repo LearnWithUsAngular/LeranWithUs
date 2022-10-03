@@ -90,6 +90,7 @@ export const findCategoryService = async (
       error.statusCode = 404;
       throw error;
     }
+    category.subcategories = category.subcategories.filter((dist: any) => !dist?.deleted_at)
     res.json({ data: category, status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {
@@ -201,18 +202,12 @@ export const searchByCategoryService = async (
         $and: [
           { $or: [{ category: { '$regex': req.body.keyword, '$options': 'i' }}] },
           { $or: [{ deleted_at: null }] },
-          // { $or: [{ subcategories.deleted_at : ""}]}
-          // need to filter subcategory deleted_at condition
         ]
       });
-      // const category = await Category.find({ "deleted_at": null }).populate("subcategories")
-      // console.log(category)
       const filterCategory: any = [];
       category.forEach((element: any) => {
         const subcategories = element.subcategories.filter((dist: any) => !dist?.deleted_at);
         element.subcategories = subcategories;
-        console.log('subcategor', subcategories);
-        console.log('element', element);
         filterCategory.push(element);
       });
 

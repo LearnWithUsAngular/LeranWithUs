@@ -18,7 +18,7 @@ export const getSubcategoryService = async (
 ) => {
   try {
     let condition: any = { deleted_at: null };
-    const result = await Subcategory.find(condition).populate("category_id");
+    const result = await Subcategory.find(condition);
     const count = await Subcategory.count(condition);
     res.json({ data: result, total: count, status: 1 });
   } catch (err) {
