@@ -1,14 +1,17 @@
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened class="side">
+  <mat-drawer #drawer mode="side" [opened]="sidebar" class="side">
     <app-admin-sidenav></app-admin-sidenav>
   </mat-drawer>
   <mat-drawer-content class="content">
+    <button class="menu-bar" (click)="drawer.toggle()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <div class="crud-container">
 
       <div class="header">
         <h2 class="title">Instructor Lists</h2>
 
-        <div class="btn-gp clearfix">
+        <div class="btn-gp">
 
           <mat-form-field appearance="standard">
             <mat-label>Search Instructor</mat-label>
@@ -26,31 +29,31 @@
         <table mat-table [dataSource]="dataSource" class="crud-table">
           <!-- Name -->
           <ng-container matColumnDef="instructorName">
-            <th mat-header-cell *matHeaderCellDef> Instructor Name </th>
+            <th mat-header-cell *matHeaderCellDef class="instructor-name"> Instructor Name </th>
             <td mat-cell *matCellDef="let user"> {{ user.instructorName}} </td>
           </ng-container>
     
           <!-- Headline -->
           <ng-container matColumnDef="headline">
-            <th mat-header-cell *matHeaderCellDef> Headline </th>
+            <th mat-header-cell *matHeaderCellDef class="headline"> Headline </th>
             <td mat-cell *matCellDef="let user"> {{ user.headline}} </td>
           </ng-container>
     
           <!-- Biography -->
           <ng-container matColumnDef="biography">
-            <th mat-header-cell *matHeaderCellDef> Biography </th>
+            <th mat-header-cell *matHeaderCellDef class="biography"> Biography </th>
             <td mat-cell *matCellDef="let user"> {{ user.biography}} </td>
           </ng-container>
     
           <!-- Created Date -->
           <ng-container matColumnDef="createdAt">
-            <th mat-header-cell *matHeaderCellDef> Created Date </th>
+            <th mat-header-cell *matHeaderCellDef class="created"> Created Date </th>
             <td mat-cell *matCellDef="let user"> {{ user.createdAt | date : 'dd/MM/yyyy' }} </td>
           </ng-container>
     
           <!-- Action -->
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> </th>
+            <th mat-header-cell *matHeaderCellDef class="actions"> </th>
             <td mat-cell *matCellDef="let user">
               <button mat-icon-button (click)="updateInstructor(user._id)" color="primary">
                 <mat-icon>edit</mat-icon>

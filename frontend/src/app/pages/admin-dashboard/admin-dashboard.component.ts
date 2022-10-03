@@ -8,7 +8,7 @@ Chart.register(...registerables);
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit {
-
+  sidebar: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -73,5 +73,10 @@ export class AdminDashboardComponent implements OnInit {
         }
       }
     });
+    if (window.innerWidth < 1024) {
+      this.sidebar = false;
+    } else {
+      this.sidebar = true;
+    }
   }
 }
