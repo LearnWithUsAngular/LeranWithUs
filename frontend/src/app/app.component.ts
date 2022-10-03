@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component,HostListener ,Input} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { cartItem } from 'src/app/constants/learn';
 import { AuthService } from './services/auth.service';
@@ -14,7 +15,6 @@ export class AppComponent {
   cartItems: any;
   showNavBar = true;
   isUserLoggedIn: any = false;
-
   constructor(
     private router: Router,
     private authService: AuthService
@@ -34,6 +34,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.cartItems = cartItem;
+    this.setHeight();
   }
 
   onMOver(event: MouseEvent) {
@@ -61,4 +62,21 @@ export class AppComponent {
       this.router.navigateByUrl('/login');
     });
   }
+  setHeight() {
+    var headerHeight = document.getElementById('head')?.offsetHeight;
+    const isMobile = matchMedia("(max-width: 767.9px)").matches;
+    if(isMobile){
+      document.getElementById('body')?.setAttribute("style", "margin-top:" + headerHeight + "px");
+      console.log("true");
+    } else {
+      document.getElementById('body')?.setAttribute("style", "margin-top:0");
+      console.log("false");
+    }
+  }
+
+  @HostListener('window:resize', ['$event']) onResize(event:any) {
+    this.setHeight();
+  }
+  
 }
+

@@ -124,14 +124,14 @@ export class DetailComponent implements OnInit {
     }
     else if (document.body.scrollTop > 30 ||
       document.documentElement.scrollTop > 30) {
-      console.log('30');
+        console.log(30);
       this.document.getElementById('header')?.classList.add('appear');
       this.document.getElementById('sidebar-img')?.setAttribute("style", "opacity:0;display:none");
       this.document.getElementById("sidebar")?.setAttribute("style", "position:fixed; z-index:1;top:2%");
     }
     else if (document.body.scrollTop > 15 ||
       document.documentElement.scrollTop > 15) {
-      console.log('15');
+      console.log(15);
       this.document.getElementById('header')?.classList.remove('appear');
       this.document.getElementById('sidebar-img')?.setAttribute("style", "opacity:1;display:block");
       this.document.getElementById("sidebar")?.setAttribute("style", "position:absolute; z-index:0;top:15%");
