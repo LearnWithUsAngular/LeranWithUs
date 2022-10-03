@@ -1,10 +1,10 @@
-<div class="header clearfix">
+<div class="header" id="head">
   <div class="title">
     <h1>
       <a [routerLink]="['/home']" routerLinkActive="active">Learn With Us</a>
     </h1>
   </div>
-  <ul class="nav clearfix">
+  <ul class="nav">
     <li class="dropdown">
       <button mat-button [matMenuTriggerFor]="menu" class="common-btn">Category</button>
       <mat-menu #menu="matMenu">
@@ -24,6 +24,7 @@
     </li>
     <li class="nav-icon">
       <button [routerLink]="['/cart']"><i class="fa-sharp fa-solid fa-cart-shopping"></i></button>
+      
     </li>
     <li class="nav-icon">
       <button [routerLink]="['/search']"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -59,9 +60,11 @@
       </ng-template>
     </li> -->
     </ul>
+  </div>
+<div id="body">
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
 
 <div class="footer" *ngIf="showNavBar">
   <p>Copyright © Seattle Consulting Myanmar Co., Ltd. All rights reserved.</p>

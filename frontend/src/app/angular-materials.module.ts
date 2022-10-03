@@ -25,6 +25,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -56,6 +57,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatTooltipModule,
     MatExpansionModule,
     MatProgressBarModule,
+    
   ],
 })
 export class AngularMaterialsModule { }

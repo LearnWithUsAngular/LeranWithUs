@@ -85,7 +85,7 @@ a {
     }
 
     @media only screen and (max-width:767.9px) {
-      padding: 2.344vw 0;
+      padding: 2.344vw 4vw;
     }
 
     .detail-head-txt {
@@ -132,7 +132,7 @@ a {
           }
 
           @media only screen and (max-width:767.9px) {
-            font-size: 2.188vw;
+            font-size: 3.188vw;
             margin-right: 2.813vw;
           }
 
@@ -202,11 +202,11 @@ a {
           font-size: 50px;
 
           @media only screen and (min-width:768px) and (max-width:1280px) {
-            font-size: 4.032vw;
+            font-size: 4vw;
           }
 
           @media only screen and (max-width:767.9px) {
-            font-size: 7.813vw;
+            font-size: 5.5vw;
           }
         }
 
@@ -228,7 +228,7 @@ a {
           @media only screen and (max-width:767.9px) {
             margin: 1.563vw 0;
             padding: 0.781vw 0;
-            font-size: 3.125vw;
+            font-size: 4.125vw;
           }
         }
 
@@ -304,11 +304,11 @@ a {
         line-height: 1.1;
 
         @media only screen and (min-width:768px) and (max-width:1280px) {
-          font-size: 4.113vw;
+          font-size: 3vw;
         }
 
         @media only screen and (max-width:767.9px) {
-          font-size: 7.969vw;
+          font-size: 5vw;
         }
       }
 
@@ -316,11 +316,11 @@ a {
         font-size: 30px;
 
         @media only screen and (min-width:768px) and (max-width:1280px) {
-          font-size: 2.419vw;
+          font-size: 2vw;
         }
 
         @media only screen and (max-width:767.9px) {
-          font-size: 4.688vw;
+          font-size: 3.6vw;
         }
       }
 
@@ -345,7 +345,12 @@ a {
 
       .content {
         display: inline-block;
-
+        
+        @media only screen and (max-width:767.9px) {
+          font-size: 3.5vw;
+          margin-bottom: 1.563vw;
+        }
+       
         span {
           margin: 0 10px;
 
@@ -530,7 +535,7 @@ a {
     }
 
     @media only screen and (max-width:767.9px) {
-      padding: 3.125vw 0;
+      padding: 3.125vw 3.438vw;
     }
 
     .main-inner {
@@ -557,7 +562,7 @@ a {
         }
 
         @media only screen and (max-width:767.9px) {
-          font-size: 5.938vw;
+          font-size: 5vw;
           margin-top: 3.125vw;
         }
       }
@@ -572,7 +577,7 @@ a {
           }
 
           @media only screen and (max-width:767.9px) {
-            font-size: 3.125vw;
+            font-size: 3.625vw;
           }
         }
 
@@ -731,7 +736,7 @@ a {
 
               @media only screen and (max-width:767.9px) {
                 margin-bottom: 0.781vw;
-                font-size: 3vw;
+                font-size: 2.5vw;
               }
             }
 
@@ -831,7 +836,9 @@ a {
             }
 
             @media only screen and (max-width:767.9px) {
-              width: 20%;
+              display: flex;
+              width: 100%;
+              align-items: center;
               margin-right: 0;
             }
 
@@ -845,9 +852,16 @@ a {
 
               @media only screen and (max-width:767.9px) {
                 font-size: 8.594vw;
+                margin-bottom: 0;
+                margin-right: 3vw;
               }
             }
-
+            p{
+              @media only screen and (max-width:767.9px) {
+                margin-bottom: 0;
+                margin-left: 3vw;
+              }
+            }
             i {
               color: #e59819;
             }
@@ -855,7 +869,9 @@ a {
 
           .rht-feedback {
             width: 80%;
-
+            @media only screen and (max-width:767.9px) {
+              width: 100%;
+            }
             p {
               display: flex;
               align-items: center;
@@ -893,7 +909,11 @@ a {
           display: flex;
           justify-content: space-between;
           align-items: center;
-
+          ::ng-deep .mat-form-field-infix{
+            @media only screen and (max-width:767.9px) {
+              width: 32.438vw;
+            }
+          }
           ::ng-deep .mat-form-field {
             ::ng-deep .mat-form-field-wrapper {
               padding-bottom: 0;
@@ -920,7 +940,9 @@ a {
                 ::ng-deep .mat-form-field-infix {
                   padding: 5px 0;
                   border: none;
-
+                  &::after {
+                    right: 2%
+                  }
                   @media only screen and (min-width:768px) and (max-width:1280px) {
                     padding: 0.403vw 0;
                   }
@@ -928,7 +950,7 @@ a {
                   @media only screen and (max-width:767.9px) {
                     padding: 0.781vw 0;
                   }
-
+                 
                   select {
                     border: none;
                     outline: none;
@@ -941,6 +963,11 @@ a {
 
                     @media only screen and (max-width:767.9px) {
                       padding: 0 1.563vw;
+                    }
+                  }
+                  ::ng-deep .mat-form-field-label-wrapper{
+                    &::after{
+                      right: 1%;
                     }
                   }
                 }
@@ -976,6 +1003,7 @@ a {
 
               @media only screen and (max-width:767.9px) {
                 padding: 1.094vw 0;
+                width: 15%;
               }
 
               i {
@@ -988,12 +1016,20 @@ a {
         .review-cmt {
           display: flex;
           flex-wrap: wrap;
+          margin-top: 15px;
+          @media only screen and (min-width:768px) and (max-width:1280px) {
+            margin-top: 1.21vw;
+          }
 
+          @media only screen and (max-width:767.9px) {
+            margin-top: 2.344vw;
+          }
           img {
             width: 60px;
             height: 60px;
             object-fit: cover;
             border-radius: 50%;
+            
 
             @media only screen and (min-width:768px) and (max-width:1280px) {
               width: 4.839vw;
@@ -1001,8 +1037,7 @@ a {
             }
 
             @media only screen and (max-width:767.9px) {
-              width: 9.375vw;
-              height: 9.375vw;
+              display: none;
             }
           }
 
@@ -1074,15 +1109,18 @@ a {
     .box {
       border: 1px solid #d1d7dc;
       padding: 25px;
+      margin-top: 10px;
 
       @media only screen and (min-width:768px) and (max-width:1280px) {
         border: 0.081vw solid #d1d7dc;
         padding: 2.016vw;
+        margin-top: 0.806vw;
       }
 
       @media only screen and (max-width:767.9px) {
         border: 0.156vw solid #d1d7dc;
         padding: 3.906vw;
+        margin-top: 1.563vw;
       }
 
       .goto-cart {
@@ -1104,6 +1142,8 @@ a {
 
           @media only screen and (max-width:767.9px) {
             padding: 0.781vw 0;
+            width: 30%;
+            font-size: 3.5vw;
           }
         }
       }
@@ -1145,7 +1185,17 @@ a {
           .course-desc {
             width: 54%;
             margin: 0 5%;
-
+            h3{
+              @media only screen and (max-width:767.9px) {
+               font-size: 3.2vw;
+               margin-bottom: 0.781vw;
+              }
+            }
+            span{
+              @media only screen and (max-width:767.9px) {
+                font-size: 2.8vw;
+               }
+            }
             @media only screen and (min-width:768px) and (max-width:1280px) {
               width: 54%;
               margin: 0 5%;
@@ -1161,7 +1211,11 @@ a {
 
       &.accor {
         padding: 0;
-
+        ::ng-deep .mat-content{
+          @media only screen and (max-width:767.9px) {
+            font-size: 2.6vw;
+          }
+        }
         ::ng-deep .mat-accordion {
           ::ng-deep .mat-expansion-panel-header-title {
             @media only screen and (max-width:767.9px) {
@@ -1204,7 +1258,7 @@ a {
         }
 
         @media only screen and (max-width:767.9px) {
-          font-size: 5.938vw;
+          font-size: 5vw;
         }
       }
 
@@ -1289,16 +1343,16 @@ a {
       width: 100%;
       text-align: center;
       padding: 8px 0px;
-      margin-bottom: 10px;
+     
 
       @media only screen and (min-width:768px) and (max-width:1280px) {
         padding: 0.645vw 0vw;
-        margin-bottom: 0.806vw;
+     
       }
 
       @media only screen and (max-width:767.9px) {
         padding: 1.25vw 0vw;
-        margin-bottom: 1.563vw;
+      
       }
     }
 
