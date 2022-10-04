@@ -174,7 +174,7 @@
       </div>
 
       <div class="main-inner">
-        <h2>Requirements</h2>
+        <h2 class="ttl-1">Requirements</h2>
         <ul class="requirements">
           <li *ngFor="let r of require">{{r}}</li>
         </ul>
@@ -193,7 +193,7 @@
             <mat-icon>expand_more</mat-icon>
           </ng-template>
         </a>
-        <h2>Students also bought</h2>
+        <h2 class="ttl-1">Students also bought</h2>
         <ul class="student-bought" [class.fullcontent]="showFull==true">
           <li *ngFor="let buy of buylist">
             <img src="{{buy.imgurl}}" alt="course image">
@@ -216,7 +216,7 @@
         <button (click)="showFullHeight()" class="btn full-btn">{{toggleshow}}</button>
       </div>
       <div class="main-inner box">
-        <h2>Frequently Bought Together</h2>
+        <h2 class="ttl-1">Frequently Bought Together</h2>
         <ul class="frequent-buy">
           <ng-container *ngFor="let buy of buylist,let i =index">
             <li *ngIf="i<3">
@@ -241,7 +241,7 @@
         </div>
       </div>
       <div class="main-inner">
-        <h2>Instructors</h2>
+        <h2 class="ttl-1">Instructors</h2>
         <div class="instructor" [class.moreless-content]="!showMore1==true">
           <a href="#">{{teacher.name}}</a>
           <h4>{{teacher.title}}</h4>
@@ -267,7 +267,7 @@
           </ng-template>
         </a>
         <div class="student-feedback">
-          <h2>Student feedback</h2>
+          <h2 class="ttl-1">Student feedback</h2>
 
           <div class="feedback">
             <div class="lft-feedback">
@@ -330,7 +330,7 @@
         </div>
         <div class="review">
           <div class="review-ttl">
-            <h2>Reviews</h2>
+            <h2 class="ttl-1">Reviews</h2>
             <button (click)="ratingDialog()"><i class="fa-solid fa-arrow-right"></i></button>
           </div>
           <form class="review-form">

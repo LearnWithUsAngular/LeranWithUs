@@ -7,16 +7,44 @@
 .header {
   background-color: #f0f0f0;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 25px 0;
 
-  .title {
-    float: left;
+  @media only screen and (min-width:768px) and (max-width:1280px) {
+    padding: 2.016vw 0;
+  }
+
+  @media only screen and (max-width:767.9px) {
+    padding: 1.906vw 0;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+  .title {  
     margin-left: 10px;
-    padding-top: 20px;
+
+    @media only screen and (min-width:768px) and (max-width:1280px) {
+      margin-left: 1.613vw;
+    }
+  
+    @media only screen and (max-width:767.9px) {
+      margin-left: 2.425vw;
+    }
 
     h1 {
       font-size: 30px;
       font-weight: bold;
-
+      margin-bottom: 0;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        margin-bottom: 1.613vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        margin-bottom: 3.125vw;
+       }
       a {
         text-decoration: none;
         color: #000;
@@ -25,15 +53,30 @@
   }
 
   .nav {
-    float: right;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 30px;
-
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+   
+     @media only screen and (max-width:767.9px) {
+     padding-left: 0;
+     width: 100%;
+     justify-content: center;
+     }
     li {
-      float: left;
+   
       margin-right: 20px;
       list-style: none;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        margin-right: 1.613vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        margin-right: 1.625vw;
+        width: 31%;
+       }
+       ::ng-deep .mat-button {
+        font-size: 14px;
+       }
     }
 
     .cart {
@@ -53,6 +96,22 @@
       background-color: #fff;
       display: none;
       padding: 15px 8px;
+
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        width: 22.581vw;
+        border: 0.081vw solid #cecece;
+        margin-left: -4.839vw;
+        margin-top: 0.806vw;
+        padding: 1.21vw 0.645vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        width: 43.75vw;
+        border: 0.156vw solid #cecece;
+        margin-left: -9.375vw;
+        margin-top: 1.563vw;
+        padding: 2.344vw 1.25vw;
+       }
     }
 
     .hover_content::after {
@@ -64,6 +123,16 @@
       border-width: 10px;
       border-style: solid;
       border-color: transparent transparent #fff transparent;
+
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        margin-left: -0.403vw;
+        border-width: 0.806vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        margin-left: -0.781vw;
+        border-width: 1.563vw;
+       }
     }
 
     .cart:hover .hover_content {
@@ -73,15 +142,36 @@
 
     button {
       margin-top: -8px;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        margin-top: -0.645vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        margin-top: -1.25vw;
+       }
     }
 
     .nav-icon {
       button {
         background: transparent;
         border: none;
-
+        margin:0 16px;
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          margin:0 1.29vw;
+         }
+       
+         @media only screen and (max-width:767.9px) {
+          margin:0 4.5vw;
+         }
         i {
           font-size: 20px;
+          @media only screen and (min-width:768px) and (max-width:1280px) {
+            font-size: 1.613vw;
+           }
+         
+           @media only screen and (max-width:767.9px) {
+            font-size: 17px;
+           }
         }
       }
     }
@@ -89,6 +179,13 @@
     .user-btn {
       display: flex;
       margin-top: -11px;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        margin-top: -0.887vw;
+       }
+     
+       @media only screen and (max-width:767.9px) {
+        margin-top: -1.719vw;
+       }
     }
   }
 }
@@ -103,5 +200,14 @@
     font-size: 16px;
     text-align: center;
     padding: 30px 10px 15px 10px;
+    @media only screen and (min-width:768px) and (max-width:1280px) {
+      font-size: 1.29vw;
+      padding: 2.419vw 0.806vw 1.21vw 0.806vw;
+     }
+   
+     @media only screen and (max-width:767.9px) {
+      font-size: 2.5vw;
+      padding: 4.688vw 1.563vw 2.344vw 1.563vw;
+     }
   }
 }
