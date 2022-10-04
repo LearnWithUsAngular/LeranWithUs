@@ -329,11 +329,14 @@
           </div>
         </div>
         <div class="review">
-          <h2 class="ttl-1">Reviews</h2>
+          <div class="review-ttl">
+            <h2 class="ttl-1">Reviews</h2>
+            <button (click)="ratingDialog()"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
           <form class="review-form">
             <div class="search">
               <input type="text" placeholder="Search Reviews">
-              <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              <button ><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <mat-form-field>
               <select matNativeControl>
