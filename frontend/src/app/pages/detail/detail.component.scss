@@ -889,6 +889,23 @@ a {
       }
 
       .review {
+        .review-ttl {
+          display: flex;
+
+          h2 {
+            margin: 0;
+          }
+
+          button {
+            background-color: transparent;
+            border-color: transparent;
+
+            i {
+              font-size: 15px;
+            }
+          }
+        }
+
         .review-form {
           display: flex;
           justify-content: space-between;
@@ -1409,5 +1426,4 @@ a {
       }
     }
   }
-
 }

@@ -1,0 +1,59 @@
+<div class="rating-dialog">
+  <div class="rating-ttl">
+    <h2 mat-dialog-title>Feedback</h2>
+    <button class="close-btn" (click)="onNoClick()"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div>
+    <div class="review-cmt">
+      <img src="{{reviewer[0].profile}}" class="cmt-img">
+      <div class="cmt-box">
+        <h3>{{reviewer[0].name}}</h3>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <span class="cmt-date">{{reviewer[0].date}} ago</span>
+        <p class="cmt">{{reviewer[0].cmt}}</p>
+        <span *ngIf="!liked && !unliked" class="feedback">{{reviewer[0].feedback[0]}}</span>
+        <span *ngIf="(!liked && unliked)|| (liked && !unliked)" class="feedback">{{reviewer[0].feedback[1]}}</span>
+        <div>
+          <button (click)="togglelike()" [class.thumb]="liked==true" class="cmt-reaction"><i class="fa-solid fa-thumbs-up"></i></button>
+          <button (click)="toggleunlike()" [class.thumb]="unliked==true" class="cmt-reaction"><i class="fa-solid fa-thumbs-down"></i></button>
+          <a href="#" class="report-txt">Report</a>
+        </div>
+      </div>
+    </div>
+    <div class="review-cmt">
+      <img src="{{reviewer[0].profile}}" class="cmt-img">
+      <div class="cmt-box">
+        <h3>{{reviewer[0].name}}</h3>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <i class="fa-sharp fa-solid fa-star star"></i>
+        <span class="cmt-date">{{reviewer[0].date}} ago</span>
+        <p class="cmt">{{reviewer[0].cmt}}</p>
+        <span *ngIf="!liked && !unliked" class="feedback">{{reviewer[0].feedback[0]}}</span>
+        <span *ngIf="(!liked && unliked)|| (liked && !unliked)" class="feedback">{{reviewer[0].feedback[1]}}</span>
+        <div>
+          <button (click)="togglelike()" [class.thumb]="liked==true" class="cmt-reaction"><i class="fa-solid fa-thumbs-up"></i></button>
+          <button (click)="toggleunlike()" [class.thumb]="unliked==true" class="cmt-reaction"><i class="fa-solid fa-thumbs-down"></i></button>
+          <a href="#" class="report-txt">Report</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rating-blk">
+    <h3>Rating</h3>
+    <div class="stars">
+      <ngx-star-rating></ngx-star-rating>
+    </div>
+  </div>
+  <div class="cmt-blk">
+    <h4 class="cmt-ttl">Share more about your experience</h4>
+    <textarea cols="30" rows="10" class="cmt-input"></textarea>
+    <button class="submit-btn">Submit</button>
+  </div>
+</div>
