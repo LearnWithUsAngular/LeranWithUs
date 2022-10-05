@@ -167,6 +167,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/blog-detail/blog-detail.module').then(m => m.BlogDetailModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'instructor-dashboard',
+    loadChildren: () => import('./pages/instructor-dashboard/instructor-dashboard.module').then(m => m.InstructorDashboardModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
