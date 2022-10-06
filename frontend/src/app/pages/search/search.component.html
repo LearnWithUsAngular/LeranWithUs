@@ -27,7 +27,7 @@
                           <p class="price">{{popular.price}}</p>
                         </div>
                       </a>
-                      <div class="hover_content" [ngClass]="((i+1) % 2 === 1) ? 'content_left' : ''">
+                      <div class="hover_content" [ngClass]="((i+1) % 2 === 0) ? 'content_left' : ''">
                         <div class="hover_card">
                           <p class="hover_content_ttl">
                             {{popular.title}}
@@ -70,7 +70,7 @@
               <owl-carousel-o [options]="customOptions" #owlPopular>
                 <ng-container *ngFor="let popular of populars,let i = index">
                   <ng-template carouselSlide>
-                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
                       <a href="#">
                         <img src="{{popular.img}}" alt="C#" class="slider-card-img">
                         <div class="content">
@@ -85,7 +85,7 @@
                           <p class="price">{{popular.price}}</p>
                         </div>
                       </a>
-                      <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                      <div class="hover_content" [ngClass]="((i+1) % 2 === 0) ? 'content_left' : ''">
                         <div class="hover_card">
                           <p class="hover_content_ttl">
                             {{popular.title}}
@@ -128,7 +128,7 @@
               <owl-carousel-o [options]="customOptions" #owlPopular>
                 <ng-container *ngFor="let popular of populars,let i = index">
                   <ng-template carouselSlide>
-                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
+                    <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
                       <a href="#">
                         <img src="{{popular.img}}" alt="C#" class="slider-card-img">
                         <div class="content">
@@ -143,7 +143,7 @@
                           <p class="price">{{popular.price}}</p>
                         </div>
                       </a>
-                      <div class="hover_content" [ngClass]="((i+1) % 5 === 0) ? 'content_left' : ''">
+                      <div class="hover_content" [ngClass]="((i+1) % 2 === 0) ? 'content_left' : ''">
                         <div class="hover_card">
                           <p class="hover_content_ttl">
                             {{popular.title}}
@@ -203,7 +203,7 @@
         <h3>Featured Courses</h3>
       </div>
       <div class="carousel-inner">
-        <owl-carousel-o [options]="featureOptions" #owlPopular>
+        <owl-carousel-o [options]="featureOptions" #owlFeature>
           <ng-container *ngFor="let popular of populars,let i = index">
             <ng-template carouselSlide>
               <div class="card" (mouseenter)="onMOver($event)" (mouseleave)="onMOut($event)">
@@ -230,10 +230,10 @@
           </ng-container>
         </owl-carousel-o>
         <div class="center">
-          <button role="presentation" class="owl-prev slider-prev" (click)="owlPopular.prev()">
+          <button role="presentation" class="owl-prev slider-prev" (click)="owlFeature.prev()">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
-          <button role="presentation" class="owl-next slider-next" (click)="owlPopular.next()">
+          <button role="presentation" class="owl-next slider-next" (click)="owlFeature.next()">
             <i class="fa-solid fa-chevron-right"></i>
           </button>
         </div>
@@ -288,7 +288,8 @@
                 </div>
                 <div class="info">
                   <table>
-                    <tr><td>{{instructor.name}}</td>
+                    <tr>
+                      <td>{{instructor.name}}</td>
                     </tr>
                     <tr>
                       <td>{{instructor.age}}</td>
@@ -367,7 +368,7 @@
                   <mat-icon class="star-ico">star</mat-icon>
                   <mat-icon class="star-ico">star</mat-icon>
                   <mat-icon class="star-ico">star_border</mat-icon>
-                  <p>{{ list.two }}</p> 
+                  <p>{{ list.two }}</p>
                   <span class="total-num">(1,000)</span>
                 </mat-radio-button>
               </div>

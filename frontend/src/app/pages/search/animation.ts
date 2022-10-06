@@ -5,7 +5,12 @@ import {
   transition,
   trigger
 } from "@angular/animations";
-
+//import {
+//  TooltipOptions
+//} from "ng2-tooltip-directive";
+//export const MyDefaultTooltipOptions: TooltipOptions = {
+//  'show-delay' : 300
+//};
 const mobileAnimations = [
   trigger('slideInOut', [
     transition(':enter', [

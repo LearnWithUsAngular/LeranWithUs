@@ -2,8 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { categoryList, instructor, popular } from 'src/app/constants/learn';
 import { item } from 'src/app/constants/search';
+import { CourseServiceService } from 'src/app/services/course-service.service';
 import { getAnimations } from "../search/animation";
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -11,6 +11,7 @@ import { getAnimations } from "../search/animation";
   animations: getAnimations()
 })
 export class SearchComponent implements OnInit {
+
   items: any = [];
   categories: any = [];
   p: number = 1;
@@ -18,7 +19,7 @@ export class SearchComponent implements OnInit {
   populars: any = [];
   instructors: any = [];
   show = false;
-
+  public courseList: any = [];
   customOptions: OwlOptions = {
     loop: true,
     autoplay: false,
@@ -32,16 +33,17 @@ export class SearchComponent implements OnInit {
         items: 1,
         slideBy: 1,
       },
-      640: {
-        items: 3,
-        slideBy: 1,
+      600: {
+        items: 2,
+        slideBy: 2,
       },
-      1240: {
-        items: 5,
-        slideBy: 1,
+      1000: {
+        items: 4,
+        slideBy: 4,
       }
     }
   };
+
   featureOptions: OwlOptions = {
     loop: true,
     autoplay: false,
@@ -98,34 +100,37 @@ export class SearchComponent implements OnInit {
         items: 4
       }
     }
-  }
+  };
 
-  constructor() { }
+  constructor(public courseService: CourseServiceService) { }
 
   ngOnInit(): void {
     this.categories = categoryList;
     this.populars = popular;
     this.items = item;
     this.instructors = instructor;
+    this.getCourse();
     if (window.innerWidth < 1080) {
       this.sidebar = false;
     } else {
       this.sidebar = true;
     }
   }
-
+  getCourse() {
+    this.courseService.getCourses().subscribe((course: any) => {
+      this.courseList = course.data;
+    })
+  }
   @HostListener('window:resize', ['$event'])
     
   onMOver(event: MouseEvent) {
     const card = <HTMLDivElement>event.target;
     const parent = <HTMLDivElement>card.parentElement;
-
     parent.style.zIndex = '10';
   }
   onMOut(event: MouseEvent) {
     const card = <HTMLDivElement>event.target;
     const parent = <HTMLDivElement>card.parentElement;
-
     parent.style.zIndex = '0';
   }
 }
