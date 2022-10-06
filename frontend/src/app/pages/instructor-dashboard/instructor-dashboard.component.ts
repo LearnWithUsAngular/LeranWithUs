@@ -7,7 +7,6 @@ import { instructor } from 'src/app/constants/instructor';
 })
 export class InstructorDashboardComponent implements OnInit {
   instructors: any;
-  show = false;
   p: number = 1;
   constructor() { }
 
