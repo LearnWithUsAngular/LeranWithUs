@@ -31,10 +31,8 @@
   }
 
   .carousel-container {
-    position: relative;
     margin: 50px auto;
-    max-width: 1280px;
-    min-height: 200px;
+    position: relative;
 
     @media (min-width: 768px) and (max-width: 1280px) {
       margin: 4.032vw auto;
@@ -64,32 +62,27 @@
     }
 
     .carousel-inner {
-      overflow: hidden;
-
-      ::ng-deep {
-        .owl-carousel .owl-item {
-          width: 270px !important;
-        }
-      }
 
       .card {
         position: relative;
         width: 84%;
-        height: 100%;
         margin: 8%;
-        cursor: pointer;
         border: 1px solid #ccc;
         box-sizing: border-box;
         border-radius: 8px;
 
-        @media (min-width: 768px) and (max-width: 1280px) {
-          border: 0.081vw solid #ccc;
-          border-radius: 0.645vw;
-        }
+        .slider-img {
+          width: 100%;
+          height: 200px;
 
-        @media only screen and (max-width:767.9px) {
-          border: 0.156vw solid #ccc;
-          border-radius: 1.25vw;
+          @media only screen and (max-width: 1296px) {
+
+            height: 250px;
+          }
+
+          @media only screen and (max-width:816px) {
+            height: 300px;
+          }
         }
       }
 
@@ -107,6 +100,11 @@
 
         @media only screen and (max-width:767.9px) {
           padding: 0 1.563vw;
+        }
+
+        .title {
+          font-size: 16px;
+          font-weight: 700;
         }
 
         span {
@@ -128,32 +126,110 @@
         i {
           color: #6c6c6c;
         }
+
+        .add-cart {
+          text-align: center;
+          padding: 10px 50px;
+          background-color: #8a2be2;
+          border: none;
+          margin-right: 20px;
+          color: #fff;
+
+          @media only screen and (max-width: 1296px) {
+            padding: 0.806vw 4.032vw;
+            font-size: 14px;
+          }
+
+          @media only screen and (max-width:767.9px) {
+            padding: 1.563vw 7.813vw;
+            font-size: 12px;
+          }
+        }
+
+        .heart-btn {
+          border: 50%;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          border: 1px solid #aaa;
+
+          @media only screen and (max-width:1296px) {
+            width: 2.823vw;
+            height: 2.823vw;
+            padding: 2px;
+          }
+
+          @media only screen and (max-width:766px) {
+            width: 5.469vw;
+            height: 5.469vw;
+            padding: 0.156vw;
+          }
+        }
       }
 
       .hover_content {
         display: none;
         position: absolute;
-        top: 50%;
-        right: -145%;
+        top: 65%;
+        right: -90%;
         z-index: 1;
-        width: 300px;
+        width: 270px;
         visibility: hidden;
         padding: 0 8px;
         border: 1px solid #cecece;
         background-color: #fff;
         transform: translateY(-50%);
 
-        @media (min-width: 768px) and (max-width: 1280px) {
+        @media only screen and (max-width: 1296px) {
 
-          width: 24.194vw;
+          width: 40vw;
+          top: 45%;
           padding: 0 0.645vw;
           border: 0.081vw solid #cecece;
+          right: -18%;
         }
 
-        @media only screen and (max-width:767.9px) {
-          width: 46.875vw;
+        @media only screen and (max-width:766px) {
+          width: 310px;
           padding: 0 1.25vw;
           border: 0.156vw solid #cecece;
+          right: 1%;
+        }
+
+        @media only screen and (max-width:400px) {
+          width: 55vw;
+          top: 25%;
+        }
+
+        .content {
+          padding: 8px;
+
+          .title {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+
+            @media only screen and (max-width: 1296px) {
+              font-size: 14px;
+            }
+
+            @media only screen and (max-width:766px) {
+              font-size: 12px;
+            }
+          }
+
+          .desc {
+            font-size: 14px;
+            font-weight: 500;
+
+            @media only screen and (max-width: 1296px) {
+              font-size: 13px;
+            }
+
+            @media only screen and (max-width:766px) {
+              font-size: 11px;
+            }
+          }
         }
       }
 
@@ -183,24 +259,32 @@
       .content_left {
         display: none;
         position: absolute;
-        top: 50%;
+        top: 65%;
         right: unset;
-        left: -140%;
+        left: -90%;
         z-index: 1;
-        width: 300px;
+        width: 270px;
         visibility: hidden;
         border: 1px solid #cecece;
         background-color: #fff;
         transform: translateY(-50%);
 
-        @media (min-width: 768px) and (max-width: 1280px) {
-          width: 24.194vw;
+        @media only screen and (max-width: 1296px) {
+          width: 40vw;
+          top: 45%;
           border: 0.081vw solid #cecece;
+          left: -18%;
         }
 
-        @media only screen and (max-width:767.9px) {
-          width: 46.875vw;
+        @media only screen and (max-width:766px) {
+          width: 310px;
           border: 0.156vw solid #cecece;
+          left: 1%;
+        }
+
+        @media only screen and (max-width:400px) {
+          top: 25%;
+          width: 55vw;
         }
       }
 
@@ -232,6 +316,7 @@
 
       .info {
         padding: 10px 5px;
+        word-break: break-word;
 
         @media (min-width: 768px) and (max-width: 1280px) {
           padding: 0.806vw 0.403vw;
@@ -270,27 +355,30 @@
         .prev {
           left: 0;
 
-          @media only screen and (min-width:768px) and (max-width:1280px) {
-            left: 0;
-          }
-
-          @media only screen and (max-width:767.9px) {
-            left: 0;
-          }
+          //          @media only screen and (min-width:768px) and (max-width:1280px) {
+          //            left: 0;
+          //          }
+          //
+          //          @media only screen and (max-width:767.9px) {
+          //            left: 0;
+          //          }
         }
 
         .next {
           right: 0;
-
-          @media only screen and (min-width:768px) and (max-width:1280px) {
-            right: 0;
-          }
-
-          @media only screen and (max-width:767.9px) {
-            right: 0;
-          }
+          //
+          //          @media only screen and (min-width:768px) and (max-width:1280px) {
+          //            right: 0;
+          //          }
+          //
+          //          @media only screen and (max-width:767.9px) {
+          //            right: 0;
+          //          }
         }
       }
     }
   }
+
+
+
 }

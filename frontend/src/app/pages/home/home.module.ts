@@ -6,15 +6,14 @@ import { AngularMaterialsModule } from '../../angular-materials.module';
 import { HomeComponent } from './home.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 
-
 @NgModule({
   declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     AngularMaterialsModule,
-    // IvyCarouselModule,
     CarouselModule,
+
   ]
 })
 export class HomeModule { }

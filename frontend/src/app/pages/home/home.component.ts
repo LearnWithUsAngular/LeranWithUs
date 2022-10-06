@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { popular, top, cartItem, instructor } from 'src/app/constants/learn';
 import { CourseServiceService } from 'src/app/services/course-service.service';
@@ -10,46 +10,39 @@ import { InstructorService } from 'src/app/services/instructor.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  rate = 2;
+  max = 5;
+  isReadonly = false;
   populars: any;
   tops: any;
   cartItems: any;
   instructors: any;
   public courseList: any = [];
   public instructorList: any = [];
-
   customOptions: OwlOptions = {
     loop: true,
     autoplay: false,
-    mergeFit: false,
-    center: false,
+    center:false,
     dots: false,
-    navSpeed: 70,
+    navSpeed: 90,
+    autoHeight: true,
+    autoWidth: true,
     responsive: {
       0: {
         items: 1,
         slideBy:1
       },
-      480: {
+      750: {
         items: 2,
         slideBy:2
       },
-      640: {
-        items: 3,
-        slideBy:3
-      },
-      768: {
-        items: 4,
-        slideBy:4
-      },
       1280: {
-        items: 5,
-        slideBy:5
+        items: 4,
+        slideBy:2
       }
-    },
-    autoHeight: true,
-    autoWidth: true,
+    }
   };
-
+ 
   constructor(
     public courseService: CourseServiceService,
     public instructorService: InstructorService
@@ -88,4 +81,5 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  
 }
