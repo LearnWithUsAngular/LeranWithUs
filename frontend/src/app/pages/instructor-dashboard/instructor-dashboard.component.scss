@@ -1,0 +1,298 @@
+.inner {
+  width: 98%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  @media only screen and (min-width:768px) and (max-width:1280px) {
+    width: 95%;
+    max-width: 100%;
+  }
+
+  @media only screen and (max-width:767.9px) {
+    width: 95%;
+    max-width: 100%;
+  }
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.instructor-dashboard {
+  background-color: #fff;
+  margin: 30px 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+  @media only screen and (min-width:768px) and (max-width:1280px) {
+    margin: 2.419vw 0;
+    border-radius: 0.403vw;
+    box-shadow: 0 0.403vw 0.403vw -0.242vw rgba(0, 0, 0, 0.2),
+      0 0.645vw 0.806vw 0.081vw rgba(0, 0, 0, 0.14),
+      0 0.242vw 1.129vw 0.161vw rgba(0, 0, 0, 0.12);
+  }
+
+  @media only screen and (max-width:767.9px) {
+    margin: 30.688vw 0 13.621px;
+    border-radius: 0.781vw;
+    box-shadow: 0 0.781vw 0.781vw -0.469vw rgba(0, 0, 0, 0.2),
+      0 1.25vw 1.563vw 0.156vw rgba(0, 0, 0, 0.14),
+      0 0.469vw 2.188vw 0.313vw rgba(0, 0, 0, 0.12);
+  }
+
+  .instructor-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px 30px;
+
+    @media only screen and (min-width:768px) and (max-width:1280px) {
+      padding: 1.21vw 2.419vw;
+    }
+
+    @media only screen and (max-width:767.9px) {
+      padding: 2.344vw 4.688vw;
+    }
+    .instructor-setting {
+      padding-right: 20px;
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        padding-right: 1.613vw;
+      }
+
+      @media only screen and (max-width:767.9px) {
+        padding-right: 3.125vw;
+      }
+
+      .instructor-name {
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+        margin: 0;
+  
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          font-size: 1.935vw;
+        }
+  
+        @media only screen and (max-width:767.9px) {
+          font-size: 3.75vw;
+        }
+      }
+      .pwd-chg {
+        display: block;
+        font-size: 12px;
+        padding-top: 10px;
+        color: #979797;
+        text-align: right;
+        text-decoration: underline;
+        
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          padding-top: 1.21vw;
+          font-size: 1.129vw;
+        }
+  
+        @media only screen and (max-width:767.9px) {
+          padding-top: 1.832vw;
+          font-size: 2.375vw;
+        }
+      }
+    }
+
+    .instructor-img {
+      max-width: 80px;
+
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        max-width: 6.452vw;
+      }
+
+      @media only screen and (max-width:767.9px) {
+        max-width: 12.5vw;
+      }
+
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+        object-fit: cover;
+        border: 1px solid #000;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          width: 6.452vw;
+          height: 6.452vw;
+          border-radius: 6.452vw;
+          border: 0.081vw solid #000;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          width: 12.5vw;
+          height: 12.5vw;
+          border-radius: 12.5vw;
+          border: 0.156vw solid #000;
+        }
+      }
+    }
+  }
+
+  .instructor-ttl {
+    background-color: #1f4690;
+
+    h2 {
+      padding: 30px;
+      font-size: 30px;
+      color: #fff;
+      font-weight: 400;
+      margin: 0;
+
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        padding: 2.419vw;
+        font-size: 2.419vw;
+      }
+
+      @media only screen and (max-width:767.9px) {
+        padding: 4.688vw;
+        font-size: 4.688vw;
+      }
+    }
+  }
+
+  .instructor-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px;
+
+    @media only screen and (min-width:768px) and (max-width:1280px) {
+      margin: 3.226vw;
+    }
+
+    @media only screen and (max-width:767.9px) {
+      margin: 6.25vw;
+    }
+
+    li {
+      width: 32%;
+      margin-right: 2%;
+      margin-bottom: 3%;
+
+      @media only screen and (min-width:768px) and (max-width:1280px) {
+        width: 48%;
+        margin-right: 4%;
+        margin-bottom: 3%;
+      }
+
+      @media only screen and (max-width:767.9px) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 6%;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          margin-right: 4%;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          margin-right: 0;
+        }
+      }
+
+      &:nth-child(2n) {
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          margin-right: 0;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          margin-right: 0;
+        }
+      }
+
+
+      .course-img {
+        max-width: 448px;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          max-width: 100%;
+          width: 100%;
+        }
+
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+
+          @media only screen and (min-width:768px) and (max-width:1280px) {
+            height: 16.129vw;
+          }
+
+          @media only screen and (max-width:767.9px) {
+            height: 31.25vw;
+          }
+        }
+      }
+
+      .course-ttl,
+      .course-price {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 1.4;
+        padding-top: 15px;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          font-size: 1.613vw;
+          padding-top: 1.21vw;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          font-size: 3.125vw;
+          padding-top: 2.344vw;
+        }
+      }
+
+      .course-info {
+        font-size: 18px;
+        line-height: 1.8;
+
+        @media only screen and (min-width:768px) and (max-width:1280px) {
+          font-size: 1.452vw;
+        }
+
+        @media only screen and (max-width:767.9px) {
+          font-size: 2.813vw;
+        }
+      }
+    }
+  }
+
+  pagination-controls {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0;
+    display: inline-block;
+
+    @media only screen and (min-width:768px) and (max-width:1280px) {
+      margin: 2.419vw 0;
+    }
+
+    @media only screen and (max-width:767.9px) {
+      margin: 4.688vw 0;
+    }
+
+    ::ng-deep .ngx-pagination {
+      padding: 0;
+    }
+  }
+}
