@@ -1,0 +1,40 @@
+<div class="wrapper">
+  <div class="instructor-dashboard">
+    <div class="content-blk">
+      <div class="lt-content">
+        <div class="instructor-profile">
+          <div class="instructor-img">
+            <img src="{{instructors[0].profile}}" alt="">
+          </div>
+          <p class="instructor-name">{{instructors[0].name}}</p>  
+          <p class="instructor-email">{{instructors[0].email}}</p>  
+          <p class="instructor-phone">{{instructors[0].phone}}</p>
+          <div class="social-media">
+            <a href=""><i class="fa-brands fa-facebook"></i></a>
+            <a href=""><i class="fa-brands fa-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <div class="instructor-setting">
+            <a [routerLink]="['/edit-instructor-profile']" class="pwd-chg">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+      <div class="rt-content">
+        <div class="instructor-ttl">
+          <h2>Instructor Dashboard</h2>
+        </div>
+        <ul class="instructor-content">
+          <li *ngFor="let instructor of instructors | paginate: { itemsPerPage: 9, currentPage: p };,let i = index">
+              <div class="course-img">
+                <img src="{{instructor.image}}" alt="">
+              </div>
+              <p class="course-ttl">{{instructor.title}}</p>
+              <p class="course-info">{{instructor.info}}</p>
+              <span class="course-price">{{instructor.price}}</span>
+          </li>
+        </ul>
+        <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>
