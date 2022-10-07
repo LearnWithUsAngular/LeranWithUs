@@ -1,0 +1,117 @@
+.inner {
+  max-width: 1400px;
+  width: 40%;
+  margin: 60px auto 0;
+
+  @media only screen and (min-width:768px) and (max-width:1280px) {
+    max-width: 100%;
+    width: 60%;
+  }
+
+  @media only screen and (max-width:767.9px) {
+    max-width: 100%;
+    width: 95%;
+    margin: 27.375vw auto 0;
+  }
+}
+
+.edit-instructor {
+  fieldset {
+    padding: 0 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-color: transparent;
+    border-radius: 5px;
+
+    @media only screen and (max-width:767.9px) {
+      padding: 0 3.125vw;
+      box-shadow: rgba(0, 0, 0, 0.16) 0vw 0.156vw 0.625vw;
+      border-radius: 0.781vw;
+    }
+
+    legend {
+      position: relative;
+      text-align: center;
+
+      img {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 140px;
+        border: 1px solid #000;
+
+        @media only screen and (max-width:767.9px) {
+          width: 21.875vw;
+          height: 21.875vw;
+          border-radius: 21.875vw;
+          border: 0.156vw solid #000;
+        }
+      }
+
+      .image-upload {
+        position: absolute;
+        display: inline-block;
+        background-color: #3f51b5;
+        padding: 2px 6px;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 12px;
+        bottom: 11px;
+        right: 15px;
+        cursor: pointer;
+
+        @media only screen and (max-width:767.9px) {
+          padding: 0px 6px;
+          border-radius: 20px;
+          font-size: 9px;
+          bottom: 1.719vw;
+          right: 2.344vw;
+        }
+
+        label {
+          cursor: pointer;
+        }
+
+        input[type="file"] {
+          display: none;
+        }
+      }
+    }
+
+    .edit-input {
+      display: flex;
+      flex-direction: column;
+      padding-top: 30px;
+
+      @media only screen and (max-width:767.9px) {
+        padding-top: 4.688vw;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+        @media only screen and (max-width:767.9px) {
+          font-size: 2.588vw;
+        }
+      }
+    }
+
+    .btn {
+      text-align: center;
+      padding: 30px 0;
+
+      @media only screen and (max-width:767.9px) {
+        padding: 4.688vw 0;
+      }
+
+      button {
+        @media only screen and (max-width:767.9px) {
+          font-size: 2.588vw;
+          padding: 0 2.5vw;
+          min-width: 14vw;
+        }
+
+        +button {
+          margin-left: 25px;
+        }
+      }
+    }
+  }
+}

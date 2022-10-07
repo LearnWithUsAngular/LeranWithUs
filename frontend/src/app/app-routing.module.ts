@@ -177,6 +177,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/instructor-password-change/instructor-password-change.module').then(m => m.InstructorPasswordChangeModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'edit-instructor-profile',
+    loadChildren: () => import('./pages/edit-instructor-profile/edit-instructor-profile.module').then(m => m.EditInstructorProfileModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

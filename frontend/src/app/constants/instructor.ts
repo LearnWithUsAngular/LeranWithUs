@@ -2,6 +2,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/python.png',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -16,6 +18,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/flutter.jpg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -30,6 +34,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/php.jpeg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -44,6 +50,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/golang.jpg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -58,6 +66,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/sql.jpeg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -72,6 +82,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/flutter.jpg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -86,6 +98,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/php.jpeg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -100,6 +114,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/golang.jpg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
@@ -114,6 +130,8 @@ export const instructor = [
   {
     profile: '../../assets/images/profile1.jpg',
     name: 'Michael James',
+    email: 'micaheljames@gmail.com',
+    phone: '09782364792',
     image: '../../assets/images/sql.jpeg',
     title: 'Learn Python:: The Complete Python Programming Course',
     price: 'S$50',
