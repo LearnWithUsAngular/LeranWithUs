@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { InstructorDashboardComponent } from './instructor-dashboard.component';
 
@@ -8,6 +9,9 @@ describe('InstructorDashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports : [
+        NgxPaginationModule
+      ],
       declarations: [ InstructorDashboardComponent ]
     })
     .compileComponents();

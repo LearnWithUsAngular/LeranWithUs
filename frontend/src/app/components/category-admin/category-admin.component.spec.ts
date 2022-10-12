@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { CategoryAdminComponent } from './category-admin.component';
 
@@ -8,6 +10,10 @@ describe('CategoryAdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        MatDialogModule
+      ],
       declarations: [ CategoryAdminComponent ]
     })
     .compileComponents();
