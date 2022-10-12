@@ -18,6 +18,7 @@ import user_route from './routes/user_route';
 import search_route from './routes/search_route';
 import rating_route from './routes/rating_route';
 import contact_route from './routes/contact_route';
+import purchase_route from './routes/purchase_route';
 import error from './middlewares/error';
 import * as swaggerUI from 'swagger-ui-express';
 import * as YAML from 'yamljs';
@@ -102,5 +103,6 @@ mongoose
     app.use("/api", auth_route);
     app.use("/api/search", search_route);
     app.use("/api/contact", contact_route);
+    app.use("/api/purchase", purchase_route);
     app.use(error)
   });
