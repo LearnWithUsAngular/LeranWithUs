@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { createPurchaseService, findPurchaseService, getPurchaseService } from '../services/PurchaseService';
+import { createPurchaseService, deletePurchaseService, findPurchaseService, getPurchaseService } from '../services/PurchaseService';
 
 /**
  * get all Purchase
@@ -41,4 +41,18 @@ export const findPurchase = async (
   next: NextFunction
 ) => {
   findPurchaseService(req, res, next);
+};
+
+/**
+ * Delete Purchase
+ * @param req 
+ * @param res 
+ * @param next 
+ */
+ export const deletePurchase = async (
+  req: any,
+  res: Response,
+  next: NextFunction
+) => {
+  deletePurchaseService(req, res, next);
 };

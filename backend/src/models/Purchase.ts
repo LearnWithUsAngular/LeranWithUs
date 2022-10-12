@@ -4,12 +4,12 @@ const purchaseSchema = new Schema({
   course_id: {
     type: Schema.Types.ObjectId,
     ref: "course",
-    autopopulate: true
+    // autopopulate: true
   },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "user",
-    autopopulate: true
+    // autopopulate: true
   },
   deleted_at: {
     type: Date
