@@ -32,7 +32,7 @@
           <tr>
             <th class="product-image-ttl">Item</th>
             <th class="price">Price</th>
-            <th class="quantity">Quantity</th>
+            <!-- <th class="quantity">Quantity</th> -->
             <th class="subtotal">Subtotal</th>
             <th class="remove">Action</th>
           </tr>
@@ -41,7 +41,7 @@
               <p>{{item.name}}</p>
             </td>
             <td>{{item.price}} USD</td>
-            <td><input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity" (change)="onCartItemChanged($event)" class="quantity-field"></td>
+            <!-- <td><input type="number" value={{item.quantity}} min=1 id={{item.id}} [(ngModel)]="item.quantity" (change)="onCartItemChanged($event)" class="quantity-field"></td> -->
             <td>{{item.quantity * item.price}} USD</td>
             <td class="remove-btn">
               <button (click)="onCartItemDeleted(item.id)">

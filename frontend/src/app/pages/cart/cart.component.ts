@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
 
   /**
    * on cart update.
-   * @param event 
+   * @param event
    */
   async onCartUpdated(event: any, index: number) {
     const id = event.target.getAttribute('id');
@@ -43,8 +43,8 @@ export class CartComponent implements OnInit {
 
     const cartIndex = this.cartItems.findIndex((data: any) => (data.id === Number(id)));
     if (cartIndex !== -1) {
-      this.cartItems[cartIndex].quantity++;
-      this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity;
+      // this.cartItems[cartIndex].quantity++;
+      // this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity;
     } else {
       this.cartItems.push(item);
     }
@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
 
   /**
    * on cart item delete.
-   * @param id 
+   * @param id
    */
   onCartItemDeleted(id: any) {
     const cartdata = JSON.parse(localStorage.getItem('mycart') || '[]');
@@ -74,17 +74,17 @@ export class CartComponent implements OnInit {
 
   /**
    * on cart item changed.
-   * @param event 
+   * @param event
    */
-  onCartItemChanged(event: any) {
-    const id = event.target.getAttribute('id');
-    const quantity = event.target.value;
-    const cartIndex = this.cartItems.findIndex((data: any) => (data.id === Number(id)));
-    if (cartIndex !== -1) {
-      this.cartItems[cartIndex].quantity = quantity;
-      this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity
-    }
-    localStorage.setItem('mycart', JSON.stringify(this.cartItems));
-    this.updateCartTotal();
-  }
+  // onCartItemChanged(event: any) {
+  //   const id = event.target.getAttribute('id');
+  //   const quantity = event.target.value;
+  //   const cartIndex = this.cartItems.findIndex((data: any) => (data.id === Number(id)));
+  //   if (cartIndex !== -1) {
+  //     this.cartItems[cartIndex].quantity = quantity;
+  //     this.cartItems[cartIndex].total = this.cartItems[cartIndex].price * this.cartItems[cartIndex].quantity
+  //   }
+  //   localStorage.setItem('mycart', JSON.stringify(this.cartItems));
+  //   this.updateCartTotal();
+  // }
 }
