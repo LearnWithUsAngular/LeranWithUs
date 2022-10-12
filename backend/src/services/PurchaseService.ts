@@ -2,6 +2,12 @@ import { Request, Response, NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import Purchase from '../models/Purchase';
 
+/**
+ * get all Purchase Service
+ * @param _req 
+ * @param res 
+ * @param next 
+ */
 export const getPurchaseService = async (
   _req: Request,
   res: Response,
@@ -16,6 +22,12 @@ export const getPurchaseService = async (
   }
 };
 
+/**
+ * create PurchaseService
+ * @param req 
+ * @param res 
+ * @param _next 
+ */
 export const createPurchaseService = async (req: Request, res: Response, _next: NextFunction) => {
   try {
     const errors = validationResult(req.body);
@@ -35,6 +47,12 @@ export const createPurchaseService = async (req: Request, res: Response, _next: 
   }
 };
 
+/**
+ * find Purchase Service
+ * @param req 
+ * @param res 
+ * @param next 
+ */
 export const findPurchaseService = async (
   req: Request,
   res: Response,
@@ -44,7 +62,7 @@ export const findPurchaseService = async (
     const purchaser = req.params.id
     let condition : any = { deleted_at: null, user_id: purchaser };    
     const result = await Purchase.find(condition)
-    res.json({ data: result, status: 1 });
+    res.json({ data: result, total: result.length, status: 1 });
   } catch (err: any) {
     if (!err.statusCode) {
       err.statusCode = 500;
