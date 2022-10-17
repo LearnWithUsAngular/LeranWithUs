@@ -1,7 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { categoryList, instructor, popular } from 'src/app/constants/learn';
 import { item } from 'src/app/constants/search';
+import { SearchService } from 'src/app/services/search.service';
+import { ShareDataSvcService } from 'src/app/services/share-data-svc.service';
 import { getAnimations } from "../search/animation";
 
 @Component({
@@ -18,6 +21,8 @@ export class SearchComponent implements OnInit {
   populars: any = [];
   instructors: any = [];
   show = false;
+  searchList:any;
+  searchData :any;
 
   customOptions: OwlOptions = {
     loop: true,
@@ -72,7 +77,7 @@ export class SearchComponent implements OnInit {
         items: 4
       },
       1240: {
-      items: 5,
+        items: 5,
       }
     }
   }
@@ -100,9 +105,22 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(
+    public route: ActivatedRoute,
+    public searchSvc : SearchService,
+    public shareDataSvc: ShareDataSvcService
+  ) { }
 
   ngOnInit(): void {
+
+    this.searchData = this.shareDataSvc.getSearchData();
+
+    console.log( this.searchData);
+
+    this.searchSvc.searchAll(this.searchData).subscribe((dist)=>{
+      console.log(dist)
+    });
+
     this.categories = categoryList;
     this.populars = popular;
     this.items = item;
@@ -115,7 +133,7 @@ export class SearchComponent implements OnInit {
   }
 
   @HostListener('window:resize', ['$event'])
-    
+
   onMOver(event: MouseEvent) {
     const card = <HTMLDivElement>event.target;
     const parent = <HTMLDivElement>card.parentElement;

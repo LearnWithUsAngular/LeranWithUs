@@ -26,7 +26,9 @@
       <button [routerLink]="['/cart']"><i class="fa-sharp fa-solid fa-cart-shopping"></i></button>
     </li>
     <li class="nav-icon">
-      <button [routerLink]="['/search']"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <form [formGroup]="searchForm">
+        <button (click)="searchDialog()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
     </li>
     <li class="dropdown" *ngIf="isUserLoggedIn">
       <button mat-button class="user-btn" [matMenuTriggerFor]="userMenu">
@@ -58,7 +60,7 @@
         </div>
       </ng-template>
     </li> -->
-    </ul>
+  </ul>
 </div>
 
 <router-outlet></router-outlet>

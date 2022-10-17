@@ -5,15 +5,20 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularMaterialsModule } from 'src/app/angular-materials.module';
 import { SearchComponent } from './search.component';
 import { SearchRoutingModule } from './search-routing.module';
+import { SearchDialogComponent } from 'src/app/components/search-dialog/search-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [SearchComponent],
+  declarations: [SearchComponent,SearchDialogComponent],
   imports: [
     CommonModule,
     AngularMaterialsModule,
     SearchRoutingModule,
     NgxPaginationModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AngularMaterialsModule
   ]
 })
 export class SearchModule { }

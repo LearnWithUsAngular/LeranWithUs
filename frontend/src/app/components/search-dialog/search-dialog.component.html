@@ -1,0 +1,16 @@
+<h1 mat-dialog-title> Search Dialog</h1>
+<div mat-dialog-content>
+  <div class="user-container">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Search </mat-label>
+      <input matInput (change)="changeSearch($event)">
+    </mat-form-field>
+
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="save()" clickcdkFocusInitial>Search</button>
+</div>
