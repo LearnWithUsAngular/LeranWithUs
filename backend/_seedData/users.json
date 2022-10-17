@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "631582b7fb944b0d38c8c96a",
+    "name": "Hello1",
+    "email": "hello1@gmail.com",
+    "password": "$2b$12$y.bHmvd5h5zkUPpg2wBz2.CBUfTi2MdWF7.t/RligINZ7g6gtfnnu",
+    "phone": "09789098789",
+    "userProfile": "apiUploads/users\b909c126-f95d-49ee-a88a-c0669c3d7294_home-one.png",
+    "createdAt": "2022-09-05T05:01:43.349+00:00",
+    "updatedAt": "2022-09-29T08:11:35.804+00:00"
+  },
+  {
+    "_id": "631582b7fb944b0d38c8c96b",
+    "name": "Hello2",
+    "email": "hello2@gmail.com",
+    "password": "$2b$12$y.bHmvd5h5zkUPpg2wBz2.CBUfTi2MdWF7.t/RligINZ7g6gtfnnu",
+    "phone": "",
+    "userProfile": "apiUploads/users\b909c126-f95d-49ee-a88a-c0669c3d7294_home-one.png",
+    "createdAt": "2022-09-05T05:01:43.349+00:00",
+    "updatedAt": "2022-09-29T08:11:35.804+00:00"
+  },
+  {
+    "_id": "631582b7fb944b0d38c8c95a",
+    "name": "Hello3",
+    "email": "hello3@gmail.com",
+    "password": "$2b$12$y.bHmvd5h5zkUPpg2wBz2.CBUfTi2MdWF7.t/RligINZ7g6gtfnnu",
+    "phone": "",
+    "userProfile": "apiUploads/users\b909c126-f95d-49ee-a88a-c0669c3d7294_home-one.png",
+    "createdAt": "2022-09-05T05:01:43.349+00:00",
+    "updatedAt": "2022-09-29T08:11:35.804+00:00"
+  }
+]
