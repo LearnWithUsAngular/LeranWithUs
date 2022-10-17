@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "63340ec1f81a860e89f3ad46",
+    "detail": {
+      "title": "AAA",
+      "subtitle": "aaa",
+      "description": "aaa",
+      "language": "English",
+      "level": "Intermediate",
+      "courseCover": "apiUploads/covers/b731897e-1bf6-47db-b328-69acb65f334d_l3.jpg"
+    },
+    "coursePrice": {
+      "currency": "USD",
+      "price": "Free",
+      "promocode": "123243",
+      "_id": "63340ec2f81a860e89f3ad47"
+    },
+    "courseUpload": [
+      "63340ec1f81a860e89f3ad44,63340ec1f81a860e89f3ad42"
+    ]
+  }
+]
